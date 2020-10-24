@@ -47,10 +47,6 @@ router.post('/', function (pet, res) {
 //Almost same as POST route. We will be specifying the id for the object that'll be updated/created.
 //Create the route in the following way.
 router.put('/:id', function (req, res) {
-
-    console.log(req.params)
-    console.log(req.query)
-
     if (!req.query.name || !req.query.year.match(/^[0-9]{4}$/g) || !req.query.rating.match(/^[0-9]\.[0-9]$/g)) {
         res.status(400)
         res.json({ message: 'Bad Request' })
