@@ -1,0 +1,18 @@
+{
+  "name": "boardtime",
+  "version": "1.0.0",
+  "description": "App that tracks the time spent on tasks",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "stalyn alejandro alcocer valencia",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.9",
+    "nodemon": "^2.0.6"
+  }
+}

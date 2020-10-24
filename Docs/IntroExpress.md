@@ -208,6 +208,7 @@ app.post('/usuarios', function(req, res){
     var nuevoUsuario = req.body;
     ...
 })
+```
 
 El middleware `body-parser` puede parsear otros formatos además de JSON. Podríamos haber vinculado por ejemplo `bodyParser.urlencoded()`.
 
