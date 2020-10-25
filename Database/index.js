@@ -65,6 +65,7 @@ app.post('/person', function (req, res) {
 
 //This will be PUT route with the id as a parameter and details as the payload.
 app.put('/person/:id', function(req, res){
+    console.log(req.query)
     Person.findByIdAndUpdate(req.params.id, req.query, function(err, response){
        if(err) res.json({message: "Error in updating person with id " + req.params.id});
        res.json(response);

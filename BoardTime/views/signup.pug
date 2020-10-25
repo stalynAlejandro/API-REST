@@ -1,0 +1,20 @@
+html
+   head
+      title Signup
+   body
+      h1 Sign In
+      if(messageSignin)
+         h4 #{messageSignin}
+      form(action = "/users/signin" method = "POST")
+         input(name = "name" type = "text" required placeholder = "User Name")
+         input(name = "password" type = "password" required placeholder = "Password")
+         button(type = "Submit") Sign in
+      br
+      br
+      h1 Log In
+      if(messageLogin)
+         h4 #{messageLogin}
+      form(action = "/users/login" method = "POST")
+        input(name = "name" type = "text" required placeholder = "User Name")
+        input(name = "password" type = "password" required placeholder = "Password")
+        button(type = "Submit") Log in

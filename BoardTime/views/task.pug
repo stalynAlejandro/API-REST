@@ -1,0 +1,14 @@
+html
+    head
+        title Protected
+    body
+        if(username) 
+            h2 #{username}
+        br
+        if(tasks)
+            h4 #{tasks}
+
+        form(action = `/${username}/tasks` method = "POST")
+            input(name = "name" type = "text" required placeholder = "task name")
+            input(name = "desc" type = "text" required placeholder = "description")
+            button(type = "Submit") Create Task
