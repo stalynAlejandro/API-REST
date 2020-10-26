@@ -30,24 +30,29 @@ User.find({}, (err, users) => {
 
 //Routes
 //Go to singup 
-router.get('/', (req, res) => res.status(200).render('signup'));
+router.get('/', (req, res) => {
+    User.find({}, (err, users) => {users.forEach((u) => Users.push(u))});
+    res.status(200).render('signup');
+});
 
 //Get All Users.
-router.get('/users', (req, res) => User.find((err, response) => res.json(response)));
+router.get('/users', (req, res) => User.find((err, response) => res.status(200).json(response)));
+
+//Get One User by id
+router.get('/user/:id', function (req, res) {
+    User.findById(req.params.id, (err, response) => {
+        res.status(200).json({ mensaje: response })
+    })
+});
 
 //Create New User
 router.post('/users/signin', (req, res) => {
 
     if (!req.body.name || !req.body.password) {
-
-        res.status(400).send('Bad Request Error! - Fill all Inputs.')
-
+        res.status(200).send('Bad Request Error.')
     } else {
-
         if (Users.find((user) => user.name === req.body.name)) {
-
             res.status(400).render('signup', { messageSignin: 'User Already Exists!' })
-
         } else {
 
             var newUser = new User({
@@ -77,11 +82,8 @@ router.post('/users/login', (req, res) => {
             if (err) {
                 res.status(400).render('signup', { messageLogin: "Database Error!" })
             } else {
-
                 if (user !== null && req.body.password === jwt.decode(user.password, secret)) {
-
-                    res.status(200).render('/', { token: jwt.encode(decode, secret) })
-
+                    res.status(200).redirect('/' + user.name + '/tasks');
                 } else {
                     res.status(400).render('signup', { messageLogin: "Name and Password don't match!" })
                 }

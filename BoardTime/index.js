@@ -5,6 +5,10 @@ var users = require('./users')
 var tasks = require('./task')
 var app = express()
 
+process.env.environment = 'development'
+
+const PORT = process.env.PORT || 3000;
+
 app.set('view engine', 'pug');
 app.set('views', './views');
 
@@ -22,5 +26,5 @@ app.use(session({
 app.use('/', users)
 app.use('/', tasks)
 
-app.listen(3030)
-console.log('Litening in port 3030')
+app.listen(PORT)
+console.log('Litening in port ' + PORT)
