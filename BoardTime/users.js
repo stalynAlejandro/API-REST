@@ -21,7 +21,7 @@ var userSchema = mongoose.Schema({
 var Task = mongoose.model("Task", taskSchema);
 var User = mongoose.model("User", userSchema);
 
-
+//Para hacer consultas sin tener que cargar desde bd.
 var Users = []
 
 User.find({}, (err, users) => {
@@ -31,7 +31,7 @@ User.find({}, (err, users) => {
 //Routes
 //Go to singup 
 router.get('/', (req, res) => {
-    User.find({}, (err, users) => {users.forEach((u) => Users.push(u))});
+    User.find({}, (err, users) => { users.forEach((u) => Users.push(u)) });
     res.status(200).render('signup');
 });
 
@@ -45,74 +45,81 @@ router.get('/user/:id', function (req, res) {
     })
 });
 
+//Get User by name
+router.get('/users/name/:name', function (req, res) {
+    User.findOne({ 'name': req.params.name }, (err, user) => {
+        if (user != null) res.status(200).json(user)
+        else res.status(404).json({ message: 'Not found' })
+    })
+});
+
 //Create New User
 router.post('/users/signin', (req, res) => {
-
     if (!req.body.name || !req.body.password) {
         res.status(200).send('Bad Request Error.')
     } else {
-        if (Users.find((user) => user.name === req.body.name)) {
-            res.status(400).render('signup', { messageSignin: 'User Already Exists!' })
-        } else {
+        User.findOne({ name: req.body.name }, ((err, user) => {
 
-            var newUser = new User({
-                name: req.body.name,
-                password: jwt.encode(req.body.password, secret),
-                task: [],
-            })
+            if (user != null) {
+                res.status(400).render('signup', { messageSignin: 'User Already Exists!' })
+            } else {
+                var newUser = new User({
+                    name: req.body.name,
+                    password: jwt.encode(req.body.password, secret),
+                    task: [],
+                })
 
-            newUser.save((err, User) => {
-                if (err) {
-                    res.status(400).render('show_message', { messageSignin: "Database error" });
-                } else {
-                    res.status(200).redirect('/' + newUser.name + '/tasks');
-                }
-            })
-        }
+                newUser.save((err, User) => {
+                    if (err) {
+                        res.status(400).render('show_message', { messageSignin: "Database error" });
+                    } else {
+                        res.status(200).redirect('/' + newUser.name + '/tasks');
+                    }
+                })
+            }
+        }))
     }
 });
 
 //Login a user
 router.post('/users/login', (req, res) => {
-
     if (!req.body.name || !req.body.password) {
         res.status(400).send('Bad Request Error! - Fill all Inputs.')
     } else {
         User.findOne({ name: req.body.name }, ((err, user) => {
-            if (err) {
-                res.status(400).render('signup', { messageLogin: "Database Error!" })
-            } else {
-                if (user !== null && req.body.password === jwt.decode(user.password, secret)) {
-                    res.status(200).redirect('/' + user.name + '/tasks');
-                } else {
-                    res.status(400).render('signup', { messageLogin: "Name and Password don't match!" })
+            if (user != null) {
+                if (err) res.status(400).render('signup', { messageLogin: "Database Error!" })
+                if (req.body.password === jwt.decode(user.password, secret)) {
+                    res.status(200).redirect('/' + user.name + '/tasks')
                 }
+            } else {
+                res.status(400).render('signup', { messageLogin: "Name and Password don't match!" })
             }
         }))
     }
 })
 
-//Edit a User
-router.put('/user/:id', function (req, res) {
-    User.findByIdAndUpdate(req.params.id, req.body, function (err, response) {
-        if (err) res.status(400).json({ message: "Error in updating person with id " + req.params.id });
-        res.status(200).json(response);
+//Edit a User by name
+router.put('/users/name/:name', function (req, res) {
+    User.findOneAndUpdate({ 'name': req.params.name }, req.body, function (err, user) {
+        if (user != null) {
+            if (err) res.status(400).json({ message: "Error in updating person with id " + req.params.id });
+            res.status(200).json({message:"User with name " + user.name + " changed property name to :" + req.params.name});
+        } else {
+            res.status(404).json({ message: 'Not Found' })
+        }
     });
 });
 
-//Delete User by it's id
-router.delete('/user/:id', function (req, res) {
-    User.findOneAndDelete(req.params.id, (err, response) => {
-        if (err) res.status(400).json({ message: 'Error deleting : ' + req.params.id })
-        else res.status(200).json({ message: 'User with id : ' + req.params.id + ' removed.' })
-    })
-})
-
 //Delete User by it's name
-router.delete('/user/:name', function (req, res) {
-    User.findOneAndDelete(req.params.name, (err, response) => {
-        if (err) res.status(400).json({ message: 'Error deleting : ' + req.params.name })
-        else res.status(200).json({ message: 'User with id : ' + req.params.name + ' removed.' })
+router.delete('/user/name/:name', function (req, res) {
+    User.findOneAndDelete(req.params.name, (err, user) => {
+        if (user != null) {
+            if (err) res.status(400).json({ message: 'Error deleting : ' + req.params.name })
+            else res.status(200).json({ message: 'User with name : ' + req.params.name + ' removed.' })
+        } else {
+            res.status(404).json({ message: 'Not Found' })
+        }
     })
 })
 
