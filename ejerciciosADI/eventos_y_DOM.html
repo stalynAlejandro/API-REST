@@ -1,0 +1,72 @@
+<html lang="es">
+
+<head>
+    <title>Ejercicio de eventos y DOM</title>
+    <style>
+        .item {
+            width: 90%;
+            background-color: rgb(174, 235, 221);
+            border: 1px solid slategray;
+            border-radius: 5px;
+            padding: 1em;
+            margin: 1em;
+        }
+
+        div {
+            padding: 0.5em 0em 0.5em 0em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio de eventos y DOM</h1>
+    <div>Al pulsar en los botones de arriba y abajo
+        el HTML asociado se debería desplazar
+    </div>
+    <div id="1" class="item">
+        <div><b>Alguna</b> cosa</div>
+        <button class="up">⬆️</button>
+        <button class="down">⬇️</button>
+    </div>
+    <div id="2" class="item">
+        <div>Otra <b>cosa</b></div>
+        <button class="up">⬆️</button>
+        <button class="down">⬇️</button>
+    </div>
+    <div id="3" class="item">
+        <div>Otra más</div>
+        <button class="up">⬆️</button>
+        <button class="down">⬇️</button>
+    </div>
+    <div id="4" class="item">
+        <div>Y Otra...
+            <img width="20%" src="https://web.ua.es/secciones-ua/images/layout/logo-ua.jpg">
+        </div>
+        <button class="up">⬆️</button>
+        <button class="down">⬇️</button>
+    </div>
+
+    <script>
+        document.body.addEventListener('click', function (e) {
+
+            var direccion = e.target.className
+            var idAct = parseInt(e.target.parentNode.id)
+            
+            if (direccion == "up" && idAct != 1) {
+                var nodoAct = document.getElementById(idAct).firstElementChild.innerHTML
+                var nodoAnt = document.getElementById(idAct - 1).firstElementChild.innerHTML
+                document.getElementById(idAct).firstElementChild.innerHTML = nodoAnt
+                document.getElementById(idAct - 1).firstElementChild.innerHTML = nodoAct
+            }
+            if (direccion == "down" && idAct != 4) {
+                var nodoAct = document.getElementById(idAct).firstElementChild.innerHTML
+                var nodoAnt = document.getElementById(idAct + 1).firstElementChild.innerHTML
+                document.getElementById(idAct).firstElementChild.innerHTML = nodoAnt
+                document.getElementById(idAct + 1).firstElementChild.innerHTML = nodoAct
+            }
+        })
+    </script>
+
+</body>
+
+</html>

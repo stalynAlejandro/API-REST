@@ -2,12 +2,13 @@ var express = require("express")
 var app = express()
 
 var bp = require('body-parser')
-var cors = require('cors')
-
 var lista = new Map()
 var idActual = 3
 
+var cors = require('cors')
+
 app.use(bp.json())
+app.use(cors())
 
 //listar todos los items
 app.get("/items", function(pet, resp){
@@ -101,6 +102,7 @@ app.delete('/items/:id', function(pet, resp){
         //si != undefined es que estaba, y lo hemos borrado
         if (dato) {
             resp.status(200)
+            resp.end()
         }
         else {
             resp.status(404)

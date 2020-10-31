@@ -15,7 +15,7 @@ body {
 #lista {
    background-color: white;
    max-width: 50%;
-   margin: 0 auto; 
+   margin: 20px auto; 
    font-size: 2em;
    font-weight: lighter;
    list-style: none;
@@ -30,4 +30,45 @@ li {
 
 li button {
     float: right;
+}
+
+div {
+    width: 200px;
+    margin: 0 auto;  
+    max-width: 60%;
+    max-height: 10%;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #48C9B0;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 5px 0px;
+    margin: 0px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=button] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+    height: 40%;
+    background-color: #F4D03F;
+    color: white;
+    padding: 2px 0px;
+    margin: 2px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+input[type=button]:hover {
+    background-color: #F39C12 ;
 }

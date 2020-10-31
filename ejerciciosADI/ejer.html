@@ -1,0 +1,20 @@
+<html>
+
+<body>
+    <div id="main">
+        <h1>Hola a tod@s</h1>
+        <p>Esta es mi web</p>
+    </div>
+
+    <script>
+        document.getElementById("main").firstElementChild.innerHTML = "Bienvenid@s"
+        document.body.firstElementChild.outerHTML += `<div><p>2020 Universidad de Alicante</p></div>`
+
+        console.log(document.body.firstChild)
+        console.log(document.body.firstElementChild)
+
+    </script>
+
+</body>
+
+</html>

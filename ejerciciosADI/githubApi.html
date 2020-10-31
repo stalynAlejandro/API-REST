@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1 id="name">Nombre</h1>
+    <input id="user" type="text" name="user" value=""><br><br>
+    <button id="button">Login in Github</button>
+
+    <script>
+        document.getElementById("button").addEventListener("click", function () {
+            var githubUser = document.getElementById("user").value
+            fetch("https://api.github.com/users/" + githubUser)
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (response) {
+                    document.getElementById("name").innerText = response.name
+                    document.body.firstElementChild.outerHTML += `<img src="${response.avatar_url}" alt="avatar" width="300" height="300"><br><br>`
+                })
+                .catch(function (error) {
+                    console.log("Error: " + error);
+                });
+        });
+    </script>
+</body>
+
+</html>
