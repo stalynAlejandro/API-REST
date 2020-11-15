@@ -2,7 +2,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 var jwt = require('jwt-simple')
 var router = express.Router();
-var secret = 'saav97'
+var secretPassword = 'password'
+var secretToken = 'token'
 
 mongoose.connect('mongodb://localhost/my_db', { useUnifiedTopology: true, useNewUrlParser: true })
 mongoose.set('useFindAndModify', false);
@@ -14,6 +15,7 @@ var taskSchema = mongoose.Schema({
 
 var userSchema = mongoose.Schema({
     name: String,
+    email: String,
     password: String,
     tasks: [taskSchema]
 });
@@ -21,19 +23,7 @@ var userSchema = mongoose.Schema({
 var Task = mongoose.model("Task", taskSchema);
 var User = mongoose.model("User", userSchema);
 
-//Para hacer consultas sin tener que cargar desde bd.
-var Users = []
-
-User.find({}, (err, users) => {
-    users.forEach((u) => Users.push(u))
-});
-
 //Routes
-//Go to singup 
-router.get('/', (req, res) => {
-    User.find({}, (err, users) => { users.forEach((u) => Users.push(u)) });
-    res.status(200).render('signup');
-});
 
 //Get All Users.
 router.get('/users', (req, res) => User.find((err, response) => res.status(200).json(response)));
@@ -41,39 +31,50 @@ router.get('/users', (req, res) => User.find((err, response) => res.status(200).
 //Get One User by id
 router.get('/user/:id', function (req, res) {
     User.findById(req.params.id, (err, response) => {
-        res.status(200).json({ mensaje: response })
+        if (err) res.status(404).json({ message: 'Not Found' })
+        else res.status(200).json(response)
     })
 });
+
+//Get User by email
+router.get('/users/:email', function(req, res){
+    User.findOne({'name':req.params.name}, (err, user)=>{
+        if(err || user == null) res.status(404).json({message: 'Not Found'})
+        else res.status(200).json(user)
+    })
+})
 
 //Get User by name
 router.get('/users/name/:name', function (req, res) {
     User.findOne({ 'name': req.params.name }, (err, user) => {
-        if (user != null) res.status(200).json(user)
-        else res.status(404).json({ message: 'Not found' })
+        if(err || user == null) res.status(404).json({message: 'Not Found'})
+        else res.status(200).json(user)
     })
 });
 
 //Create New User
 router.post('/users/signin', (req, res) => {
-    if (!req.body.name || !req.body.password) {
-        res.status(200).send('Bad Request Error.')
+    if (!req.body.name || !req.body.email || !req.body.password) {
+        res.status(400).send('Bad Request Error')
     } else {
-        User.findOne({ name: req.body.name }, ((err, user) => {
+        User.findOne({ email: req.body.email }, ((err, user) => {
 
             if (user != null) {
-                res.status(400).render('signup', { messageSignin: 'User Already Exists!' })
+                res.status(401).send({message: "Email already exists"})
             } else {
+
                 var newUser = new User({
                     name: req.body.name,
-                    password: jwt.encode(req.body.password, secret),
+                    email: req.body.email,
+                    password: jwt.encode(req.body.password, secretPassword),
                     task: [],
                 })
 
                 newUser.save((err, User) => {
                     if (err) {
-                        res.status(400).render('show_message', { messageSignin: "Database error" });
+                        res.status(400).send("Can't create user");
                     } else {
-                        res.status(200).redirect('/' + newUser.name + '/tasks');
+                        res.status(201).send("User created");
                     }
                 })
             }
@@ -83,18 +84,19 @@ router.post('/users/signin', (req, res) => {
 
 //Login a user
 router.post('/users/login', (req, res) => {
-    if (!req.body.name || !req.body.password) {
+    console.log(req.body)
+    if (!req.body.email || !req.body.password) {
         res.status(400).send('Bad Request Error! - Fill all Inputs.')
     } else {
-        User.findOne({ name: req.body.name }, ((err, user) => {
-            if (user != null) {
-                if (err) res.status(400).render('signup', { messageLogin: "Database Error!" })
-                if (req.body.password === jwt.decode(user.password, secret)) {
-                    res.status(200).redirect('/' + user.name + '/tasks')
-                }
-            } else {
-                res.status(400).render('signup', { messageLogin: "Name and Password don't match!" })
+        User.findOne({ email: req.body.email }, ((err, user) => {
+
+            if(user && user.password === jwt.decode(req.body.password, secretPassword)){
+                var accessToken = jwt.encode(user.name, secretToken)
+                res.status(200).json({token: accessToken})
+            }else{
+                res.status(400).send('Username or password incorrect')
             }
+
         }))
     }
 })
@@ -104,7 +106,7 @@ router.put('/users/name/:name', function (req, res) {
     User.findOneAndUpdate({ 'name': req.params.name }, req.body, function (err, user) {
         if (user != null) {
             if (err) res.status(400).json({ message: "Error in updating person with id " + req.params.id });
-            res.status(200).json({message:"User with name " + user.name + " changed property name to :" + req.params.name});
+            res.status(200).json({ message: "User with name " + user.name + " changed property name to :" + req.params.name });
         } else {
             res.status(404).json({ message: 'Not Found' })
         }
@@ -122,5 +124,42 @@ router.delete('/user/name/:name', function (req, res) {
         }
     })
 })
+
+//.....................................................................//
+const authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+
+        jwt.verify(token, accessTokenSecret, (err, user) => {
+            if (err) {
+                return res.sendStatus(403);
+            }
+
+            req.user = user;
+            next();
+        });
+    } else {
+        res.sendStatus(401);
+    }
+};
+
+
+app.post('/books', authenticateJWT, (req, res) => {
+    const { role } = req.user;
+
+    if (role !== 'admin') {
+        return res.sendStatus(403);
+    }
+
+
+    const book = req.body;
+    books.push(book);
+
+    res.send('Book added successfully');
+});
+//.....................................................................//
+
 
 module.exports = router;

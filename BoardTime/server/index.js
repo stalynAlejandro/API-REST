@@ -10,9 +10,6 @@ process.env.environment = 'development'
 
 const PORT = process.env.PORT || 3000;
 
-app.set('view engine', 'pug');
-app.set('views', './views');
-
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())

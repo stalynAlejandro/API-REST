@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <v-toolbar app>
-      <span class="hidden-sm-and-up">
-        <!-- <v-toolbar-side-icon @click="sidebar = !sidebar"> </v-toolbar-side-icon> -->
-      </span>
+      <span class="hidden-sm-and-up"></span>
       <v-toolbar-title>
         <router-link to="/" tag="span" style="cursor: pointer">
           {{ appTitle }}
