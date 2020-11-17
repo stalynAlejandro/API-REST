@@ -37,9 +37,9 @@ router.get('/user/:id', function (req, res) {
 });
 
 //Get User by email
-router.get('/users/:email', function(req, res){
-    User.findOne({'name':req.params.name}, (err, user)=>{
-        if(err || user == null) res.status(404).json({message: 'Not Found'})
+router.get('/users/:email', function (req, res) {
+    User.findOne({ 'name': req.params.name }, (err, user) => {
+        if (err || user == null) res.status(404).json({ message: 'Not Found' })
         else res.status(200).json(user)
     })
 })
@@ -47,7 +47,7 @@ router.get('/users/:email', function(req, res){
 //Get User by name
 router.get('/users/name/:name', function (req, res) {
     User.findOne({ 'name': req.params.name }, (err, user) => {
-        if(err || user == null) res.status(404).json({message: 'Not Found'})
+        if (err || user == null) res.status(404).json({ message: 'Not Found' })
         else res.status(200).json(user)
     })
 });
@@ -60,7 +60,7 @@ router.post('/users/signin', (req, res) => {
         User.findOne({ email: req.body.email }, ((err, user) => {
 
             if (user != null) {
-                res.status(401).send({message: "Email already exists"})
+                res.status(401).send({ message: "Email already exists" })
             } else {
 
                 var newUser = new User({
@@ -89,14 +89,13 @@ router.post('/users/login', (req, res) => {
         res.status(400).send('Bad Request Error! - Fill all Inputs.')
     } else {
         User.findOne({ email: req.body.email }, ((err, user) => {
-
-            if(user && user.password === jwt.decode(req.body.password, secretPassword)){
+            if (user && req.body.password === jwt.decode(user.password, secretPassword)) {
                 var accessToken = jwt.encode(user.name, secretToken)
-                res.status(200).json({token: accessToken})
-            }else{
+                res.status(201).json({ token: accessToken, name: user.name })
+            } else {
+                console.log("aa")
                 res.status(400).send('Username or password incorrect')
             }
-
         }))
     }
 })
@@ -126,39 +125,39 @@ router.delete('/user/name/:name', function (req, res) {
 })
 
 //.....................................................................//
-const authenticateJWT = (req, res, next) => {
-    const authHeader = req.headers.authorization;
+// const authenticateJWT = (req, res, next) => {
+//     const authHeader = req.headers.authorization;
 
-    if (authHeader) {
-        const token = authHeader.split(' ')[1];
+//     if (authHeader) {
+//         const token = authHeader.split(' ')[1];
 
-        jwt.verify(token, accessTokenSecret, (err, user) => {
-            if (err) {
-                return res.sendStatus(403);
-            }
+//         jwt.verify(token, accessTokenSecret, (err, user) => {
+//             if (err) {
+//                 return res.sendStatus(403);
+//             }
 
-            req.user = user;
-            next();
-        });
-    } else {
-        res.sendStatus(401);
-    }
-};
-
-
-app.post('/books', authenticateJWT, (req, res) => {
-    const { role } = req.user;
-
-    if (role !== 'admin') {
-        return res.sendStatus(403);
-    }
+//             req.user = user;
+//             next();
+//         });
+//     } else {
+//         res.sendStatus(401);
+//     }
+// };
 
 
-    const book = req.body;
-    books.push(book);
+// router.post('/books', authenticateJWT, (req, res) => {
+//     const { role } = req.user;
 
-    res.send('Book added successfully');
-});
+//     if (role !== 'admin') {
+//         return res.sendStatus(403);
+//     }
+
+
+//     const book = req.body;
+//     books.push(book);
+
+//     res.send('Book added successfully');
+// });
 //.....................................................................//
 
 

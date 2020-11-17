@@ -15,8 +15,10 @@
                 <h2
                   :style="{
                     color: '#95A5A6',
-                    marginLeft: '100px',
+                    position:'absolute',
+                    left: '120px',
                     marginBottom: '30px',
+                    fontSize: '14px'
                   }"
                 >
                   {{ info }}
@@ -51,16 +53,16 @@
                       <v-layout justify-space-between>
                         <div v-if="register" class="formFooter">
                           <v-btn @click="registerSubmit">Register</v-btn>
-                          <h4 :style="{ paddingLeft: '20px' }">
+                          <h4 :style="{ paddingLeft: '20px',  fontSize:'14px' }">
                             Already registered?
-                            <a @click="goToRegister">click here</a>
+                            <a @click="goToRegister" :style="{color: '#2E86C1'}">click here</a>
                           </h4>
                         </div>
                         <div v-else class="formFooter">
                           <v-btn @click="loginSubmit">Login</v-btn>
-                          <h4 :style="{ paddingLeft: '20px' }">
+                          <h4 :style="{ paddingLeft: '20px',  fontSize:'14px' }">
                             Not registered yet?
-                            <a @click="goToRegister">click here </a>
+                            <a @click="goToRegister" :style="{color: '#2E86C1'}">click here </a>
                           </h4>
                         </div>
                       </v-layout>
@@ -77,11 +79,11 @@
 </template>
 
 <script>
-
 export default {
   name: "Login",
   components: {},
   data: () => ({
+    respSever: "",
     register: false,
     info: "",
     valid: false,
@@ -102,9 +104,8 @@ export default {
       this.clear();
     },
     async loginSubmit() {
-      console.log("loginSubmit");
       if (this.$refs.form.validate()) {
-        var resp = await fetch("http://localhost:3000/users/login", {
+        this.respSever = await fetch("http://localhost:3000/users/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -115,12 +116,16 @@ export default {
             password: this.password,
           }),
         }).then((response) => {
-          this.token = response.data;
-          console.log(response.data)
+          if (response.status === 201) {
+            this.info = "Usuario correcto!";
+            return response.json();
+          } else {
+            this.info = "Usuario y contraseña no coinciden";
+            return false;
+          }
         });
-
-        console.log(resp.headers.get("token"));
       }
+      if (this.respSever !== false) this.addUser();
     },
     async registerSubmit() {
       if (this.$refs.form.validate()) {
@@ -145,6 +150,16 @@ export default {
         if (resp.status === 401) this.info = "El email ya está en uso";
       }
     },
+    addUser() {
+      console.log("addUser")
+      var user = {
+        name: this.respSever.name,
+        email: this.email,
+        token: this.respSever.token,
+      };
+      this.$store.commit("addUser", user);
+      this.$router.push({path: `dashboard/${user.email}`})
+    },
     clear() {
       this.$refs.form.reset();
     },
@@ -153,11 +168,6 @@ export default {
 </script>
 
 <style>
-#app {
-  background-image: url("https://images.pexels.com/photos/3042359/pexels-photo-3042359.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-  background-size: cover;
-  overflow: hidden;
-}
 
 .loginOverlay {
   padding-top: 10px;

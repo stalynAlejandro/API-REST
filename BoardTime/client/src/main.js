@@ -4,6 +4,8 @@ import App from './App.vue'
 import Routes from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
+//css assets
+import "bootstrap/dist/css/bootstrap.css";
 
 Vue.config.productionTip = false
 

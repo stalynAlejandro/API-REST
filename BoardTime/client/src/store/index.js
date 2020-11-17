@@ -7,15 +7,14 @@ export default new Vuex.Store({
   state: {
     name:'',
     email:'',
-    toke: '',
+    token: '',
     tasks:[]
   },
   mutations: {
-    loginUser(state, user, token){
+    addUser(state, user){
       state.name = user.name;
       state.email = user.email;
-      state.token = token;
-      state.tasks.pusht(user.tasks);
+      state.token = user.token;
     }
   },
   actions: {
