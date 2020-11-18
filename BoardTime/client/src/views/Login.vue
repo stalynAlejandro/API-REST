@@ -1,80 +1,73 @@
 <template>
-  <div id="login">
-    <router-view></router-view>
-    <v-app>
-      <main>
-        <v-container fluid class="loginOverlay">
-          <v-layout flex align-center justify-center>
-            <v-flex xs12 sm4 elevation-10>
-              <v-toolbar class="pt-5 blue darken-4">
-                <v-toolbar-title class="white--text"
-                  ><h4 :style="{ marginBottom: '30px' }">
-                    {{ register ? "Register" : "Login" }}
-                  </h4></v-toolbar-title
-                >
-                <h2
-                  :style="{
-                    color: '#95A5A6',
-                    position:'absolute',
-                    left: '120px',
-                    marginBottom: '30px',
-                    fontSize: '14px'
-                  }"
-                >
-                  {{ info }}
-                </h2>
-              </v-toolbar>
-              <v-card>
-                <v-card-text class="pt-4">
-                  <div>
-                    <v-form v-model="valid" ref="form">
-                      <div v-if="register">
-                        <v-text-field
-                          label="Enter your name"
-                          v-model="name"
-                          type="text"
-                          required
-                        ></v-text-field>
-                      </div>
-                      <v-text-field
-                        label="Enter your e-mail address"
-                        v-model="email"
-                        :rules="emailRules"
-                        required
-                      ></v-text-field>
-                      <v-text-field
-                        label="Enter your password"
-                        v-model="password"
-                        :rules="passwordRules"
-                        type="password"
-                        counter
-                        required
-                      ></v-text-field>
-                      <v-layout justify-space-between>
-                        <div v-if="register" class="formFooter">
-                          <v-btn @click="registerSubmit">Register</v-btn>
-                          <h4 :style="{ paddingLeft: '20px',  fontSize:'14px' }">
-                            Already registered?
-                            <a @click="goToRegister" :style="{color: '#2E86C1'}">click here</a>
-                          </h4>
-                        </div>
-                        <div v-else class="formFooter">
-                          <v-btn @click="loginSubmit">Login</v-btn>
-                          <h4 :style="{ paddingLeft: '20px',  fontSize:'14px' }">
-                            Not registered yet?
-                            <a @click="goToRegister" :style="{color: '#2E86C1'}">click here </a>
-                          </h4>
-                        </div>
-                      </v-layout>
-                    </v-form>
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </main>
-    </v-app>
+  <div class="login-container">
+    <div>
+      <v-form v-model="valid" ref="form">
+        <h3>{{ info }}</h3>
+        <div v-if="register">
+          <v-text-field
+            label="Enter your name"
+            v-model="name"
+            type="text"
+            required
+            :style="{ marginTop: '10px' }"
+          ></v-text-field>
+        </div>
+        <v-text-field
+          label="Enter your e-mail address"
+          v-model="email"
+          :rules="emailRules"
+          required
+          :style="{ marginTop: '10px' }"
+        ></v-text-field>
+        <v-text-field
+          label="Enter your password"
+          v-model="password"
+          :rules="passwordRules"
+          type="password"
+          counter
+          required
+          :style="{ marginTop: '10px' }"
+        ></v-text-field>
+        <v-layout justify-space-between>
+          <div v-if="register" class="formFooter">
+            <v-btn @click="registerSubmit" :style="{ marginTop: '10px' }"
+              >Register</v-btn
+            >
+            <h4
+              :style="{
+                paddingLeft: '20px',
+                fontSize: '14px',
+                marginTop: '10px',
+              }"
+            >
+              Already registered?
+              <a @click="goToRegister" :style="{ color: '#4A235A ' }"
+                >click here</a
+              >
+            </h4>
+          </div>
+          <div v-else class="formFooter">
+            <v-btn @click="loginSubmit" :style="{ marginTop: '10px' }"
+              >Login</v-btn
+            >
+            <h4
+              :style="{
+                paddingLeft: '20px',
+                fontSize: '14px',
+                marginTop: '10px',
+              }"
+            >
+              Not registered yet?
+              <a
+                @click="goToRegister"
+                :style="{ color: '#4A235A', marginTop: '10px' }"
+                >click here</a
+              >
+            </h4>
+          </div>
+        </v-layout>
+      </v-form>
+    </div>
   </div>
 </template>
 
@@ -88,9 +81,9 @@ export default {
     info: "",
     valid: false,
     name: "",
+    email: "",
     password: "",
     passwordRules: [(v) => !!v || "Password is required!"],
-    email: "",
     emailRules: [
       (v) => !!v || "Email ir required",
       (v) =>
@@ -109,7 +102,7 @@ export default {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer my-token",
+            Authorization: "Bearer my-token",
           },
           body: JSON.stringify({
             email: this.email,
@@ -121,11 +114,14 @@ export default {
             return response.json();
           } else {
             this.info = "Usuario y contraseña no coinciden";
-            return false;
+            return undefined;
           }
         });
       }
-      if (this.respSever !== false) this.addUser();
+      if (this.respSever) {
+        console.log(this.respServer);
+        this.addUser();
+      }
     },
     async registerSubmit() {
       if (this.$refs.form.validate()) {
@@ -150,15 +146,15 @@ export default {
         if (resp.status === 401) this.info = "El email ya está en uso";
       }
     },
-    addUser() {
-      console.log("addUser")
+    addUser: function () {
+      console.log("addUser");
       var user = {
         name: this.respSever.name,
         email: this.email,
         token: this.respSever.token,
       };
       this.$store.commit("addUser", user);
-      this.$router.push({path: `dashboard/${user.email}`})
+      this.$router.push({ path: `dashboard/${user.email}` });
     },
     clear() {
       this.$refs.form.reset();
@@ -168,6 +164,13 @@ export default {
 </script>
 
 <style>
+.login-container {
+  position: absolute;
+  top: 100px;
+  left: 450px;
+  width: 500px;
+  height: 60px;
+}
 
 .loginOverlay {
   padding-top: 10px;

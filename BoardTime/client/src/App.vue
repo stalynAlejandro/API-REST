@@ -4,7 +4,7 @@
       class="routing"
       v-if="this.$route.path === '/' || this.$route.path === '/login'"
     >
-      <v-toolbar app>
+      <v-toolbar>
         <span class="hidden-sm-and-up"></span>
         <v-toolbar-title>
           <router-link to="/" tag="span" style="cursor: pointer">
@@ -15,7 +15,6 @@
 
         <v-toolbar-items class="hidden-xs-only">
           <v-btn
-            flat
             v-for="item in menuItems"
             :key="item.title"
             :to="item.path"
@@ -26,9 +25,9 @@
         </v-toolbar-items>
       </v-toolbar>
     </div>
-    <v-content>
+    <v-main>
       <router-view></router-view>
-    </v-content>
+    </v-main>
   </div>
 </template>
 
