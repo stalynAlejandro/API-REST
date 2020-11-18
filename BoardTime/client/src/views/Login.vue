@@ -172,24 +172,9 @@ export default {
   height: 60px;
 }
 
-.loginOverlay {
-  padding-top: 10px;
-  margin-top: 80px;
-}
-
-.photoCredit {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-}
-
 .formFooter {
   display: flex;
   flex-direction: row;
 }
 
-.registerLink {
-  display: flex;
-  flex-direction: row;
-}
 </style>

@@ -15,6 +15,12 @@ export default new Vuex.Store({
       state.name = user.name;
       state.email = user.email;
       state.token = user.token;
+    },
+    delUser(state){  
+      state.name = '',
+      state.email = '',
+      state.token = '',
+      state.tasks = []
     }
   },
   actions: {
