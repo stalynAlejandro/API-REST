@@ -10,7 +10,7 @@ import TopNavBar from "@/components/TopNavBar.vue";
 import SideNavBar from "@/components/SideNavBar.vue";
 
 export default {
-  name: "DasboardLayout",
+  name: "Dasboard",
   components: {
     TopNavBar,
     SideNavBar,
