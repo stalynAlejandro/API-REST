@@ -154,7 +154,7 @@ export default {
         token: this.respSever.token,
       };
       this.$store.commit("addUser", user);
-      this.$router.push({ path: `dashboard/${user.email}` });
+      this.$router.push({ name: "profile" });
     },
     clear() {
       this.$refs.form.reset();
@@ -176,5 +176,4 @@ export default {
   display: flex;
   flex-direction: row;
 }
-
 </style>

@@ -14,9 +14,12 @@
     />
 
     <div class="sideBar-options">
-      <button @click={} class="sideBar-button">Perfil</button>
-      <button @click={} class="sideBar-button">Tasks</button>
-      <button @click={} class="sideBar-button">Stats</button>
+      <button @click="setOption('Profile')" class="sideBar-button">
+        Perfil
+      </button>
+      <button @click="setOption('Tasks')" class="sideBar-button">
+        Tasks
+      </button>
     </div>
   </div>
 </template>
@@ -24,6 +27,12 @@
 <script>
 export default {
   name: "SideNavBar",
+  props:{
+    setOption: {type: Function}
+  },
+  mounted(){
+    this.setOption();
+  }
 };
 </script>
 
@@ -54,10 +63,10 @@ export default {
   color: aliceblue;
 }
 
-.sideBar-button{
+.sideBar-button {
   width: 80%;
   margin-top: 15px;
-  background:darkslategrey;
+  background: darkslategrey;
   border-style: solid;
   border-radius: 5px;
 }
