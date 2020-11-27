@@ -7,16 +7,14 @@ var User = mongoose.model("User");
 
 
 function chequeaJWT(req, res, next) {
-    console.log(req.params.user)
     var tokenOk = false
     var cabecera = req.header('Authorization')
     var campos = cabecera.split(' ')
     if (campos.length > 1 && cabecera.startsWith('Bearer')) {
         var token = campos[1]
-        var coded
-        User.findOne({'name': req.params.user}, (err, user) => {
-            if(user!=null){
-                if(token == user.password) tokenOk = true;
+        User.findOne({ 'name': req.params.user }, (err, user) => {
+            if (user != null) {
+                if (token == user.password) tokenOk = true;
 
                 if (tokenOk) next()
                 else {
@@ -28,10 +26,14 @@ function chequeaJWT(req, res, next) {
 }
 
 //Routes
-//Get task of a user, no need to check it's public
-router.get('/:user/tasks', (req, res) => {
-    User.findOne({ 'name': req.params.user }, (err, user) => {
-        res.status(200).render('task', { username: req.params.user, tasks: user.tasks })
+//Get task of a user, whit it's email
+router.get('/:email/tasks', chequeaJWT, (req, res) => {
+    User.findOne({ 'email': req.params.email }, (err, user) => {
+        if (err || (user === null)) {
+            res.status(400).json({ message: 'Error bad request!.' })
+        } else {
+            res.status(200).json({ tasks: user.tasks })
+        }
     })
 });
 

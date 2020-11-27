@@ -102,7 +102,7 @@ export default {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer my-token",
+            "Authorization": "Bearer my-token",
           },
           body: JSON.stringify({
             email: this.email,
@@ -147,7 +147,6 @@ export default {
       }
     },
     addUser: function () {
-      console.log("addUser");
       var user = {
         name: this.respSever.name,
         email: this.email,

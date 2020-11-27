@@ -93,7 +93,6 @@ router.post('/users/login', (req, res) => {
                 var accessToken = jwt.encode(user.name, secretToken)
                 res.status(201).json({ token: accessToken, name: user.name })
             } else {
-                console.log("aa")
                 res.status(400).send('Username or password incorrect')
             }
         }))

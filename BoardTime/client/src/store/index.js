@@ -21,6 +21,9 @@ export default new Vuex.Store({
       state.email = '',
       state.token = '',
       state.tasks = []
+    },
+    addTasks(state, tasks){
+      state.tasks = tasks
     }
   },
   actions: {

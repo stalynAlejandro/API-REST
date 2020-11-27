@@ -1,16 +1,13 @@
 <template>
   <div class="dash-container">
-    <SideNavBar :option="displayScreen" :setOption="setOption"/>
+    <SideNavBar :option="displayScreen" :setOption="setOption" />
     <div class="dash-content">
       <TopNavBar />
-      <div v-if="displayScreen === 'Profile'">
-        <Profile />
-      </div>
-      <div v-else-if="displayScreen === 'Tasks'">
+      <div v-if="displayScreen === 'Tasks'">
         <Tasks />
       </div>
       <div v-else>
-        <h2>else</h2>
+        <Profile />
       </div>
     </div>
   </div>
@@ -35,18 +32,10 @@ export default {
       displayScreen: "Profile",
     };
   },
-  computed: {
-    userName: function () {
-      return this.$store.state.name;
-    },
-    userEmail: function () {
-      return this.$store.state.email;
-    },
-  },
   methods: {
-    setOption:function(op){
+    setOption: function (op) {
       this.displayScreen = op;
-    }
+    },
   },
 };
 </script>
