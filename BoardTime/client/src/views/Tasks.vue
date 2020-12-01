@@ -1,7 +1,8 @@
 <template>
   <div class="content-container">
     <div class="task-container">
-      <div>
+      
+      <div class="tasklist-container">
         <h1>List Tasks</h1>
         <ul>
           <li v-for="task in tasks" :key="task.id">
@@ -104,10 +105,18 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* background-color: tomato; */
   margin-left: 50px;
   margin-right: 50px;
   padding-top: 50px;
+}
+
+.tasklist-container{
+  height: 10%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: tomato;
 }
 
 .input-task {
