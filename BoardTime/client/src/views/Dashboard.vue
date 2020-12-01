@@ -42,8 +42,8 @@ export default {
 
 <style>
 .dash-container {
-  position: fixed;
-  top: 0;
+  position: relative;
+  top: -65px;
   left: 0;
   right: 0;
   width: 100%;

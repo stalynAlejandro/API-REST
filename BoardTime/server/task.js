@@ -52,13 +52,13 @@ router.post('/:email/tasks', chequeaJWT, (req, res) => {
 });
 
 //Detele a Task. 
-router.delete('/:user/tasks/:id', chequeaJWT, (req, res) => {
-    User.findOne({ 'name': req.params.user }, (err, user) => {
+router.delete('/:email/tasks/:id', chequeaJWT, (req, res) => {
+    User.findOne({ 'email': req.params.email }, (err, user) => {
         if (user != null) {
             var taskss = user.tasks.filter((t) => t._id != req.params.id)
             User.findByIdAndUpdate(user._id, { 'tasks': taskss }, function (err, response) {
                 if (err) res.status(400).json({ message: "Error in updating person with id " + user._id });
-                res.status(200).redirect('/' + req.params.user + '/tasks')
+                res.status(200).json({message: 'Tasks deleted.'})
             });
         }
     })

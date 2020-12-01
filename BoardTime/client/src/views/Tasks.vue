@@ -4,9 +4,9 @@
       
       <div class="tasklist-container">
         <h1>List Tasks</h1>
-        <ul>
-          <li v-for="task in tasks" :key="task.id">
-            <task :nombre="task.name" />
+        <ul :style="{listStyleType: 'none'}">
+          <li v-for="task in tasks" :key="task._id">
+            <task :id="task._id" :nombre="task.name" :desc="task.desc" :reloadData="reloadData"/>
           </li>
         </ul>
       </div>
@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     addTask: async function () {
-      console.log("addTask");
       var resp = await fetch(
         `http://localhost:3000/${this.$store.state.email}/tasks`,
         {
@@ -53,7 +52,7 @@ export default {
             Authorization: `Bearer ${this.$store.state.token}`,
           },
           body: JSON.stringify({
-            name: this.newTaskName,
+            name: this.newTaskName.toUpperCase(),
             desc: this.newTaskDesc,
           }),
         }
@@ -68,7 +67,6 @@ export default {
       this.reloadData();
     },
     reloadData: async function () {
-      console.log("reloadData");
       var resp = await fetch(
         `http://localhost:3000/${this.$store.state.email}/tasks`,
         {
@@ -86,8 +84,6 @@ export default {
           return undefined;
         }
       });
-
-      console.log(resp);
 
       if (resp) {
         this.$store.commit("addTasks", resp.tasks);
@@ -111,11 +107,11 @@ export default {
 }
 
 .tasklist-container{
-  height: 10%;
-  width: 300px;
+  height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: center;
   background-color: tomato;
 }
 
