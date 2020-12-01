@@ -24,7 +24,6 @@ var Task = mongoose.model("Task", taskSchema);
 var User = mongoose.model("User", userSchema);
 
 //Routes
-
 //Get All Users.
 router.get('/users', (req, res) => User.find((err, response) => res.status(200).json(response)));
 
@@ -90,7 +89,7 @@ router.post('/users/login', (req, res) => {
     } else {
         User.findOne({ email: req.body.email }, ((err, user) => {
             if (user && req.body.password === jwt.decode(user.password, secretPassword)) {
-                var accessToken = jwt.encode(user.name, secretToken)
+                var accessToken = jwt.encode(req.body.password, secretPassword)
                 res.status(201).json({ token: accessToken, name: user.name })
             } else {
                 res.status(400).send('Username or password incorrect')
@@ -122,42 +121,5 @@ router.delete('/user/name/:name', function (req, res) {
         }
     })
 })
-
-//.....................................................................//
-// const authenticateJWT = (req, res, next) => {
-//     const authHeader = req.headers.authorization;
-
-//     if (authHeader) {
-//         const token = authHeader.split(' ')[1];
-
-//         jwt.verify(token, accessTokenSecret, (err, user) => {
-//             if (err) {
-//                 return res.sendStatus(403);
-//             }
-
-//             req.user = user;
-//             next();
-//         });
-//     } else {
-//         res.sendStatus(401);
-//     }
-// };
-
-
-// router.post('/books', authenticateJWT, (req, res) => {
-//     const { role } = req.user;
-
-//     if (role !== 'admin') {
-//         return res.sendStatus(403);
-//     }
-
-
-//     const book = req.body;
-//     books.push(book);
-
-//     res.send('Book added successfully');
-// });
-//.....................................................................//
-
 
 module.exports = router;

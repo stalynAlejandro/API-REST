@@ -34,7 +34,7 @@ export default {
 <style>
 .content-container {
   width: 100%;
-  height: 560px;
+  height: 900px;
   background-color: azure;
 }
 
