@@ -15,7 +15,7 @@
 
     <div class="sideBar-options">
       <button @click="setOption('Profile')" class="sideBar-button">
-        Perfil
+        Profile
       </button>
       <button @click="setOption('Tasks')" class="sideBar-button">
         Tasks

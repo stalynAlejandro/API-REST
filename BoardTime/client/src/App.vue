@@ -49,11 +49,11 @@ export default {
 
 <style>
 #app {
-  /* background-image: url("https://images.pexels.com/photos/3042359/pexels-photo-3042359.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=450&w=940"); */
-  /* position: fixed; */
-  /* width: 100%;
-  height: 100%; */
-  /* left: 0;
-  top: 0; */
+  background: #8bd193;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 </style>

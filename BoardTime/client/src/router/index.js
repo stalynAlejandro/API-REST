@@ -7,7 +7,7 @@ import Tasks from '@/views/Tasks.vue'
 export default [
   { path: '/', component: Home, name:'home' },
   { path: '/login', component: Login, name:'login' },
-  { path: '/dashboard/:user', 
+  { path: '/dashboard/:_', 
     component: Dashboard, 
     name: 'dashboard',
     children:[
