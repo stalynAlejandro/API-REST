@@ -6,6 +6,26 @@ var Dir = Number(0);
 var Vel = Number(10);
 
 
+const Bloque1 = [90, 100, 250, 120];
+const Bloque2 = [400, 100, 560, 120]
+const Mapa = [Bloque1, Bloque2]
+
+function mapa (O1, O2, O3, O4) {
+    var canvas = document.getElementById ("dibuix");
+    var ctx = canvas.getContext ("2d");
+
+    ctx.beginPath();
+    ctx.moveTo(O1,O2);
+    ctx.lineTo(O3,O2);
+    ctx.lineTo(O3,O4);
+    ctx.lineTo(O1, O4)
+    ctx.fillStyle = 'black';
+    ctx.fill();
+
+    
+}
+
+
 function dibujaMapa(){
     var canvas = document.getElementById ("dibuix");
     var ctx = canvas.getContext ("2d");
@@ -14,8 +34,10 @@ function dibujaMapa(){
     ctx.fillRect (0, 0, 1900, 800);
     ctx.clearRect (9, 9, 1700, 780);
 
-    mapa (90, 110, 250, 120);
-    mapa (400, 110, 560, 120);
+    // console.log(Mapa)
+
+    mapa (Bloque1[0], Bloque1[1], Bloque1[2], Bloque1[3]);
+    mapa (Bloque2[0], Bloque2[1], Bloque2[2], Bloque2[3]);
     mapa (710, 110, 870, 120);
     mapa (1030, 110, 1170, 120);
     mapa (1330, 110, 1480, 120);
@@ -45,6 +67,43 @@ function dibujaBall(){
     var canvas = document.getElementById ("dibuix");
     var ctx = canvas.getContext ("2d");
     
+    for(var i = 0; i < Mapa.length; i++){
+        for(var j = 0; j < Mapa[i].length; j++){
+
+            var auX = mX
+            var auY = mY       
+
+            switch(Dir){
+                case 1: // Arriba
+                    auY = mY - (Vel);
+                break;
+                case -1: // Abajo
+                    auY = mY + (Vel);
+                break;
+                case 2: // Derecha
+                    auX = mX + (Vel);
+                break;
+                case -2: //Izquierda
+                    auX = mX - (Vel);
+                break;
+                default:break; //Stop, igual que 0
+            }
+
+            console.log(`x: ${auX}, y: ${auY}`)
+
+            if((auX > Mapa[i][0] && auX < Mapa[i][2]) && (auY > Mapa[i][1] && auY < Mapa[i][3])){
+                ctx.beginPath();
+                ctx.arc (mX, mY, 30, 0, 2 * Math.PI, false);
+                ctx.fillStyle = 'cyan';
+                ctx.fill();
+                return;
+            }
+
+
+        }
+    }
+
+
     switch(Dir){
         case 1: // Arriba
             mY = mY - Vel;
