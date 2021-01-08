@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { logginUser } from '../data/dataApi';
 import { IonButton, IonCol, IonRow, IonText, IonList, IonItem, IonLabel, IonInput } from '@ionic/react';
 import './LoginForm.scss'
 
 const LoginForm = ({onToggle} : any) => {
+
+    const user = useSelector(state => state)
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -19,10 +23,8 @@ const LoginForm = ({onToggle} : any) => {
             setUsernameError(false)
             setPasswordError(false)
             console.log("LOGIN " + username + " , " + password)
-
-            const response = await fetch('http://localhost:3000/users')
-            const body = await response.json()
-            console.log(body)
+            const response = await logginUser(username, password);
+            console.log(response)
         }
     }
 
