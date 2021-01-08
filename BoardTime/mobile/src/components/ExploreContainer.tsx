@@ -1,5 +1,6 @@
 import React from 'react';
 import './ExploreContainer.css';
+import { IonButton } from '@ionic/react';
 
 interface ContainerProps { }
 
@@ -11,7 +12,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
           Regain clarity and calmness by getting all those tasks
           out of your head and onto your BoardTimeApp.
         </p>
-      <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">Start Now</a>
+      <IonButton routerLink="/login" color="light" expand="block">Start Now</IonButton>
     </div>
   );
 };

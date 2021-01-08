@@ -1,0 +1,18 @@
+#login-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 10rem;
+    width: 100%;
+}
+
+ion-list{
+    border-radius: 5px;
+    align-self: center;
+    width: 95%;
+}
+ion-item {
+    color: red;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
