@@ -1,11 +1,21 @@
 import React from 'react'
 import './Dashboard.css'
+import { IonPage, IonHeader, IonToolbar, IonContent, IonTitle} from '@ionic/react';
 
 const Dashboard: React.FC = () => {
+
     return (
-        <div>
-           Hola 
-        </div>
+        <IonPage id="home-page">
+            <IonHeader>
+                <IonToolbar>
+                <IonTitle>BoardTimeApp</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+
+            <IonContent>
+
+            </IonContent>
+        </IonPage>
     )
 }
 

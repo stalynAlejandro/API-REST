@@ -23,14 +23,16 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/login" component={Login}/>
         <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <Route path="/login" component={Login} exact/>
+        <Route path="/dashboard" component={Dashboard} exact/>
+        <Route exact path="/" render={() => <Redirect to="/home" /> } />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

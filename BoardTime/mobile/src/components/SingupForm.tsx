@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { IonList, IonItem, IonLabel, IonInput, IonText, IonRow, IonCol, IonButton } from '@ionic/react';
+import { singupUser } from '../data/dataApi';
+
 const SingupForm = ({onToggle} : any) => {
 
     const [email, setEmail] = useState('')
@@ -20,7 +22,9 @@ const SingupForm = ({onToggle} : any) => {
             setUsernameError(false)
             setEmailError(false)
             setPasswordError(false)
-            console.log('SING UP')
+
+            const response = await singupUser(email, username, password);
+
         }
     }
 

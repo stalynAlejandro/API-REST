@@ -1,10 +1,11 @@
 import * as actions from './user.actionTypes'
 
-export const userLogin = (email: string, password: string) => ({
+export const loginUserData = (email: string, name:string,  token: string) => ({
     type: actions.USER_LOGIN,
     payload: {
         email, 
-        password
+        name,
+        token,
     }
 })
 

@@ -84,6 +84,7 @@ router.post('/users/signin', (req, res) => {
 //Login a user
 router.post('/users/login', (req, res) => {
     console.log(req.body)
+    console.log(req)
     if (!req.body.email || !req.body.password) {
         res.status(400).send('Bad Request Error! - Fill all Inputs.')
     } else {

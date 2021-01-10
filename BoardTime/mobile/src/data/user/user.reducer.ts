@@ -1,15 +1,14 @@
 import * as actions from './user.actionTypes';
 
-interface ITask{
+export interface ITask{
     id: number,
     name: string,
     description: string
 }
 
-interface IUser {
+export interface IUser {
     name: string,
     email: string,
-    password: string,
     token: string,
     tasks: ITask[]
 }
@@ -17,7 +16,6 @@ interface IUser {
 const initialState: IUser = {
     name: '',
     email: '',
-    password: '',
     token: '',
     tasks: []
 }
@@ -25,7 +23,13 @@ const initialState: IUser = {
 function userReducer(state = initialState, action: any){
     if(!action) return state;
     switch(action.type){
-        case actions.USER_LOGIN: return {...state};
+        case actions.USER_LOGIN: 
+            return {
+                ...state,
+                name: action.payload.name,
+                email: action.payload.email,
+                token: action.payload.token
+            };
         case actions.USER_LOGOUT: return {...state};
         case actions.USER_SINGUP: return {...state};
         default: return state;
