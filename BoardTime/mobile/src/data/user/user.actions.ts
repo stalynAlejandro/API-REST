@@ -1,7 +1,6 @@
 import * as actions from './user.actionTypes'
 
 // Las acciones que llamamos para que modifiquen el estado de la aplicación.
-
 export const loginUserData = (email: string, name:string,  token: string) => ({
     type: actions.USER_LOGIN,
     payload: {
