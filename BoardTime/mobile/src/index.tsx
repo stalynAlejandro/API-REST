@@ -5,6 +5,7 @@ import store from './data/store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// Utilizo Redux para mantener el estado de la applicación = store. 
 ReactDOM.render(
     <Provider store={store}>
         <App />

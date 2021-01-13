@@ -3,9 +3,9 @@ import React from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.scss';
 
-//React.FC is based on the FunctionalComponent interface.
-//Makes sure the signature of our function is correct and 
-//return value is a valid JSX.
+// La págin Home muestra un breve resumen de lo que proporciona esta app.
+// Tenemos un componente ExploreContainer donde esta la explicación y el botón para
+// avanzar de págin.
 const Home: React.FC = () => {
   return (
     <IonPage id="home-page">

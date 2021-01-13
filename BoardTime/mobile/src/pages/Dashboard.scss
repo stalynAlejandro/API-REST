@@ -1,0 +1,25 @@
+#dashboard-page{
+    display:flex;
+    flex-direction: column;
+    ion-header ion-toolbar{
+        --background: white;
+        ion-icon{
+            color:rgb(2, 19, 7);
+            margin-left: 10px;
+        }
+        ion-title{
+            color: rgb(2, 19, 7);
+        }
+    }
+    ion-content ion-list{
+        position: absolute;
+        top: 2rem;
+        margin-left: 0.5rem;
+    }
+    .b-createTask{
+        position: absolute;
+        width: 15rem;
+        bottom: 3rem;
+        margin-left: 5rem;
+    }
+}

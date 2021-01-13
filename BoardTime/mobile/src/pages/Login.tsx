@@ -5,8 +5,11 @@ import LoginForm from '../components/LoginForm';
 import SingupForm from '../components/SingupForm';
 import './Login.scss';
 
+// Pagin de Login, tiene dos componentes LoginForm y SingupForm, 
+// para logearse o para crear una cuenta. 
 const Login: React.FC = () => {
 
+    // Con esta variable controlamos el componente a mostrar
     const [showFormSingup, setShowFormSingup] = useState(false)
 
     const toggleForm = () => {
@@ -24,6 +27,7 @@ const Login: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent className="form-container" color="secondary">
+                {/* Según el formulario que necesitamos SingupForm o LoginForm */}
                 {showFormSingup ? <SingupForm onToggle={toggleForm} /> : <LoginForm onToggle={toggleForm}/>}
             </IonContent>
         </IonPage>

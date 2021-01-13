@@ -2,9 +2,8 @@ import React from 'react';
 import './ExploreContainer.css';
 import { IonButton } from '@ionic/react';
 
-interface ContainerProps { }
-
-const ExploreContainer: React.FC<ContainerProps> = () => {
+// Contenido de la página principal.
+const ExploreContainer: React.FC = () => {
   return (
     <div className="container">
       <strong>Create your tasks</strong>

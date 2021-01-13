@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { IonList, IonItem, IonLabel, IonInput, IonText, IonRow, IonCol, IonButton } from '@ionic/react';
 import { singupUser } from '../data/dataApi';
 
+// Componente. Un formulario para dar de alta a un usuario.
+
 const SingupForm = ({onToggle} : any) => {
 
     const [email, setEmail] = useState('')
@@ -24,7 +26,9 @@ const SingupForm = ({onToggle} : any) => {
             setPasswordError(false)
 
             const response = await singupUser(email, username, password);
-
+            if(response){
+                onToggle()
+            }
         }
     }
 

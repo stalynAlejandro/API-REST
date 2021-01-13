@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../data/dataApi';
-import { loginUserData } from '../data/user/user.actions';
+import { loginUser, loadTask } from '../data/dataApi';
+import { loginUserData, userLoadTasks } from '../data/user/user.actions';
 import { IonButton, IonCol, IonRow, IonText, IonList, IonItem, IonLabel, IonInput } from '@ionic/react';
 import { useHistory } from 'react-router';
 import './LoginForm.scss'
+
+// Componente para logear a un Usuario.
 
 const LoginForm = ({onToggle} : any) => {
 
@@ -30,6 +32,10 @@ const LoginForm = ({onToggle} : any) => {
 
             if(response){
                 dispatch(loginUserData(email, response.name, response.token))
+                const responseTasks = await loadTask(email, response.token);
+                if(responseTasks){
+                    dispatch(userLoadTasks(responseTasks.tasks))
+                }
                 history.push('/dashboard')
             }
         }
@@ -40,7 +46,7 @@ const LoginForm = ({onToggle} : any) => {
             <IonList>
                 <IonItem color="light">
                     <IonLabel position="stacked" color="secondary">Email</IonLabel>
-                    <IonInput name="username" type="text" value={email} onIonChange={e => setEmail(e.detail.value!)}></IonInput>
+                    <IonInput name="email" type="text" value={email} onIonChange={e => setEmail(e.detail.value!)}></IonInput>
                 </IonItem>
 
                 {formSubmitted && emailError && 
@@ -50,7 +56,7 @@ const LoginForm = ({onToggle} : any) => {
                 
                 <IonItem color="light">
                     <IonLabel position="stacked" color="secondary">Password</IonLabel>
-                    <IonInput name="username" type="text" value={password} onIonChange={e => setPassword(e.detail.value!)}></IonInput>
+                    <IonInput name="password" type="password" value={password} onIonChange={e => setPassword(e.detail.value!)}></IonInput>
                 </IonItem>
  
                 {formSubmitted && passwordError && 

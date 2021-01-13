@@ -25,6 +25,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 
+// Utilizo react-router para manejar la navegación entre las páginas.
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
