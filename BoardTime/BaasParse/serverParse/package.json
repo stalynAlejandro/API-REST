@@ -1,0 +1,12 @@
+{
+  "name": "listacompra",
+  "description": "parse-server for listaCompra",
+  "scripts": {
+    "start": "parse-server config.json"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "parse-server": "^3.9.0"
+  }
+}

@@ -1,7 +1,7 @@
 const baseUrl = 'http://localhost:3000/'
 const dataUserUrl = 'http://localhost:3000/users/';
 
-// Estas funciones se encargan de hacer las llamadas al servidor APIREST. 
+// Estas funciones se encargan de hacer las llamadas al servidor de NodeJs APIREST. 
 
 // Logear un Usuario
 export const loginUser = async (_email: string, _password: string) => {
@@ -16,7 +16,6 @@ export const loginUser = async (_email: string, _password: string) => {
             password: _password
         })
     })
-
     return await response.json();
 }
 
@@ -33,7 +32,6 @@ export const singupUser = async (_email: string, _username: string, _password: s
             password: _password
         })
     })
-
     return response;
 }
 
@@ -46,7 +44,6 @@ export const loadTask = async (_email: string, _token: string) => {
             "Authorization": `Bearer ${_token}`  
         }
     })
-
     return await response.json()
 }
 
@@ -59,7 +56,6 @@ export const deleteTask = async (_idTask: string, _email: string, _token: string
             "Authorization" : `Bearer ${_token}` 
         }
     })
-
     return await response.json()
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IonPage, IonContent, IonIcon, IonHeader, IonToolbar, IonTitle, IonButton } from '@ionic/react';
-import { arrowBackOutline, toggle } from 'ionicons/icons';
+import { arrowBackOutline } from 'ionicons/icons';
 import LoginForm from '../components/LoginForm';
 import SingupForm from '../components/SingupForm';
 import './Login.scss';

@@ -1,5 +1,5 @@
-import React,{ useEffect, useState }  from 'react'
-import { IonPage, IonRow, IonCol, IonInput, IonModal, IonItemOption, IonList, IonItem, IonButton, IonIcon, IonHeader, IonToolbar, IonContent, IonTitle, IonLabel, IonItemSliding} from '@ionic/react';
+import React,{ useState }  from 'react'
+import { IonPage, IonRow, IonCol, IonInput, IonModal, IonList, IonItem, IonButton, IonIcon, IonHeader, IonToolbar, IonContent, IonTitle, IonLabel, IonItemSliding} from '@ionic/react';
 import { arrowBackOutline } from 'ionicons/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadTask, deleteTask, createTask } from '../data/dataApi';
@@ -11,8 +11,7 @@ import './Dashboard.scss'
 // Dashbaord controlará las operaciones con las Tareas. 
 // Primero se mostrarárn las tareas del usuario. ion-list.
 // Se podrá crear tareas, ver los detalles y eliminar tareas.
-// Para la creactión y eliminación de las tareas se utilizarán modales que se 
-// sobrepondrán a la pantalla.
+// Para la creactión y eliminación se utilizan pantallas que se sobreponen a la lista. 
 const Dashboard: React.FC = () => {
 
     const user = useSelector(state => state) as IUser;              // Usuario del store. Redux

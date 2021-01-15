@@ -17,7 +17,7 @@ export interface IUser {
     tasks: ITask[]
 }
 
-// El estado inicial de un Usuario. Todo vacío.
+// El estado inicial de un Usuario.
 const initialState: IUser = {
     name: '',
     email: '',

@@ -1,0 +1,7 @@
+{
+  "appId": "iNKOx4ntR0M47a9TaDUKvMRhtZlMoOQAfOWJjkZq",
+  "masterKey": "myKey",
+  "appName": "listaCompra",
+  "cloud": "./cloud/main",
+  "databaseURI": "mongodb://127.0.0.1:27017/parse_db"
+}
