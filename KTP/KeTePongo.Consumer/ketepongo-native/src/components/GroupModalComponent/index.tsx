@@ -1,0 +1,1 @@
+export { GroupModalComponent } from './GroupModalComponent'

@@ -1,0 +1,1 @@
+export { ComponentFactory, InputHookAppFactory, InputHookAppFactoryNumber } from './ComponentFactory';

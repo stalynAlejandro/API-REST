@@ -1,0 +1,1 @@
+export { BasicHeaderComponent } from './BasicHeaderComponent'

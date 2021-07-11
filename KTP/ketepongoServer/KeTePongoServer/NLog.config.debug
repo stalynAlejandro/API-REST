@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      autoReload="true"
+      internalLogLevel="Warn"
+      internalLogFile="App_Data/logs/internal-nlog.txt">
+
+	<extensions>
+		<add assembly="NLog.Web.AspNetCore"/>
+		<add assembly="OrchardCore.Logging.NLog"/>
+	</extensions>
+
+
+	<targets>
+		<target xsi:type="File"
+						name="file"
+						fileName="App_Data/logs/orchard-log.log"
+						layout="${longdate}|[${threadid}]|${orchard-tenant-name}|${aspnet-traceidentifier}|${event-properties:item=EventId.Id}|${logger}|${uppercase:${level}}|${message} ${exception:format=ToString,StackTrace}" />
+		<target xsi:type="Console" name="console" />
+	</targets>
+
+	<rules>
+    <!--<logger name="YesSql.*" minlevel="Trace" writeTo="file" />-->
+    <!--<logger name=" KeTePongoServer.Extensions.DbAccess.*" minlevel="Trace" writeTo="file" />-->
+
+    <!--all warnings and above go to the file target-->
+		<logger name="*" minlevel="Error" writeTo="file" />
+
+		<!-- the hosting lifetime events go to the console -->
+		<logger name="Microsoft.Hosting.Lifetime" minlevel="Error" writeTo="console" />
+    <logger name="Microsoft.AspNetCore.SignalR" minlevel="Trace" writeTo="console" />
+    <logger name="Microsoft.AspNetCore.Http.Connections" minlevel="Trace" writeTo="console" />
+
+  </rules>
+</nlog>

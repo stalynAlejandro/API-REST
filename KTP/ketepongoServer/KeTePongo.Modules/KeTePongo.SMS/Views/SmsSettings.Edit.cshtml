@@ -1,0 +1,86 @@
+@using KeTePongo.SMS.Abstractions;
+@model SMSSettings;
+
+<p class="alert alert-warning">@T["The current tenant will be reloaded when the settings are saved."]</p>
+
+<div class="form-group" asp-validation-class-for="Sender">
+    <label asp-for="Sender">@T["Sender's name"]</label>
+    <input asp-for="Sender" class="form-control" type="text" />
+    <span asp-validation-for="Sender"></span>
+    <span class="hint">@T["The default name to use as a sender, unless the name sender is set."]</span>
+</div>
+
+<div class="form-group" asp-validation-class-for="DeliveryMethod">
+    <label asp-for="DeliveryMethod">@T["Delivery method"]</label>
+    <select asp-for="DeliveryMethod" class="form-control">
+
+        <option value="@SmsDeliveryMethod.SmsUp" selected="@(SmsDeliveryMethod.SmsUp == Model.DeliveryMethod)" data-target="#@Html.Id("SmsUp")">
+            @T["SmsUp"]
+        </option>
+
+        <option value="@SmsDeliveryMethod.SpecifiedPickupDirectory" selected="@(SmsDeliveryMethod.SpecifiedPickupDirectory == Model.DeliveryMethod)" data-target="#@Html.Id("SpecifiedPickupDirectoryOptions")">
+            @T["Specified pickup directory"]
+        </option>
+
+    </select>
+    <span asp-validation-for="DeliveryMethod"></span>
+    <span class="hint">@T["The delivery method used when sending sms. Use SmsUp in production. The other options can be useful when developing and testing."]</span>
+</div>
+
+<div class="mb-4" id="@Html.Id("DeliveryMethodOptions")">
+    <div class="collapse" id="@Html.Id("SmsUp")" data-parent="#@Html.Id("DeliveryMethodOptions")">
+
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">@T["SmsUp delivery options"]</h2>
+
+                <div class="form-group" asp-validation-class-for="API_KEY">
+                    <label asp-for="API_KEY">@T["API_KEY"]</label>
+                    <input asp-for="API_KEY" class="form-control" type="text" />
+                    <span asp-validation-for="API_KEY"></span>
+                    <span class="hint">@T["API_KEY to connect to SmsUp."]</span>
+                </div>
+
+                <div class="form-group" asp-validation-class-for="IsLookupEnabled">
+                    <label asp-for="IsLookupEnabled">@T["IsLookupEnabled"]</label>
+                    <input asp-for="IsLookupEnabled" class="form-control" type="checkbox" />
+                    <span asp-validation-for="IsLookupEnabled"></span>
+                    <span class="hint">@T["The SmsUp API will see if its a operative number."]</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse" id="@Html.Id("SpecifiedPickupDirectoryOptions")" data-parent="#@Html.Id("DeliveryMethodOptions")">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">@T["Specified pickup directory delivery options"]</h2>
+
+                <div class="form-group" asp-validation-class-for="PickupDirectoryLocation">
+                    <label asp-for="PickupDirectoryLocation">@T["Pickup directory location"]</label>
+                    <input asp-for="PickupDirectoryLocation" class="form-control" type="text" />
+                    <span asp-validation-for="PickupDirectoryLocation"></span>
+                    <span class="hint">@T[@"Ex. <i>C:\Path\To\This\Site\PickedUpSMS</i> to place SMS in a <i>PickedUpSMS</i> directory on the C drive."]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script at="Foot">
+    $(function () {
+        function showSelectedCollapse() {
+            var val = $(this).val();
+            var option = $("option", this).filter(function (i, el) { return $(el).val() == val; });
+            var target = option.data("target");
+            if (target) {
+                $(target).collapse("show");
+            }
+        }
+
+        $("#@Html.IdFor(m => m.DeliveryMethod)")
+            .change(showSelectedCollapse)
+            .each(showSelectedCollapse);
+    });
+</script>

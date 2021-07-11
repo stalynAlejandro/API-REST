@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using OrchardCore.Entities
+@using OrchardCore.Settings
+@using OrchardCore.Users
+@using OrchardCore.Users.Models
+@model OrchardCore.Users.ViewModels.LoginViewModel
+@inject SignInManager<IUser> SignInManager
+@inject ISiteService SiteService
+@inject UserManager<IUser> UserManager;
+@{
+    ViewLayout = "Layout";
+
+    var userCanRegister = (await SiteService.GetSiteSettingsAsync()).As<RegistrationSettings>().UsersCanRegister == UserRegistrationType.AllowRegistration;
+    var allowResetPassword = (await SiteService.GetSiteSettingsAsync()).As<ResetPasswordSettings>().AllowResetPassword;
+    var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+    var disableLocalLogin = (await SiteService.GetSiteSettingsAsync()).As<LoginSettings>().DisableLocalLogin;
+    var emptyError = ViewContext.ViewData.ModelState.Values.Where(x => x.RawValue == null).Select(x => x.Errors);
+    var hasEmptyError = emptyError.Any();
+    var errorMessage = "";
+    if (hasEmptyError)
+    {
+        errorMessage = emptyError.First().Select(x => x.ErrorMessage).FirstOrDefault();
+    }
+}
+    <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="auth-form">
+
+        <p class="main-body__title">¡Bienvenido de nuevo!</p>
+
+        <div class="input-box">
+            <input asp-for="UserName" class="main-body__placeholder" placeholder="introduce tu email o usuario" value="" />
+            <span asp-validation-for="UserName" class="main-body__text-danger"></span>
+            @if (hasEmptyError)
+            {
+                <span class="main-body__text-danger">@errorMessage</span>
+            }
+        </div>
+
+        <div class="input-box">
+            <input asp-for="Password" id="passInput" class="main-body__placeholder" type="password" placeholder="contraseña" value="" />
+            <span asp-validation-for="Password" class="main-body__text-danger"></span>
+            <span toggle="pass-field" class="main-body__toggle" onclick="myFunction()">
+                <img id="hide1" src="~/KeTePongo.Theme/img/eye-off.png" />
+                <img id="hide2" src="~/KeTePongo.Theme/img/eye-on.png" />
+            </span>
+        </div>
+        <div>
+            <p class="main-body__detailtext">¿Olvidaste tu contraseña? Haz click <a asp-area="KeTePongo.UsersWebAPI" asp-controller="ResetPassword" asp-action="ForgotPassword">aquí</a> para recuperarla.</p>
+        </div>
+
+
+
+        <button asp-route-area="OrchardCore.Users" asp-controller="Account" asp-action="Login" type="submit" class="main-body__button">Iniciar Sesión</button>
+
+        <div>
+            <p class="main-body__detailtext">Registrándote aceptas los <a href="#">Términos de uso y Condiciones</a> de Ketepongo.</p>
+        </div>
+
+        <script asp-name="Login"></script>
+    </form>

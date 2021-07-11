@@ -1,0 +1,1 @@
+export { ApprovedOrderDetail } from './ApprovedOrderDetail';

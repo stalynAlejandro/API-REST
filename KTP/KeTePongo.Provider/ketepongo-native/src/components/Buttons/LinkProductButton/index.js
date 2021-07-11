@@ -1,0 +1,1 @@
+export { LinkProductButton } from './LinkProductButton';

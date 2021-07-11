@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <Import Project="..\..\Dependencies.props" />
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.Validation" Version="2.0.0" />
+    <PackageReference Include="OrchardCore" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc1.private.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\KeTePongo.Notifications.xml</DocumentationFile>
+    <OutputPath>bin\Debug\</OutputPath>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\KeTePongo.Notifications.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\KeTePongo.ConsumerWebAPI.Abstractions\KeTePongo.ConsumerWebAPI.Abstractions.csproj" />
+    <ProjectReference Include="..\KeTePongo.Core\KeTePongo.Core.csproj" />
+    <ProjectReference Include="..\KeTePongo.Notifications.Abstractions\KeTePongo.Notifications.Abstractions.csproj" />
+    <ProjectReference Include="..\KeTePongo.ProviderWebAPI.Abstractions\KeTePongo.ProviderWebAPI.Abstractions.csproj" />
+  </ItemGroup>
+
+
+</Project>

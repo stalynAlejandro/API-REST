@@ -1,0 +1,136 @@
+﻿msgctxt "KeTePongo.ConsumerWebAPI.Controllers.ConsumerController"
+msgid "Consumer not found"
+msgstr "Comercio no encontrado"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Mvc_Controllers.CheckConsumerInvitationController"
+msgid "You have canceled the 'Change Consumer Operation'"
+msgstr "Canceló la operación de cambio de comercio"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumptionDocument.ProductAppService"
+msgid "Unable to load the image"
+msgstr "No se pudo cargar la imagen"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumptionDocument.ProductAppService"
+msgid "Error uploading the image"
+msgstr "Error cargando la imagen"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumerAppService"
+msgid "The user already has a consumer, it was not posible to create a new one"
+msgstr "El usuario ya tiene un comercio, no se pudo crear uno nuevo"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumerAppService"
+msgid "There is no consumer assigned to this user"
+msgstr "No hay comercio asignado a este usuario"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumerOrderAppService"
+msgid "Internal error processing order"
+msgstr "Error procesando el pedido en el servidor"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumerUserProfileAppService.cs"
+msgid "There was a problem getting the invitation to {0}"
+msgstr "Hubo un problema obteniendo la invitación al comercio {0}"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumerUserProfileAppService.cs"
+msgid "The consumer doesn't exist"
+msgstr "El comercio no existe"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumerUserProfileAppService.cs"
+msgid "Invitation not found"
+msgstr "Invitación no encontrada"
+
+msgctxt "KeTePongo.ConsumerWebAPI.DomainServices.ConsumptionDocument.ProductDomainService"
+msgid "A product cannot be assigned to the same location multiple times"
+msgstr "Un producto no puede ser asignado a la misma ubicación múltiples veces"
+
+msgctxt "KeTePongo.ConsumerWebAPI.DomainServices.ConsumptionDocument.ProductDomainService"
+msgid "A product can only be assigned to existing locations"
+msgstr "Un producto sólo puede ser asignado a ubicaciones existentes"
+
+msgctxt "KeTePongo.ConsumerWebAPI.DomainServices.ConsumptionDocument.ProductDomainService"
+msgid "A product can only be assigned to existing providers"
+msgstr "Un producto sólo puede ser asignado a proveedores existentes"
+
+msgctxt "KeTePongo.ConsumerWebAPI.DomainServices.ConsumptionDocument.ProductDomainService"
+msgid "A provider id is needed for new registered provider products"
+msgstr "Es necesario un id de proveedor para nuevos productos de proveedores registrados"
+
+msgctxt "KeTePongo.ConsumerWebAPI.DomainServices.ConsumptionDocument.ProductDomainService"
+msgid "A format id is needed for new registered provider products"
+msgstr "Es necesario un id de formato para nuevos productos de proveedores registrados"
+
+msgctxt "KeTePongo.ConsumerWebAPI.DomainServices.ConsumptionDocument.ProductDomainService"
+msgid "A erp id is needed for new registered provider products"
+msgstr "Es necesaria una referencia ajena para nuevos productos de proveedores registrados"
+
+msgctxt "KeTePongo.ConsumerWebAPI.DomainServices.ConsumptionDocument.ProductDomainService"
+msgid "A format description is needed for new registered provider products"
+msgstr "Es necesaria una descripción de formato para nuevos productos de proveedores registrados"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Models.ConsumerOrder"
+msgid "An order must have at least one suborder"
+msgstr "Un pedido debe tener al menos un subpedido"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Models.ConsumerOrder"
+msgid "A suborder must have at least one product line"
+msgstr "Un subpedido debe tener al menos una linea de producto"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Models.ConsumerOrder"
+msgid "A suborder must have at least one product line"
+msgstr "Un subpedido debe tener al menos una línea de producto"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Models.ConsumerOrder"
+msgid "The order lines must have quantities greater than 0"
+msgstr "Las líneas de pedido deben tener cantidades mayores que 0"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Models.ConsumerOrder"
+msgid "Not existing provider at an order line"
+msgstr "Proveedor inexistente en una línea de pedido"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Models.ConsumerOrder"
+msgid "Not existing product at an OrderLine"
+msgstr "Producto inexistente en una línea de pedido"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumerOrderAppService"
+msgid "Only one suborder per provider is allowed"
+msgstr "Sólo un supedido por pedido está permitido"
+
+msgctxt "KeTePongo.ConsumerWebAPI.AppServices.ConsumerOrderAppService"
+msgid "Only one line per product is allowed"
+msgstr "Sólo una línea por producto esta permitida"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Views.BackOfficeChangeUserConsumer.Index"
+msgid "Change User Consumer"
+msgstr "Cambiar Comercio del Usuario"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Views.BackOfficeChangeUserConsumer.Index"
+msgid "Select target consumer for user {0} - {1}"
+msgstr "Elige el comercio destino para el usuario {0} - {1}"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Views.BackOfficeChangeUserConsumer.Index"
+msgid "Currently it pertains to consumer {0} - {1}"
+msgstr "Actualmente pertenece al comercio {0} - {1}"
+
+msgctxt "KeTePongo.ConsumerWebAPI.Views.TemplateWelcomeToConsumerCreatorEmail"
+msgid "User: {0}"
+msgstr "Usuario: {0}"
+
+msgid "The product '{0}' has been deleted."
+msgstr "El producto '{0}' ha sido eliminado."
+
+msgid "The provider has deleted this product, you can find it on Without Provider list."
+msgstr "El proveedor ha eliminado este producto, puedes encontrarlo en la lista Sin Proveedor."
+
+msgid "Failed to add confirmed user in consumer"
+msgstr "Error añadiendo usuario confirmado en consumer"
+
+msgid "Failed to update user's email in consumer"
+msgstr "Error actualizando email de usuario en consumer"
+
+msgid "Failed to update user's telephone in consumer"
+msgstr "Error actualizando teléfono de usuario en consumer"
+
+msgid "Failed to update user's name in consumer"
+msgstr "Error actualizando nombre de usuario en consumer"
+
+msgid "A location cannot be added twice"
+msgstr "No puedes añadir la misma ubicación dos veces"

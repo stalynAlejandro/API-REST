@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\Orchard2\src\OrchardCore.Build\Dependencies.props" />
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+  </PropertyGroup>
+
+  <!--
+    When a package is not directly referenced, e.g only through the reference of this bundle package,
+    the files in its build folder are not evaluated on building if this folder is marked as private.
+    This can be defined by using the 'PrivateAssets' attribute.
+    
+    Here, only project references are used but when packing the bundle they become package references,
+    and with the same 'PrivateAssets' attribute.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.CommerceWebAPI.Abstractions\KeTePongo.CommerceWebAPI.Abstractions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.CommerceWebAPI\KeTePongo.CommerceWebAPI.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.ConsumerWebAPI.Abstractions\KeTePongo.ConsumerWebAPI.Abstractions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.ConsumerWebAPI\KeTePongo.ConsumerWebAPI.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.Core\KeTePongo.Core.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.Notifications.Abstractions\KeTePongo.Notifications.Abstractions.csproj" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.Notifications\KeTePongo.Notifications.csproj" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.ProviderWebAPI.Abstractions\KeTePongo.ProviderWebAPI.Abstractions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.ProviderWebAPI\KeTePongo.ProviderWebAPI.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.SMS.Abstractions\KeTePongo.SMS.Abstractions.csproj" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.SMS\KeTePongo.SMS.csproj" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.UsersWebAPI.Abstractions\KeTePongo.UsersWebAPI.Abstractions.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.UsersWebAPI\KeTePongo.UsersWebAPI.csproj" PrivateAssets="none" />
+    
+    <!-- 
+      When adding a reference to this list, please keep it ordered alphabetically, and set PrivateAssets="none" 
+    -->
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore.Themes\SafeMode\SafeMode.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore.Themes\TheTheme\TheTheme.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\KeTePongo.Themes\KeTePongo.Theme\KeTePongo.Theme.csproj" PrivateAssets="none" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Translations.All" />
+  </ItemGroup>
+
+</Project>

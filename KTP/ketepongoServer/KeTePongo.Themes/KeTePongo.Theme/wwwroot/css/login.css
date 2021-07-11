@@ -1,0 +1,381 @@
+﻿
+.main-body {
+    background-image: url("/KeTePongo.Theme/img/background-ketepongo1.png");
+    background-size: cover;
+}
+
+.main-body__img {
+    width: 250px;
+    height: 47px;
+    margin-left: 140px;
+    margin-top: 60px;
+}
+
+.main-body__title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #381A56;
+    margin-left: 190px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.main-body__text {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #381A56;
+    margin-left: 190px;
+    margin-top: 20px;
+}
+
+.main-body__paragraph {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #381A56;
+    margin-left: 190px;
+    margin-top: 20px;
+}
+
+#details {
+    margin-top: 80px;
+    margin-bottom: -20px;
+}
+
+/*.input-box {
+    margin-left: 190px;
+    margin-top: 40px;
+    width: 400px;
+    border-bottom: 1px solid #381A56;
+}
+
+.input-box:hover {
+    background-color: #F6EDFF;
+    width: 400px;
+}
+
+.input-box:focus {
+    background-color: white;
+    border: 2px solid #381A56;
+}*/
+
+.main-body__placeholder {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #381A56;
+    width: 440px;
+    margin-left: 190px;
+    margin-top: 25px;
+    color: #381A56;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+    .main-body__placeholder:hover {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #381A56;
+        background-color: #F6EDFF;
+        width: 440px;
+        margin-left: 190px;
+        margin-top: 25px;
+        color: #381A56;
+        font-family: 'Nunito', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .main-body__placeholder:focus {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #381A56;
+        margin-left: 190px;
+        margin-top: 25px;
+        color: #381A56;
+        font-family: 'Nunito', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+.main-body__button {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #F1CC53;
+    border-radius: 10px;
+    border: 2px solid #F1CC53;
+    padding: 10px 30px;
+    margin-left: 190px;
+    margin-top: 60px;
+    transition-duration: 0.1s;
+}
+
+    .main-body__button:hover {
+        font-family: 'Nunito', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #F1CC53;
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid #F1CC53;
+        padding: 10px 30px;
+        margin-left: 190px;
+        margin-top: 60px;
+    }
+
+.main-body__toggle {
+    margin-left: -30px;
+    margin-top: 25px;
+    position: absolute;
+    z-index: 99;
+}
+
+#hide2 {
+    display: none;
+}
+
+#hide4 {
+    display: none;
+}
+
+.main-body__text-danger {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: red;
+    margin-left: 20px;
+}
+
+.main-body__detailtext {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #381A56;
+    margin-left: 190px;
+    margin-top: 20px;
+}
+
+    .main-body__detailtext a {
+        font-weight: 600;
+        color: #F1CC53;
+    }
+
+.main-body__google {
+    border: 2px solid white;
+    background-color: transparent;
+    padding: 10px 30px;
+    margin-left: 190px;
+    margin-top: 60px;
+    transition-duration: 0.1s;
+}
+
+    .main-body__google img {
+        padding: 4px 8px 0 0;
+        position: relative;
+        top: 4px;
+    }
+
+.google-text {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #381A56;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.main-body__google:hover {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #381A56;
+    border: 2px solid #381A56;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 10px 30px;
+    margin-left: 190px;
+    margin-top: 60px;
+}
+
+
+@media screen and (max-width: 430px) {
+    .main-body {
+        background-image: url("https://www.pccom.es/cms/wp-content/uploads/2020/05/background-ketepongo-mobile.png");
+        background-size: cover;
+    }
+
+    .main-body__img {
+        width: 140px;
+        height: 27px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+
+    .main-body__title {
+        font-family: 'Nunito', sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        color: #381A56;
+        margin-left: 20px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+    }
+
+    .main-body__text {
+        font-family: 'Nunito', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: #381A56;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .main-body__paragraph {
+        font-family: 'Nunito', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: #381A56;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .main-body__placeholder {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #381A56;
+        width: 90%;
+        margin-left: 20px;
+        margin-top: 40px;
+        color: #381A56;
+        font-family: 'Nunito', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+        .main-body__placeholder:focus {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid #381A56;
+            width: 90%;
+            margin-left: 20px;
+            margin-top: 40px;
+            color: #381A56;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+    .main-body__toggle {
+        margin-left: -30px;
+        margin-top: 35px;
+        position: absolute;
+        z-index: 99;
+    }
+
+    .main-body__button {
+        font-family: 'Nunito', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        background-color: #F1CC53;
+        border-radius: 8px;
+        border: 2px solid #F1CC53;
+        width: 90%;
+        padding: 10px 75px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 160px;
+    }
+
+        .main-body__button:hover {
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #F1CC53;
+            background-color: white;
+            border-radius: 8px;
+            border: 2px solid #F1CC53;
+            padding: 10px 75px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 160px;
+        }
+
+    #hide2 {
+        display: none;
+    }
+
+    #hide4 {
+        display: none;
+    }
+
+    .main-body__text-danger {
+        font-family: 'Nunito', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: red;
+        margin-left: 20px;
+    }
+
+
+
+    .main-body__google {
+        border: 2px solid #F4F4F4;
+        width: 80%;
+        border-radius: 8px;
+        background-color: #F4F4F4;
+        margin-left: 5%;
+        margin-top: -70px;
+        transition-duration: 0.1s;
+        position: absolute;
+        top: 490px;
+        padding: 7px 20px 7px 0;
+    }
+
+        .main-body__google img {
+            padding-top: 4px;
+            padding-right: 10px;
+            padding-left: 25%;
+            position: relative;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+        }
+
+    .google-text {
+        font-family: 'Nunito', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #381A56;
+        padding: 5px;
+    }
+
+    #google-container {
+        width: 100%;
+        padding-left: 25%;
+    }
+
+    .main-body__detailtext {
+        font-family: 'Nunito', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: #381A56;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+}

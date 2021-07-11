@@ -1,0 +1,1 @@
+export { FilterCatalog } from './FilterCatalog';

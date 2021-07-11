@@ -1,0 +1,57 @@
+﻿@model KeTePongo.ConsumerWebAPI.ViewModels.ConsumerViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>New consumer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Consumer.TradeName" class="control-label"></label>
+                <input asp-for="Consumer.TradeName" class="form-control" />
+                <span asp-validation-for="Consumer.TradeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.Address" class="control-label"></label>
+                <input asp-for="Consumer.Address" class="form-control" />
+                <span asp-validation-for="Consumer.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.StateOrProvince" class="control-label"></label>
+                <input asp-for="Consumer.StateOrProvince" class="form-control" />
+                <span asp-validation-for="Consumer.StateOrProvince" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.Town" class="control-label"></label>
+                <input asp-for="Consumer.Town" class="form-control" />
+                <span asp-validation-for="Consumer.Town" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.PostalCode" class="control-label"></label>
+                <input asp-for="Consumer.PostalCode" class="form-control" />
+                <span asp-validation-for="Consumer.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SanitaryMeasuresString" class="control-label"></label>
+                <textarea asp-for="SanitaryMeasuresString" class="form-control" ></textarea>
+                <span asp-validation-for="SanitaryMeasuresString" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to consumers list</a>
+</div>

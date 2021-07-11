@@ -1,0 +1,116 @@
+﻿msgid "The phone number format '{0}' is not valid. Ej: 34603123456"
+msgstr "El formato del número de telefono no es correcto. Ej: 34609731233"
+
+msgid "SMS settings must be configured before an SMS can be sent."
+msgstr "La configuración SMS debe ser establecida antes de que se pueda enviar un SMS."
+
+msgid "Seems to be a problem with the SmsUp API."
+msgstr "Hay un problema con la API externa SmsUp."
+
+msgid "An error occured while sending an SMS: '{0}'"
+msgstr "A ocurrido un error al enviar el SMS: '{0}'" 
+
+msgid "You already have verified this number to your account"
+msgstr "Ya has verificado este número en tu cuenta"
+
+msgid "This phone number has already been verified by another user"
+msgstr "Este número ya ha sido verificado por otro usuario"
+
+msgid "Error sending SMS to phone number"
+msgstr "Error al enviar el SMS al número de teléfono"
+
+msgid "The telephone requested to confirm is not valid"
+msgstr "El número de teléfono no es válido"
+
+msgid "The telephone requested to confirm must have a valid prefix"
+msgstr "El número de teléfono debe tener un prefijo válido"
+
+msgid "The telephone requested to confirm can not be a landline"
+msgstr "El número de teléfono no puede ser un número fijo"
+
+msgid "Your account has no funds to process this request, add credits to your account and try again"
+msgstr "La cuenta está sin fondos para procesar esta respuesta, añade credito a la cuenta y prueba de nuevo"
+
+msgid "Your API key may be invalid, double-check that your API key was input correctly or see if the IP is blocked in your account API settings"
+msgstr "La API KEY es invalida, comprueba que has puesto la API KEY correcta o mira si tu cuenta esta bloqueada."
+
+msgid "One or more of your parameters has incorrect format or value"
+msgstr "Uno o más parámetros son incorrectos"
+
+msgid "The service was unable to process your destination. The number must be in MSISDN format. Ej: 3465231789"
+msgstr "El servicio no pudo procesar el destino del SMS. El número debe estar en formato MSISDN. Ej: 34612345678"
+
+msgid "The phone number '{0}' is not operative."
+msgstr "El número no se '{0}' encuentra operativo."
+
+msgid "Receiver phone number"
+msgstr "Número del destinatario"
+
+msgid "The {0} field is required."
+msgstr "El campo {0} es obligatorio."
+
+msgid "Pickup directory location"
+msgstr "Directorio de envío"
+
+msgid "The '{0}' delivery method is not supported."
+msgstr "El methodo de envío no está soportado."
+
+msgid "Message sent successfully"
+msgstr "El mensaje se envió correctamente"
+
+msgid "Settings"
+msgstr "Ajustes"
+
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Send"
+msgstr "Enviar"
+
+msgid "The current tenant will be reloaded when the settings are saved."
+msgstr "El tenant actual se recargará cuando se guarden los ajustes."
+
+msgid "Sender's name"
+msgstr "Nombre del remitente"
+
+msgid "The default name to use as a sender, unless the name sender is set."
+msgstr "El nombre por defecto se usará como remitente, a menos que se cambie."
+
+msgid "Delivery method"
+msgstr "Método de envío"
+
+msgid "Specified pickup directory"
+msgstr "Directorio de Recolección especificado"
+
+msgid "The delivery method used when sending sms. Use SmsUp in production. The other options can be useful when developing and testing."
+msgstr "El método de entrega utilizado al enviar el sms. Utilizar SmsUp en producción. Las otras opciones pueden ser útiles al desarrollar y probar."
+
+msgid "SmsUp delivery options"
+msgstr "Opciones de envío utilizando SmsUp"
+
+msgid "API_KEY to connect to SmsUp."
+msgstr "API_KEY para conectar con SmsUp."
+
+msgid "IsLookupEnabled"
+msgstr "Comprobar Télefono"
+
+msgid "The SmsUp API will see if its a operative number."
+msgstr "La Api de SmsUp comprobará que el número está operativo."
+
+msgid "Specified pickup directory delivery options"
+msgstr "Directorio de Recoleción especificado en las opciones de entrega"
+
+msgid "Ex. <i>C:\Path\To\This\Site\PickedUpSMS</i> to place SMS in a <i>PickedUpSMS</i> directory on the C drive."
+msgstr "Ej. <i>C:\Path\To\This\Site\PickedUpSMS</i> para colocar SMS en un directorio <i>PickedUpSMS</i> en la unidad C."
+
+msgid "Test settings"
+msgstr "Probar ajustes"
+
+msgid "The code is required"
+msgstr "El código es obligatorio"
+
+msgid "The telephone is required"
+msgstr "El número de telefono es obligatorio"

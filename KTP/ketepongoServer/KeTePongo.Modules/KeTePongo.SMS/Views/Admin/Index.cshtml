@@ -1,0 +1,27 @@
+﻿@model KeTePongo.SMS.ViewModels.SMSSettingsViewModel
+
+<h1>@RenderTitleSegments(T["Settings"])</h1>
+
+<form asp-action="Index" asp-controller="Admin" asp-area="KeTePongo.SMS" method="post">
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        <div class="form-group" asp-validation-class-for="PhoneNumber">
+            <label asp-for="PhoneNumber">@T["Phone Number"]</label>
+            <input asp-for="PhoneNumber" class="form-control" type="text" />
+            <span asp-validation-for="PhoneNumber"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group" asp-validation-class-for="Message">
+            <label asp-for="Message">@T["Message"]</label>
+            <input asp-for="Message" class="form-control" type="text" />
+            <span asp-validation-for="Message"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" id="smstestsend" class="button grey">@T["Send"]</button>
+    </div>
+</form>

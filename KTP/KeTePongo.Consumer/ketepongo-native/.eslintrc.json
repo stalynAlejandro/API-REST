@@ -1,0 +1,35 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+		"prettier",
+    ],
+    "plugins": [
+        "react"
+    ],
+    "parser": "babel-eslint",
+    "env": {
+        "jest": true,
+        "es6": true
+    },
+    "rules": {
+        "semi": "error",
+        "no-dupe-keys": 2,
+        "no-irregular-whitespace": 2,
+        "block-scoped-var": 2,
+        "no-multi-spaces": 2,
+        "jsx-quotes": 1,
+        "max-len": [
+            "error",
+            {
+                "code": 150
+            }
+        ],
+        "max-depth": 1,
+        "no-multiple-empty-lines": 2,
+        "arrow-spacing": 2,
+        "arrow-parens": 2,
+        "no-class-assign": 0,
+        "global-require": "off",
+    }
+}

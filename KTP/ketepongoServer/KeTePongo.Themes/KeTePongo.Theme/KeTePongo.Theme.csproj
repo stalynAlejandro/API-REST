@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <Import Project="..\..\Dependencies.props" />
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(SolutionFileName)' == 'KeTePongoServer.sln'">
+    <PackageReference Include="OrchardCore.Theme.Targets" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.Users" Version="1.0.0-rc1.private.9" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(SolutionFileName)' == 'OrchardCore.sln' Or '$(SolutionFileName)' == 'OrchardCoreYesSql.sln'">
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.Theme.Targets\OrchardCore.Theme.Targets.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.ContentManagement\OrchardCore.ContentManagement.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.DisplayManagement\OrchardCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.ResourceManagement\OrchardCore.ResourceManagement.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore.Modules\OrchardCore.Users\OrchardCore.Users.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\KeTePongo.Modules\KeTePongo.UsersWebAPI\KeTePongo.UsersWebAPI.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <Import Project="..\..\Dependencies.props" />
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="0 Controllers\OLDCatalogProductsController.cs" />
+    <Compile Remove="1 AppServices\CatalogProductsAppService.cs" />
+    <Compile Remove="1 AppServices\ICatalogProductsAppService.cs" />
+    <Compile Remove="2 Models\ProductCatalog.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\KeTePongo.ProviderWebAPI.xml</DocumentationFile>
+    <OutputPath>bin\Debug\</OutputPath>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\KeTePongo.ProviderWebAPI.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(SolutionFileName)' == 'OrchardCore.sln' Or '$(SolutionFileName)' == 'OrchardCoreYesSql.sln'">
+	<ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.Module.Targets\OrchardCore.Module.Targets.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(SolutionFileName)' == 'KeTePongoServer.sln'">
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc1.private.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.Validation" Version="2.0.0" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.4.1" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.4.1" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KeTePongo.ConsumerWebAPI.Abstractions\KeTePongo.ConsumerWebAPI.Abstractions.csproj" />
+    <ProjectReference Include="..\KeTePongo.Notifications.Abstractions\KeTePongo.Notifications.Abstractions.csproj" />
+    <ProjectReference Include="..\KeTePongo.ProviderWebAPI.Abstractions\KeTePongo.ProviderWebAPI.Abstractions.csproj" />
+    <ProjectReference Include="..\KeTePongo.UsersWebAPI.Abstractions\KeTePongo.UsersWebAPI.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Hosting">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.hosting\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\es.po">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

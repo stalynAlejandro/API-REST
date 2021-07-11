@@ -1,0 +1,1 @@
+export { SectionMainScreen } from './SectionMainScreen';

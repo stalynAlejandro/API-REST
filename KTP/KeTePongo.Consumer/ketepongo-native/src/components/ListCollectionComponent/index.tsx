@@ -1,0 +1,1 @@
+export {ListCollectionComponent} from './ListCollectionComponent'

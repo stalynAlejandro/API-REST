@@ -1,0 +1,1 @@
+export { CatalogProductQuantity } from './CatalogProductQuantity';

@@ -1,0 +1,49 @@
+<?xm l version="1.0" encoding="utf-8"?>
+<TestProfile xmlns="http://www.specflow.org/schemas/plus/TestProfile/1.5">
+  <Settings projectName="KeTePongoServer.Spec" projectId="{9A19103F-16F7-4668-BE54-9A1E7A4F7556}" />
+  <Execution stopAfterFailures="0" retryCount="0" testThreadCount="4" testSchedulingMode="Sequential"  />
+  <Environment testThreadIsolation="SharedAppDomain" apartmentState="MTA"/>
+
+  <TestAssemblyPaths>
+    <TestAssemblyPath>KeTePonoServer.Spec.dll</TestAssemblyPath>
+  </TestAssemblyPaths>
+  <!--
+  <Report>
+    <Template name="ReportTemplate.cshtml"/>
+  </Report>
+  -->
+  <!--<TestThreads>
+    <TestThread id="0">
+      <TestAffinity>testpath:Target:FireFox</TestAffinity>
+    </TestThread>
+  </TestThreads>-->
+  <DeploymentTransformation>
+    <GlobalSteps>
+      <Custom type="KeTePongoServer.Spec.Infraestructure.DeploymentStep, KeTePongoServer.Spec"></Custom>
+    </GlobalSteps>
+    <Steps>
+    </Steps>
+  </DeploymentTransformation>
+  <Targets>
+    <!--<Target name="Integrated">
+      <DeploymentTransformationSteps>
+        <EnvironmentVariable variable="Mode" value="Integrated"/>
+      </DeploymentTransformationSteps>
+    </Target>-->
+    <!--<Target name="Chrome">
+      <DeploymentTransformationSteps>
+        <EnvironmentVariable variable="Mode" value="Chrome"/>
+      </DeploymentTransformationSteps>
+    </Target>-->
+    <!--<Target name="Chrome-Headless">
+      <DeploymentTransformationSteps>
+        <EnvironmentVariable variable="Mode" value="Chrome-Headless"/>
+      </DeploymentTransformationSteps>
+    </Target>-->
+    <!--<Target name="Firefox">
+      <DeploymentTransformationSteps>
+        <EnvironmentVariable variable="Mode" value="Firefox"/>
+      </DeploymentTransformationSteps>
+    </Target>-->
+  </Targets>
+</TestProfile>

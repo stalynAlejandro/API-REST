@@ -1,0 +1,120 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongoServer", "KeTePongoServer\KeTePongoServer.csproj", "{BF8FC936-1224-4148-9D7C-3C0193AFDA52}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.Core", "KeTePongo.Modules\KeTePongo.Core\KeTePongo.Core.csproj", "{E8F87594-3285-49A0-A742-6062B86D466D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.ProviderWebAPI", "KeTePongo.Modules\KeTePongo.ProviderWebAPI\KeTePongo.ProviderWebAPI.csproj", "{653F071F-0403-44B2-B259-26BF84122EE7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.ProviderWebAPI.Abstractions", "KeTePongo.Modules\KeTePongo.ProviderWebAPI.Abstractions\KeTePongo.ProviderWebAPI.Abstractions.csproj", "{6B3A6BD4-E949-4B7E-8F8C-AC4464201F60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongoServer.Spec", "KeTePongoServer.Spec\KeTePongoServer.Spec.csproj", "{337D80C3-B58B-4C8F-852C-48400BF2C8A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.UsersWebAPI", "KeTePongo.Modules\KeTePongo.UsersWebAPI\KeTePongo.UsersWebAPI.csproj", "{87BD4709-5205-4A6C-B652-2C1206CAF79A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FD15B360-5165-431E-939F-31066571F2B8} = {FD15B360-5165-431E-939F-31066571F2B8}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.UsersWebAPI.Abstractions", "KeTePongo.Modules\KeTePongo.UsersWebAPI.Abstractions\KeTePongo.UsersWebAPI.Abstractions.csproj", "{FD15B360-5165-431E-939F-31066571F2B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.Theme", "KeTePongo.Themes\KeTePongo.Theme\KeTePongo.Theme.csproj", "{CBE22DAA-3B42-4AA7-8B82-7E0A0A09222E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F7155468-0841-41D4-9635-C0FDD36A9F3B}"
+	ProjectSection(SolutionItems) = preProject
+		commands.json = commands.json
+		ContinuousTestingAllTests.bat = ContinuousTestingAllTests.bat
+		ContinuousTestingSet.bat = ContinuousTestingSet.bat
+		Dependencies.props = Dependencies.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.ConsumerWebAPI", "KeTePongo.Modules\KeTePongo.ConsumerWebAPI\KeTePongo.ConsumerWebAPI.csproj", "{0D2888CC-5249-4CF8-AB84-DECBF2FB2E81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.ConsumerWebAPI.Abstractions", "KeTePongo.Modules\KeTePongo.ConsumerWebAPI.Abstractions\KeTePongo.ConsumerWebAPI.Abstractions.csproj", "{E295F0BF-AC5D-4B15-9146-6C766ADEFA7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongoServer.UnitTesting", "KeTePongoServer.UnitTesting\KeTePongoServer.UnitTesting.csproj", "{267F2AE3-1C58-4F28-BF26-799B762BD06D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.SMS", "KeTePongo.Modules\KeTePongo.SMS\KeTePongo.SMS.csproj", "{75F4652F-0336-49C4-8F6A-2A35ACB8E322}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.SMS.Abstractions", "KeTePongo.Modules\KeTePongo.SMS.Abstractions\KeTePongo.SMS.Abstractions.csproj", "{CF0F5510-294D-4392-B880-784D55F7D42C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.Notifications", "KeTePongo.Modules\KeTePongo.Notifications\KeTePongo.Notifications.csproj", "{ED1C2B74-50CF-4C59-8B15-F84AA8944064}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeTePongo.Notifications.Abstractions", "KeTePongo.Modules\KeTePongo.Notifications.Abstractions\KeTePongo.Notifications.Abstractions.csproj", "{2E67756D-A1BB-471D-AAA6-055557E0F061}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF8FC936-1224-4148-9D7C-3C0193AFDA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8FC936-1224-4148-9D7C-3C0193AFDA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF8FC936-1224-4148-9D7C-3C0193AFDA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF8FC936-1224-4148-9D7C-3C0193AFDA52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8F87594-3285-49A0-A742-6062B86D466D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8F87594-3285-49A0-A742-6062B86D466D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8F87594-3285-49A0-A742-6062B86D466D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8F87594-3285-49A0-A742-6062B86D466D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{653F071F-0403-44B2-B259-26BF84122EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653F071F-0403-44B2-B259-26BF84122EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653F071F-0403-44B2-B259-26BF84122EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653F071F-0403-44B2-B259-26BF84122EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B3A6BD4-E949-4B7E-8F8C-AC4464201F60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3A6BD4-E949-4B7E-8F8C-AC4464201F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3A6BD4-E949-4B7E-8F8C-AC4464201F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3A6BD4-E949-4B7E-8F8C-AC4464201F60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337D80C3-B58B-4C8F-852C-48400BF2C8A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337D80C3-B58B-4C8F-852C-48400BF2C8A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337D80C3-B58B-4C8F-852C-48400BF2C8A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337D80C3-B58B-4C8F-852C-48400BF2C8A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BD4709-5205-4A6C-B652-2C1206CAF79A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BD4709-5205-4A6C-B652-2C1206CAF79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BD4709-5205-4A6C-B652-2C1206CAF79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BD4709-5205-4A6C-B652-2C1206CAF79A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD15B360-5165-431E-939F-31066571F2B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD15B360-5165-431E-939F-31066571F2B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD15B360-5165-431E-939F-31066571F2B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD15B360-5165-431E-939F-31066571F2B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBE22DAA-3B42-4AA7-8B82-7E0A0A09222E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE22DAA-3B42-4AA7-8B82-7E0A0A09222E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE22DAA-3B42-4AA7-8B82-7E0A0A09222E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE22DAA-3B42-4AA7-8B82-7E0A0A09222E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D2888CC-5249-4CF8-AB84-DECBF2FB2E81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D2888CC-5249-4CF8-AB84-DECBF2FB2E81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D2888CC-5249-4CF8-AB84-DECBF2FB2E81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D2888CC-5249-4CF8-AB84-DECBF2FB2E81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E295F0BF-AC5D-4B15-9146-6C766ADEFA7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E295F0BF-AC5D-4B15-9146-6C766ADEFA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E295F0BF-AC5D-4B15-9146-6C766ADEFA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E295F0BF-AC5D-4B15-9146-6C766ADEFA7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{267F2AE3-1C58-4F28-BF26-799B762BD06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267F2AE3-1C58-4F28-BF26-799B762BD06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267F2AE3-1C58-4F28-BF26-799B762BD06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267F2AE3-1C58-4F28-BF26-799B762BD06D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F4652F-0336-49C4-8F6A-2A35ACB8E322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F4652F-0336-49C4-8F6A-2A35ACB8E322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F4652F-0336-49C4-8F6A-2A35ACB8E322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F4652F-0336-49C4-8F6A-2A35ACB8E322}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF0F5510-294D-4392-B880-784D55F7D42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0F5510-294D-4392-B880-784D55F7D42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0F5510-294D-4392-B880-784D55F7D42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0F5510-294D-4392-B880-784D55F7D42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1C2B74-50CF-4C59-8B15-F84AA8944064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1C2B74-50CF-4C59-8B15-F84AA8944064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1C2B74-50CF-4C59-8B15-F84AA8944064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1C2B74-50CF-4C59-8B15-F84AA8944064}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E67756D-A1BB-471D-AAA6-055557E0F061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E67756D-A1BB-471D-AAA6-055557E0F061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E67756D-A1BB-471D-AAA6-055557E0F061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E67756D-A1BB-471D-AAA6-055557E0F061}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAC91490-1242-434D-B6FC-48E4167827CD}
+	EndGlobalSection
+EndGlobal

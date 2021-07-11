@@ -1,0 +1,68 @@
+﻿msgid "A product cannot be assigned to the same section multiple times"
+msgstr "Un producto no puede ser asignado a la misma sección múltiples veces"
+
+msgid "A product can only be assigned to existing sections"
+msgstr "Un producto puede sólo ser asignado a una sección existente"
+
+msgid "The same allergen cannot be assigned multiple times to a product"
+msgstr "Un alérgeno no puede ser asignado al mismo producto múltiples veces"
+
+msgid "A product can only be assigned to existing allergens"
+msgstr "A un producto sólo se le pueden asignar alérgeno existentes"
+
+msgid "Not a single provider was found."
+msgstr "No se encontró ningún proveedor."
+
+msgid "There is more than one provider for the given search criteria."
+msgstr "Se ha encontrado más de un proveedor de acuerdo a los parámetros de búsqueda proporcionados."
+
+msgid "The email and telephone fields cannot be null"
+msgstr "Los campos de email y teléfono no pudeden ser nulos"
+
+msgid "The telephone field is not a valid telephone number"
+msgstr "El campo teléfono no es un número de teléfono válido"
+
+msgid "The email field is not a valid e-mail address"
+msgstr "El campo de correo electrónico no es una dirección de correo electrónico válida"
+
+msgid "A provider cannot be added twice"
+msgstr "No puedes añadir un proveedor dos veces"
+
+msgid "The provided provider OID, {0},  does not exists"
+msgstr "EL OID the proveedor proporcionado, {0} no existe"
+
+msgid "There is no provider assigned to this user"
+msgstr "No hay proveedor asignado a este usuario"
+
+msgid "The user already has a provider, a new one cannot be created"
+msgstr "El usuario ya tiene un proveedor, no se puede crear uno nuevo"
+
+msgid "Error changing provider linked to an ERP"
+msgstr "Error cambiando el proveedor enlazado a un ERP"
+
+msgid "Consumer of a provider already points to a ERP Client"
+msgstr "Consumidor de proveedor ya apunta a un Cliente ERP"
+
+msgid "ERP Client already points to a Consumer"
+msgstr "El cliente ERP ya apunta a un consumidor"
+
+msgid "No ERP Client matches the request, make sure you've send the proper ERP Id"
+msgstr "Ningun cliente ERP encontrado para la peticion, asegurese de que ha enviado el Id ERP correcto"
+
+msgid "The requested catalog is not public"
+msgstr "El cátalogo solicitado no es público"
+
+msgid "Your're not customer of this provider, you need to request access to it's catalog by adding him as your provider and await its approval"
+msgstr "No eres cliente de este proveedor, es necesario que solicites acceso a su cátalogo añadiéndolo como tu proveedor y esperar su aprobación"
+
+msgid "Failed to add confirmed user in provider"
+msgstr "Error añadiendo usuario confirmado en provider"
+
+msgid "Failed to update user's email in provider"
+msgstr "Error actualizando email de usuario en provider"
+
+msgid "Failed to update user's telephone in provider"
+msgstr "Error actualizando teléfono de usuario en provider"
+
+msgid "Failed to update user's name in provider"
+msgstr "Error actualizando nombre de usuario en provider"

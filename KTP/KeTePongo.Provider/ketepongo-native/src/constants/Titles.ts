@@ -1,0 +1,25 @@
+const TITLES = {
+  newProvider: 'NUEVO PROVEEDOR',
+  editProvider: 'EDITAR PROVEEDOR',
+  selectProvider: 'SELECCIÓN DE PROVEEDOR',
+  newProduct: 'NUEVO PRODUCTO',
+  editProduct: 'EDICIÓN DE PRODUCTO',
+  orderToMake: 'PEDIDO A REALIZAR',
+  selectLocation: 'SELECCIÓN DE LUGAR',
+  newLocation: 'NUEVO LUGAR',
+  editLocation: 'EDITAR LUGAR',
+  lugar: 'LUGAR',
+  proveedor: 'PROVEEDOR',
+  diaRecogida: 'DÍA DE PEDIDO',
+  nameOfUser: 'Nombre de Usuario',
+  editUserEmail: 'Editar Email',
+  editPhone: 'Editar Teléfono',
+  changePassword: 'Cambiar Contraseña',
+  providerObservations: 'Observaciones a Proveedores',
+  orderDeliveryDates: 'Modificar Fecha de Entrega',
+  newSection: 'Nueva Sección',
+  editSection: 'Editar Sección',
+  section: 'SECCIÓN',
+};
+
+export { TITLES };

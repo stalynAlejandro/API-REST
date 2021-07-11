@@ -1,0 +1,65 @@
+﻿@model KeTePongo.ConsumerWebAPI.ViewModels.ConsumerUsersViewModel
+@using KeTePongo.UsersWebAPI.Abstractions.DTOs.v0_1
+@{
+    ViewData["Title"] = "Users of Consumer";
+}
+
+<h2>Users of Consumer: @Model.Consumer.OID - @Model.Consumer.TradeName</h2>
+
+<p>
+    <a asp-area="KeTePongo.UsersWebAPI" asp-controller="BackOfficeUser" asp-action="Create"
+       asp-all-route-data="@(new Dictionary<string,string>{
+                                            { "userType", ((int)UserType.ConsumerUser).ToString() },
+                                            { "companyOID", ((int)Model.Consumer.OID).ToString() } }
+                                        )">Create New</a>
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Admin
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ConsumerUsers)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                <a asp-action="Index" asp-controller="BackOfficeChangeUserConsumer"
+                   asp-all-route-data="@(new Dictionary<string,string>{
+                                            { "userName", @item.UserName }})">Change Consumer</a> |
+                <a asp-area="KeTePongo.UsersWebAPI" asp-controller="BackOfficeUser" asp-action="Edit"
+                   asp-all-route-data="@(new Dictionary<string,string>{
+                                            { "userName", @item.UserName }})"
+                   asp-route-returnUrl="@FullRequestPath">Edit</a> |
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+@await DisplayAsync(Model.Pager)

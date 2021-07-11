@@ -1,0 +1,1 @@
+export { DialogDetail } from './DialogDetail'

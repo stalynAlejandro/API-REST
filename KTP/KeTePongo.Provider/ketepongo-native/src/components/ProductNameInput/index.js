@@ -1,0 +1,1 @@
+export { ProductNameInput } from './ProductNameInput';

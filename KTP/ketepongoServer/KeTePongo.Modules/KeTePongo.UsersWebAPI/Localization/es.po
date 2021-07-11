@@ -1,0 +1,175 @@
+﻿msgctxt "KeTePongo.UsersWebAPI.Controllers.ConfirmNewUserController"
+msgid "The code is required"
+msgstr "El código es obligatorio"
+
+msgctxt "KeTePongo.UsersWebAPI.Controllers.ConfirmNewUserController"
+msgid "After validating your email, the user was granted with more permissions, please refresh your access token to get claims with new permissions"
+msgstr "Tras validar su email, se concedieron más permisos al usuario, por favor refresca tu token de acceso para obtener claims con nuevos permisos"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Custom username for a new user cannot contain a + character"
+msgstr "Un nombre de usuario personalizado no puede contener un carácter +"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "The email has been confirmed"
+msgstr "El email ha sido confirmado"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Confirm your account"
+msgstr "Confirma tu cuenta"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "User not found"
+msgstr "Usuario no encontrado"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "This email is already your current one"
+msgstr "Este email ya es el actual"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "A user with the same email already exists"
+msgstr "Ya existe un usuario con este email"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "An user with a not confirmed email cannot change its email"
+msgstr "Un usuario con un email que no ha sido confirmado no puede cambiar su email"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Confirm your new email"
+msgstr "Confirma tu nuevo email"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Invalid value"
+msgstr "Valor no válido"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Not found"
+msgstr "No encontrado"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Invalid code"
+msgstr "Código no válido"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Outdated code"
+msgstr "Código caducado"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Error confirming email"
+msgstr "Error confirmando email"
+
+msgctxt "KeTePongo.UsersWebAPI.AppServices.UserAppService"
+msgid "Error confirming new email {0} for user {1}"
+msgstr "Error confirmando nuevo email {0} para usuarios {1}"
+
+
+msgid "Edit Client Apps (Minimum Version)"
+msgstr "Editar Apps Cliente (Versión Mínima)"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.BackOfficeOpenIdAppMinVersion.Edit"
+msgid "Back to openId apps list"
+msgstr "Atrás a la lista de apps openId"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.BackOfficeUser.Create"
+msgid "Create User"
+msgstr "Crear Usuario"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.BackOfficeUser.Edit"
+msgid "Edit User"
+msgstr "Editar Usuario"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.BackOfficeUser.Index"
+msgid "Edit User"
+msgstr "Editar Usuario"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ConfirmInvitation.ConfirmInvitation"
+msgid "Confirm Invitation"
+msgstr "Confirmar Invitación"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ConfirmInvitation.ConfirmInvitation"
+msgid "Complete your profile"
+msgstr "Completa tu perfil"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ConfirmInvitation.Error"
+msgid "This user has already been registered, please go to the login page"
+msgstr "Este usuario ya fue registrado, por favor dirígete a la página de login"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ConfirmInvitation.Index"
+msgid "The registration has been completed, please go to the login page"
+msgstr "El registro ha sido completado, por favor ve a la página de login"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ForgotPassword"
+msgid "Please input your email or user name to reset your password."
+msgstr "Por favor introuce tu email o nombre de usuario para restablecer tu contraseña."
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ForgotPassword"
+msgid "Forgot password?"
+msgstr "¿Olvidaste tu contraseña?"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ForgotPasswordConfirmation"
+msgid "Forgot password confirmation"
+msgstr "Confirmación de olvido de contraseña"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ForgotPasswordConfirmation"
+msgid "Please check your email to reset your password."
+msgstr "Por favor comprueba tu email para restablecer la contraseña"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ResetPassword"
+msgid "New password"
+msgstr "Nueva contraseña"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ResetPassword"
+msgid "New password confirmation"
+msgstr "Nueva confirmación de contraseña"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ResetPasswordConfirmation"
+msgid "Your password has been reset."
+msgstr "Tu contraseña ha sido restablecida"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ResetPasswordConfirmation"
+msgid "Please "
+msgstr "Por favor "
+
+msgctxt "KeTePongo.UsersWebAPI.Views.ResetPassword.ResetPasswordConfirmation"
+msgid "Click here to log in"
+msgstr "Haz click aqui para iniciar sesión"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.TemplateUserConfirmEmail"
+msgid "Confirmation account email"
+msgstr "Email de confirmación de cuenta"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.TemplateUserConfirmEmail"
+msgid "KeTePongo Header"
+msgstr "Cabecera KeTePongo"
+
+msgid "Dear {0}"
+msgstr "Estimado/a {0}"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.TemplateUserConfirmEmailChange"
+msgid "The confirmation code for changing yor email {0}""
+msgstr "El código de confirmación para cambiar su cuenta el email {0}"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.TemplateUserLostPassword"
+msgid "Restore Password"
+msgstr "Restablecer Contraseña"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.TemplateUserLostPassword"
+msgid "For restoring your password, <a href='{0}'>click here.</a>"
+msgstr "Para restablecer tu contraseña, haz <a href='{0}'>click aquí.</a>"
+
+msgctxt "KeTePongo.UsersWebAPI.Views.TemplateUserLostPassword"
+msgid "If you don't requested any password change, ignore this email"
+msgstr "Si no has solicitado ningún cambio de contraseña, ignora este email"
+
+msgid "The new password and confirmation password do not match."
+msgstr "Las contraseñas no coinciden."
+
+msgctxt "KeTePongo.UserWebAPI.AdminMenu"
+msgid "Client Apps Min Version"
+msgstr "Versión Mínima Apps Cliente"
+
+msgid "Welcome to KeTePongo. Please, input the following code to confirm your phone number: "
+msgstr "Bienvenido a KeTePongo. Porfavor, introduzca el siguiente código para confirmar su telefono: "
+
+msgid "Telephone number is not valid"
+msgstr "El número de teléfono no es válido"

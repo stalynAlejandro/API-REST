@@ -1,0 +1,1 @@
+export { HeaderWithFilterComponent } from './HeaderWithFilterComponent'

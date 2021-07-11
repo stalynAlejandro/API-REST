@@ -1,0 +1,31 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Xml.XPath" #>
+using System;
+using System.ComponentModel;
+
+
+namespace System.ComponentModel.DataAnnotations
+{
+  public partial class Resources
+  {
+  <# 
+   var reader = XmlReader.Create(Host.ResolvePath("Resources.resx"));
+   var document = new XPathDocument(reader);
+   var navigator = document.CreateNavigator();
+   var dataNav = navigator.Select("/root/data/value");
+   foreach (XPathNavigator item in dataNav)
+   {
+    var value = item.Value;
+    item.MoveToParent();
+    var name = item.GetAttribute("name", String.Empty);    
+    if (name.EndsWith("ValidationError") || name.EndsWith("Attribute_Invalid"))
+    {
+  #>
+   public const String <#= name#> = "<#= value#>";
+  <# }
+  } #>
+  }
+}

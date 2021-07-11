@@ -1,0 +1,1 @@
+export { DetailOrderScreen } from './DetailOrderScreen';

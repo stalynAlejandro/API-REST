@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <Import Project="..\..\Dependencies.props" />
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="0 Controllers\ConsumerController.cs" />
+    <Compile Remove="0 Controllers\ConsumerInvitationController.cs" />
+    <Compile Remove="0 Controllers\ConsumptionController.cs" />
+    <Compile Remove="0 Controllers\LocationController.cs" />
+    <Compile Remove="0 Controllers\OrderController.cs" />
+    <Compile Remove="0 Controllers\ProductController.cs" />
+    <Compile Remove="0 Controllers\ProviderController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\KeTePongo.ConsumerWebAPI.xml</DocumentationFile>
+    <OutputPath>bin\Debug\</OutputPath>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\KeTePongo.ConsumerWebAPI.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(SolutionFileName)' == 'OrchardCore.sln' Or '$(SolutionFileName)' == 'OrchardCoreYesSql.sln'">
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.Admin.Abstractions\OrchardCore.Admin.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.Data.Abstractions\OrchardCore.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.DisplayManagement\OrchardCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.Infrastructure\OrchardCore.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.Module.Targets\OrchardCore.Module.Targets.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore.Modules\OrchardCore.Navigation\OrchardCore.Navigation.csproj" />
+    <ProjectReference Include="..\..\Orchard2\src\OrchardCore\OrchardCore.ResourceManagement\OrchardCore.ResourceManagement.csproj" />    
+  </ItemGroup>
+  <ItemGroup Condition="'$(SolutionFileName)' == 'KeTePongoServer.sln'">
+    <PackageReference Include="OrchardCore.Admin.Abstractions" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.Infrastructure" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.Navigation" Version="1.0.0-rc1.private.9" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-rc1.private.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.Validation" Version="2.0.0" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KeTePongo.ConsumerWebAPI.Abstractions\KeTePongo.ConsumerWebAPI.Abstractions.csproj" />
+    <ProjectReference Include="..\KeTePongo.Core\KeTePongo.Core.csproj" />
+    <ProjectReference Include="..\KeTePongo.Notifications.Abstractions\KeTePongo.Notifications.Abstractions.csproj" />
+    <ProjectReference Include="..\KeTePongo.ProviderWebAPI.Abstractions\KeTePongo.ProviderWebAPI.Abstractions.csproj" />
+    <ProjectReference Include="..\KeTePongo.UsersWebAPI.Abstractions\KeTePongo.UsersWebAPI.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\es.po">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TemplateOrderSummaryProofEmail.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="0 Controllers\v0_1\OrderController.cs" />
+    <None Include="0 Controllers\v0_1\ProductController.cs" />
+  </ItemGroup>
+</Project>

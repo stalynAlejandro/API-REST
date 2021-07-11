@@ -1,0 +1,1 @@
+export { TermsAndConditionsFooter } from './TermsAndConditionsFooter';

@@ -1,0 +1,1 @@
+export { ProductComponent } from './ProductComponent'

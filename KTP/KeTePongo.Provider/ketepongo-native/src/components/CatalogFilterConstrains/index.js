@@ -1,0 +1,1 @@
+export { CatalogFilterConstrains } from './CatalogFilterConstrains';

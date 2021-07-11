@@ -1,0 +1,1 @@
+export { TouchableHighlightIcon } from './TouchableHighlightIcon';

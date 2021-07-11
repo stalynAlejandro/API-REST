@@ -1,0 +1,1 @@
+export const ADD_PRODUCTS_TEST = "ADD_PRODUCTS_TEST"

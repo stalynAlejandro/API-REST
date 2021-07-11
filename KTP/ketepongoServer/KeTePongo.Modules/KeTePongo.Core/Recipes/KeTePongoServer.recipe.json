@@ -1,0 +1,148 @@
+{
+  "name": "KeTePongoServer",
+  "displayName": "KeTePongo Server",
+  "description": "A recipe adding modules necessary for providing a KeTePongoServer.",
+  "author": "KeTepongo",
+  "website": "http://www.pccom.es",
+  "version": "2.0",
+  "issetuprecipe": true,
+  "categories": [ "default" ],
+  "tags": [ "default" ],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        // SaaS
+        "OrchardCore.Mvc",
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Admin",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Features",
+        "OrchardCore.Navigation",
+        "OrchardCore.Recipes",
+        "OrchardCore.Resources",
+        "OrchardCore.Roles",
+        "OrchardCore.Settings",
+        "OrchardCore.Themes",
+        "OrchardCore.Users",
+        "OrchardCore.OpenId",
+        "OrchardCore.OpenId.Management",
+        "OrchardCore.OpenId.Server",
+        "OrchardCore.OpenId.Validation",
+        "OrchardCore.Email",
+        "OrchardCore.Google.GoogleAuthentication",
+        "OrchardCore.Localization",
+        //User Modules
+        "KeTePongo.Core",
+        "KeTePongo.UsersWebAPI",
+        "KeTePongo.ConsumerWebAPI",
+        "KeTePongo.ProviderWebAPI",
+        //Notifications
+        "KeTePongo.Notifications",
+        // Themes
+        "KeTePongo.Theme",
+        "TheTheme",
+        "TheAdmin",
+        "SafeMode"
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "KeTePongo.Theme"
+    },
+    {
+      "name": "settings",
+      "LocalizationSettings": {
+        "DefaultCulture": "es-ES",
+        "SupportedCultures": [ "es-ES" ]
+      }
+    },
+    {
+      "name": "settings",
+      "HomeRoute": {
+        "Action": "Index",
+        "Controller": "Home",
+        "Area": "KeTePongo.Theme"
+      },
+      "SiteName": "KeTePongo"
+    },
+    {
+      "name": "LoginSettings",
+      "UseSiteTheme": true
+    },
+    {
+      "name": "SmtpSettings",
+      "DefaultSender": "jersio@hotmail.com",
+      "DeliveryMethod": "SpecifiedPickupDirectory",
+      "PickupDirectoryLocation": "C:\\temp\\Email"
+    },
+    {
+      "name": "SmsSettings",
+      "API_KEY": "none",
+      "Sender": "KeTePongo",
+      "IsLookupEnabled": false,
+      "DeliveryMethod": "SpecifiedPickupDirectory",
+      "PickupDirectoryLocation": "C:\\temp\\Sms"
+    },
+    {
+      "name": "OpenIdServerSettings",
+      "TestingModeEnabled": false,
+      "AccessTokenFormat": "JWT",
+      "Authority": "https://localhost",
+      "EnableTokenEndpoint": true,
+      "EnableAuthorizationEndpoint": true,
+      "EnableLogoutEndpoint": false,
+      "EnableUserInfoEndpoint": false,
+      "AllowPasswordFlow": true, //on production this should be disabled
+      "UseRollingTokens": false,
+      "AllowClientCredentialsFlow": true,
+      "AllowAuthorizationCodeFlow": true,
+      "AllowRefreshTokenFlow": true,
+      "AllowImplicitFlow": false,
+      "ConsentType":  "implicit"
+    },
+    {
+      "name": "OpenIdApplication",
+      "ClientId": "KeTePongoProviderApp",
+      "DisplayName": "KeTePongo Provider App",
+      "Type": "Confidential",
+      "ClientSecret": "253=asdf,YH3-937yhsiuh",
+      "AllowLogoutEndpoint": false,
+      "AllowPasswordFlow": true, //on production this should be disabled
+      "AllowClientCredentialsFlow": false,
+      "AllowAuthorizationCodeFlow": true,
+      "AllowRefreshTokenFlow": true,
+      "AllowImplicitFlow": false,
+      "ConsentType": "implicit"
+    },
+    {
+      "name": "OpenIdApplication",
+      "ClientId": "KeTePongoConsumerApp",
+      "DisplayName": "KeTePongo Consumer App",
+      "Type": "Confidential",
+      "ClientSecret": "-,ewñ89(%./jmlfSDggvml3,eoru",
+      "AllowLogoutEndpoint": false,
+      "AllowPasswordFlow": true, //on production this should be disabled
+      "AllowClientCredentialsFlow": true,
+      "AllowAuthorizationCodeFlow": true,
+      "AllowRefreshTokenFlow": true,
+      "AllowImplicitFlow": false,
+      "ConsentType": "implicit",
+      "RoleEntries": [
+        {
+          "Name": "Consumer Anonymous User",
+          "Selected": true
+        }
+      ]
+    },
+    {
+      "name": "Command",
+      "Commands": [
+        "[js:'generateRandomCodes']"
+      ]
+    }
+  ]
+}

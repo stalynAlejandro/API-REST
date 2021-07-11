@@ -1,0 +1,49 @@
+﻿@model KeTePongo.UsersWebAPI.ViewModels.UsersIndexViewModel
+@using KeTePongo.Core.Extensions;
+@{
+    ViewData["Title"] = T["Users"];
+    var firstItem = Model.Users.FirstOrDefault();
+}
+
+    <h2>@T["Users"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">@T["Create New"]</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.LabelFor(modelItem => firstItem.UserName)
+            </th>
+            <th>
+                @Html.LabelFor(modelItem => firstItem.Email)
+            </th>
+            <th>
+                @Html.LabelFor(modelItem => firstItem.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserName">@T["Edit"]</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

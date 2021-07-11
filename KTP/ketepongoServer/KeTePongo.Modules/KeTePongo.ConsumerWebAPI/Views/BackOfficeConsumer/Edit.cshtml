@@ -1,0 +1,91 @@
+﻿@model KeTePongo.ConsumerWebAPI.ViewModels.ConsumerViewModel
+
+@{
+ViewData["Title"] = T["Edit"];
+}
+
+<h1>@T["Edit consumer"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Consumer.OID" class="control-label"></label>
+                <input asp-for="Consumer.OID" class="form-control" asp-is-disabled="true" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.Code" class="control-label"></label>
+                <input asp-for="Consumer.Code" class="form-control" asp-is-disabled="true" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.TradeName" class="control-label"></label>
+                <input asp-for="Consumer.TradeName" class="form-control" />
+                <span asp-validation-for="Consumer.TradeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.Address" class="control-label"></label>
+                <input asp-for="Consumer.Address" class="form-control" />
+                <span asp-validation-for="Consumer.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.StateOrProvince" class="control-label"></label>
+                <input asp-for="Consumer.StateOrProvince" class="form-control" />
+                <span asp-validation-for="Consumer.StateOrProvince" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.Town" class="control-label"></label>
+                <input asp-for="Consumer.Town" class="form-control" />
+                <span asp-validation-for="Consumer.Town" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consumer.PostalCode" class="control-label"></label>
+                <input asp-for="Consumer.PostalCode" class="form-control" />
+                <span asp-validation-for="Consumer.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SanitaryMeasuresString" class="control-label"></label>
+                <textarea asp-for="SanitaryMeasuresString" class="form-control"></textarea>
+                <span asp-validation-for="SanitaryMeasuresString" class="text-danger"></span>
+            </div>
+            <div class="form-group collapse @(!string.IsNullOrWhiteSpace(Model.Consumer.ImageUrl)?"show":"")">
+                <img id="image" class="lazyload" src="@(Model.Consumer.ImageUrl)" width="250" height="250" />
+                <input id="removeImage" type="submit" value="Delete Image" class="btn btn-primary" />
+            </div>
+            <input asp-for="Consumer.ImageUrl" hidden />
+            <div class="form-group collapse @(string.IsNullOrWhiteSpace(Model.Consumer.ImageUrl)?"show":"")">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@T["Update"]" class="btn btn-primary">
+            </div>
+        </form>
+</div>
+</div>
+
+<div>
+    <a asp-action="Index">@T["Back to consumers list"]</a>
+</div>
+
+<script at="Foot" type="text/javascript">
+    ////<![CDATA[
+    window.onload = function () {
+        $("#@Html.IdFor(m => m.ImageFile)").change(function () {
+            readURL(this);
+            $("#@Html.IdFor(m => m.ImageFile)").parent().collapse("hide")
+            $("#image").parent().collapse("show");
+        });
+
+        $("#removeImage").click(function (e) {
+            e.preventDefault();
+            $('#image').attr('src', "");
+            $("#@Html.IdFor(m => m.ImageFile)").val("");
+            $("#@Html.IdFor(m => m.Consumer.ImageUrl)").val("");
+            $("#image").parent().collapse("hide");
+            $("#@Html.IdFor(m => m.ImageFile)").parent().collapse("show")
+        });
+    };
+//]]>
+</script>

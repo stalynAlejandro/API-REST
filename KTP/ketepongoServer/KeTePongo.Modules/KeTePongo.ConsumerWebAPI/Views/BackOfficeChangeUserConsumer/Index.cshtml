@@ -1,0 +1,70 @@
+﻿@model KeTePongo.ConsumerWebAPI.ViewModels.ChangeUserConsumerViewModel
+@using KeTePongo.UsersWebAPI.Abstractions.DTOs
+@{
+    ViewData["Title"] = "Change User Consumer";
+}
+
+<h2>@T["Change User Consumer"]</h2>
+
+<p>@T["Select target consumer for user {0} - {1}", Model.User.Name, Model.User.Email]</p>
+@if (Model.CurrentConsumer != null)
+{
+    <p>@T["Currently it pertains to consumer {0} - {1}", Model.CurrentConsumer.OID, Model.CurrentConsumer.TradeName]</p>
+}
+@{
+    var firstConsumer = Model.Consumers.FirstOrDefault();
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.LabelFor(modelItem => firstConsumer.OID)
+            </th>
+            <th>
+                @Html.LabelFor(modelItem => firstConsumer.TradeName)
+            </th>
+            <th>
+                @Html.LabelFor(modelItem => firstConsumer.Address)
+            </th>
+            <th>
+                @Html.LabelFor(modelItem => firstConsumer.StateOrProvince)
+            </th>
+            <th>
+                @Html.LabelFor(modelItem => firstConsumer.Town)
+            </th>
+            <th>
+                @Html.LabelFor(modelItem => firstConsumer.PostalCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Consumers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TradeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StateOrProvince)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Town)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
+                    <a asp-action="SetConsumerOID" asp-all-route-data="@(new Dictionary<string,string>{{ "userName", Model.User.UserName }, { "consumerOID", ((long)item.OID).ToString() } })">T["Select"]</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@await DisplayAsync(Model.Pager)

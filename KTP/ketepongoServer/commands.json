@@ -1,0 +1,14 @@
+{
+  "commands": {
+    "ContinuousTestingAllTests": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c ContinuousTestingAllTests.bat"
+    },
+    "ContinuousTestingsSet": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c ContinuousTestingSet.bat"
+    }
+  }
+}

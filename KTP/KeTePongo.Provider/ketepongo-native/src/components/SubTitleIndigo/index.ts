@@ -1,0 +1,1 @@
+export { SubTitleIndigo } from './SubTitleIndigo'

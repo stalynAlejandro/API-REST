@@ -1,0 +1,1 @@
+export { ProviderCoverPhoto } from './ProviderCoverPhoto';

@@ -1,0 +1,1 @@
+export { ProductCarteCatalogScreen } from './ProductCarteCatalogScreen';
