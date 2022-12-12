@@ -1,7 +1,0 @@
-﻿msgctxt "OrchardCore.Users.Services.UserService"
-msgid "Passwords must have at least one non letter or digit character."
-msgstr "Las contraseñas deben tener al menos un símbolo."
-
-msgctxt "OrchardCore.Users.Services.UserService"
-msgid "Email '{0}' is already used."
-msgstr "El email '{0}' ya está en uso."

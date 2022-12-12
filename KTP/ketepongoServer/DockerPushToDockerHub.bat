@@ -1,1 +1,0 @@
-docker push theonesheng/server:0.2.1

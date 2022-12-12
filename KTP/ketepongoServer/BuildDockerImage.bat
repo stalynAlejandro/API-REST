@@ -1,1 +1,0 @@
-docker build --rm --tag=ktpacr.azurecr.io/ktpappsrv:dev.3.0.0 .

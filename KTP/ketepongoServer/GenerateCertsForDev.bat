@@ -1,1 +1,0 @@
-dotnet dev-certs https -v -ep c:\temp\ketepongoserver\cert-aspnetcore.pfx -p ufo
