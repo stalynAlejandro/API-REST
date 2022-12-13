@@ -1,0 +1,26 @@
+echo "Compilamos el Servidor"
+export PATH=$PATH:/home/saav1/opt/java/jdk/bin/javac
+javac InterfazSensores.java
+export CLASSPATH=$CLASSPATH:/home/saav1/Escritorio/SD/3.MyHTTPServer/Sondas
+javac Sensor.java
+rmic Sensor.
+jar cvf cliente.jar InterfazSensores.class Sensor_Stub.class
+javac Registro.java
+
+echo ".............................................................................."
+echo "En otra terminal realizo el registro"
+unset CLASSPATH
+rmiregistry -J-Djava.security.policy=registrar.policy
+
+
+echo "..............................................................................."
+echo "A continuación abrimos otra consola y nos situamos en el directorio donde tengamos el objeto Registro y lo ejecutamos"
+java -Djava.security.policy=registrar.policy Registro
+
+echo "..............................................................................."
+echo "Ahora ejecuto el cliente"
+export CLASSPATH=$CLASSPATH:/home/saav1/Escritorio/SD/3.MyHTTPServer/Sondas/cliente.jar
+javac clienteRMI
+java -Djava.security.policy=registrar.policy clienteRMI localhost 1099
+
+

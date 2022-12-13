@@ -1,0 +1,10 @@
+Heuristica aplicando la distancia Euclidea:
+
+En matemáticas, la distancia euclidiana o euclídea, es la distancia "ordinaria" entre dos puntos de un espacio euclídeo, la cual se deduce a partir del teorema de Pitágoras.
+
+Por ejemplo, en un espacio bidimensional, la distancia euclidiana entre dos puntos P1 y P2, de coordenadas cartesianas (x1, y1) y (x2, y2).
+
+
+Heuristica distancia Manhattan:
+
+La que la distancia entre dos puntos es la suma de las diferencias (absolutas) de sus coordenadas. La métrica del taxista (en inglés se denomina geometría Taxicab) también se conoce como distancia rectilínea, distancia L1 o norma ℓ {\displaystyle \ell } \ell 1 (ver Espacio Lp), distancia de ciudad, distancia Manhattan, o longitud Manhattan, con las correspondientes variaciones en el nombre de la geometría.1​ El último nombre alude al diseño en cuadrícula de la mayoría de las calles de la isla de Manhattan, lo que causa que el camino más corto que un auto puede tomar entre dos puntos de la ciudad tengan la misma distancia que dos puntos en la geometría del taxista.

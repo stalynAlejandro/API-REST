@@ -1,0 +1,17 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	
+	PARA EL RMI. >> DEBE DE ESTAR EN EL DIRECTORIO SRC.
+	rmiregistry 1099 -J-Djava.rmi.server.codebaseonly=false &
+	rmiregistry 1025 -J-Djava.scurity.policy=/Sensor/registrar.policy
+	
+	PARA EL REGISTRO.
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.rmi.server.hostname=172.20.42.157 Sensor.Registrador 172.20.42.157 1099 
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.security.policy=/Sensor/registrar.policy Sensor.Registrador 172.20.42.157 1025
+	
+	PARA EL SENSOR.
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.rmi.server.hostname=172.20.42.157 Sensor.Sensor 172.20.42.157 1099 Sensor/Sensor1.txt 
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.security.policy=/Sensor/registrar.policy Sensor.Sensor 172.20.42.157 1025 Sensor/Sensor1.txt
+	
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	
+	

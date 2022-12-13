@@ -1,0 +1,180 @@
+	
+		Capitulo 2. Clases y objetos.
+
+.........................................................................................
+	2.1 INTRODUCCIÓN.
+
+  La programación orientada a objetos se basa en encapsular datos (atributos) 
+y funciones o métodos (comportamientos) juntos en estructuras llamadas clases.
+Las clases se emplean para modelar objetos del mundo real. 
+
+  Una clase se puede instanciar para crear diversos objetos. Por ejemplo 
+suponiendo que existe una clases llamada TCoordenada, las declaraciones:
+
+	//1. Declaración de un objeto 
+		TCoordenada objetop1;
+
+	//2. Declaración de un array
+		TCoordenada arrayp1[10];
+
+	//3. Declaración de un puntero
+		TCoordenada *ptr3 = &objetop1;
+
+	//4. Declaración de una referencia
+		TCoordenada &ref4 = objetop1;
+
+
+  En C++ el código fuente de los programas suele tener extensiones .cpp, .cc, .c 
+según el compilador que se emplee. El código fuente se tiene que traducir a código
+máquina para que se pueda ejecutar. Para ello, se tiene que compilar el código 
+fuente mediante una serie de programas que realizan distintas funciones:
+	
+	1. Preprocesador. 
+	2. Compilador.
+	3. Enlazador.
+
+.........................................................................................
+	2.2 DECLARACIÓN DE UNA CLASE. 
+
+  Se emplea la palabra reservada 'class'. La construcción se denomina definición 
+de clase o declaración de clase. Una clase se compone de datos y funciones miembro. 
+Una vez se define una clase, el nombre de la clase se vuelve un nombre de un tipo 
+nuevo y se puede emplear para declarar variables que representan objetos de dicha 
+clase. 
+
+	2.3 ACCESO A LOS MIEMBROS DE UNA CLASE.
+  
+  El acceso a los miembros de una clase se realiza mediante los operadores de acceso
+a miembros: '.' y '->'.
+
+  El operador punto accede a un miembro de una clase mediante el nombre de la variable
+del objeto o mediante una referencia al objeto. 
+
+  El operador flecha accede a un miembro de una clase mediante un puntero al objeto.
+
+.........................................................................................
+  	2.4 CONTROL DE ACCESO
+
+  Una de las características básicas de la programación OOP es la ocultación de información.
+La idea es impedir el acceso a la implementación de una clase a los posibles usuarios
+de una clase. ¿Para qué? De este modo, los usuarios de la clase la pueden utilizar y 
+obtener los mismos resultados sin darse cuenta de que la implementación ha cambiado. 
+
+  En C++, el modo de acceso predeterminado a los miembros de una clase se llama 'private'.
+Solo se puede acceder a la parte privada de una clase mediante funciones miembro y 
+funciones de clases amigas. Por otro lado, en C++, un 'struct' es una clase cuyo modo de
+acceso es público por defecto. 
+
+  El modo de acceso se puede modificar: 'public', 'private', 'protected'. Estos se denominan
+especificadores de acceso a miembros. 
+
+		public: //Parte pública
+				//Normalmente, sólo funciones
+				//Accesible tanto desde la propia clase como desde funciones ajenas a esta
+
+		protected: //Parte protegida
+				   //Funciones y datos
+				   //Limitar el acceso a las clases derivadas, su funcionamiento depende del 
+				   //tipo de herencia que se realice. 
+
+		private: //Parte privada
+				 //Normalmente, datos y funciones auxiliares
+				 //Accesible exclusivamente desde las funciones miembros y funciones y clases 
+				 //amigas
+
+
+
+.........................................................................................
+  	2.5 EMPLEO DE PUNTEROS
+
+  Las expresiones 'prt1->x = 1' y '(*prt1).x = 1' son equivalentes. En el segundo caso 
+se emplea el operador de desreferencia * para obtener el objeto al que apunta el puntero
+y se accede al miembro x mediante el operador punto. Los paréntesis son necesarios, ya 
+que el operador punto tiene un nivel de precedencia más alto que el operador de desreferencia
+del puntero. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Ejecutamos Registro"
+
+java -Djava.security.policy=registrar.policy Registro
+

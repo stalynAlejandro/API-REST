@@ -1,0 +1,49 @@
+DATABASE SEEDING.
+
+    Permite la inserción de datos iniciales en la bd.
+    Muy útil para realizar pruebas en desarrollo. (rellenar tablas)
+
+    Los ficheros de semillas se encuentran en la carpeta 
+
+        database/seeds
+
+    El método 'run' de la clase 'DatabaseSeeder' es el primero que se llama y desde 
+    el cual podemos:
+        - Ejecutar métodos privados de esta clase.
+        - Llamar a otros ficheros/clases de semillas separados.
+        
+Crear un fichero semilla.                                       $php artisan make:seeder UsersTableSeeder
+
+Para insertar esos datos en bd.                                 $php artisan db:seed
+
+Restaurar la bd. Incluyendo migraciones y semillas              $php artisan migrate:fresh --seed
+
+
+    *nota: Desde la clase principal podemos cargar otra clase 
+    externa de semillas o llamar a un método privado.
+    __________________________________________________________________________________
+    class DatabaseSeeder extends Seeder{
+        public function run(){
+
+            //Llamamos a otro fichero de semillas.
+            $this->call(UserTableSeeder::class);
+
+            //Mostramos información por consola
+            $this->command->info('Users table seeded!');
+        }
+    }
+    __________________________________________________________________________________
+    class UserTableSeeder extends Seeder{
+        public function run(){
+            //Borramos los datos de la tabla
+            DB::table('users')->delete();
+
+            //Añadimos una entrada a esta tabla
+            DB::table('users')->insert([
+                'name' => 'user-name',
+                'email' => 'name@alu.com'
+                'password' => 'strongpassword'
+            ]);
+        }
+    }
+    __________________________________________________________________________________

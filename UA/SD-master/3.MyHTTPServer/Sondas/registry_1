@@ -1,0 +1,6 @@
+#!/bin/bash 
+
+unset CLASSPATH
+
+echo "Realizo el registro del objeto remoto..."
+rmiregistry -J-Djava.security.policy=registrar.policy

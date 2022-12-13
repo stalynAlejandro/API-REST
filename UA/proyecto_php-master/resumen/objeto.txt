@@ -1,0 +1,144 @@
+ELOQUENT ORM.
+
+    ORM -> Object Relational Mapping. Es una técnica de progrmación para convertir
+    datos entre lenguaje orientado a objetos y una bd relacional como motor de persistencia.
+
+    Laravel incluye su propio sistema de ORM llamado ELOQUENT.
+
+    ELOQUENT proporciona una manera elegante y fácil de interactuar con la bd con PHP. 
+    Patrón de acceso a datos ActiveRecord -> Los objetos son los encargados de acceder a su 
+    tabla correspondiente en la bd. 
+
+    Cada tabla en la bd debe tener su correspondiente modelo en la carpeta 'app/'.
+
+Crear un nuevo modelo de datos     
+        
+        $php artisan make:model Product
+        
+    Este comando creará el fichero 'Product.php' en la carpeta 'app/' 
+    Si añadimos '-m' creará también el archivo de migraciones.
+
+        $php artisan make:model Product -m 
+
+    _________________________________________________________________________________
+    <?php
+        namespace App;
+        use Illuminate\Database\Eloquent\Model;
+
+        class Product extends Mode{ //Heredamos de Model
+
+        }
+    _________________________________________________________________________________
+
+    Solamente con este código y sin escribir nada más podemos utilizarlo para realizar
+    todo tipo de queries sobre la tabla products.
+
+    Eloquent enlaza el modelo con la tabla a partir del nombre de la clase, transformándolo 
+    al plural en minúsuclas. 
+
+        User -> users  //plural en inglés.
+
+        Para cambiar el nombre usamos la propiedad $table del modelo.
+
+    Asume que la tabla tendrá una clave primaria llamada 'id'.
+
+        Para cambiar el nombre usamos la propiedad $primaryKey
+
+    Además actualiz automáticamente los timestamps de la tabla 
+
+        updated_at   y   created_at
+
+        Para desactivarlo usamos la pripiedad $timestamps
+
+    _________________________________________________________________________________ 
+    class User extends Model{
+        protected $table = 'my_users';
+        protected $primaryKey = 'my_id';
+        public $timestamps = false;
+
+    }
+    _________________________________________________________________________________
+
+    Mas info     https://laravel.com/docs/6.x/eloquent
+
+
+Consultas. 
+
+    _________________________________________________________________________________
+    use App\Product;
+
+        $products = Product:all()    //Select * from products. 
+
+        foreach($products as $product){
+            var_dump($product->name);
+        }
+    
+        $product = Product::find(1) //Buscar un elemento por su identificador. por defecto id.
+        var_dump($product->name);
+    
+        //Que se enlace una excepción cuando no se encuentre un modelo.
+        //Esto nos permite capturar las excepciones y mostrar un error 404 cuando sucedan.
+        $model = Product::findOrFail(1);
+        $model = Product::where('price', '>', 100)->firstOrFail();
+    _________________________________________________________________________________
+
+    _________________________________________________________________________________
+    //Consulta ejemplo.
+    $products = Product::where('price', '>', 100.0)->take(10)->get();
+
+    foreach($products as $product){
+        var_dump($product->name);
+    }
+
+    $product = Product::where('price', '>', 100.0)->first();
+
+    $count = Product::where('price', '>', 100.0)->count();
+    $price = Product::max('price');
+    $price = Product::min('price');
+    $price = Product::avg('price');
+    $total = Product::sum('price');
+    _________________________________________________________________________________
+
+Insertar datos. 
+
+    Añadir una entrada en la tabla de bd asociada a un modelo. 
+    _________________________________________________________________________________
+
+        $product = new Product();
+        $product->name = 'WD 3TB';
+        $product->save();
+        // Dentro de un seeder podemos usar la sintaxis abreviada
+        $product = new Product(['name' => 'WD 3TB']);
+        $product->save();
+
+        //Para obtener el identificador asignado en la bd de datos.
+        $insertedId = $products->id;
+    _________________________________________________________________________________
+
+Actualizar datos.
+    Tendremos que recuperar la instancia, modificarla y guardarla. 
+    _________________________________________________________________________________
+
+    $product = Product::find(1);
+    $produt->price = 157;
+    $product->save();
+
+    $product->delete();
+
+    $affectedRows = Product::where('price', '>', 100)->delete();
+    _________________________________________________________________________________
+
+Relaciones
+    _________________________________________________________________________________
+
+    Las relaciones se definen como métodos dentro de las clases. 
+    Los métodos devuelven los objetos relacionados en el otro extremo. 
+
+        $user->posts()->where('active', 1)->get();
+    _________________________________________________________________________________
+
+    Para que las relaciones funcionen tiene que existir las claves ajenas 
+    correspondientes en la bd. 
+    Formato de claves ajenas -> <modelo>_id   ej.  category_id
+
+    

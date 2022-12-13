@@ -1,0 +1,172 @@
+LARAVEL: ACCESO A DATOS.
+
+Configuración de un proyecto.
+    
+    Laravel obtiene la mayor parte de su configuración de variables de entorno.
+    
+    La carpeta config/ tiene los scripts que cargan la configuración en memoria, 
+    cuando se inicia la aplicación, proporcionando un valor por defecto.
+
+        'debug' => env('APP_DEBUG', false);
+
+    Para facilitar la configuración se pueden definir las variables de entorno 
+    en el archivo .env en la carpeta raiz.
+
+        APP_DEBUG = true 
+
+Configuración de la base de datos. 
+
+    Laravel permite utilizar: mysql, postgreSql, Sqlite, Sqlserver
+
+    La configuración de acceso da BD está en el fichero 'config/database.php'
+
+    Para mayor comodidad, laravel permite especificar estos valores en el 
+    fichero .env 
+
+        DB_CONNECTION = mysql
+        DB_HOST = 127.0.0.1
+        DB_PORT = 3306
+        DB_DATABASE = dss
+        DB_USERNAME = dss
+        DB_PASSWORD = dss
+
+    Modifica el fichero 'phpunit.xml' en la raíz del proyecto para que las 
+    pruebas automatizadas puedan acceder a la base de datos. 
+
+        <serve name = "DB_CONNECTION" value = "mysql"/>
+        <serve name = "DB_DATABASE" value = "dss"/>
+
+    *nota = se puede usar otra base de datos para evitar que los tests modifiquen
+    la base de datos en desarrollo.
+
+
+
+Inicialización de la base de datos.
+
+    $php artisan migrate:install
+
+    Esto creará la tabla de migraciones en la bd, lo que podemos comprobar
+    usando phpmyadmin 
+
+            http://localhost/phpmyadmin
+
+
+Migraciones
+
+    Es un sistema de control de versiones para la estrucura de BD.
+    Guardan el historial de cambios y estado actual.
+    
+    Son archivos php guardados en la carpeta 
+
+            database/migrations
+        
+    Para cada tabla o cambio que queramos hacer en la BD creamos una migración
+    de esta forma se irá guardando un histórico. 
+
+    Además podemos deshacer los cambios - ROLLBACK
+
+
+Crear Migraciones
+
+    Para una nueva tabla 'productos'
+
+        $php artisan make:migration create_products_table --create=productos
+
+    Esto creará el fichero 
+
+        database/migrations/<TIMESTAMP>_create_products_table.php
+
+    Para crear una migración que modifica una tabla ya existente
+
+        $php artisan make:migration add_price_to_products_table --table=productos
+
+    
+    Los comandos anteriores crean un archivo de migración con una estructura preparada
+    para trabjar con la tabla indicada. 
+
+    ____________________________________________________________________________________
+    class CreateProductsTable extends Migration{
+
+        //Lanza una migración
+        public function up(){
+            Schema::create('products', function(Blueprint $false)){
+                //Define la estructura de la tabla con Schema Builder
+            };
+        }
+
+        //Deshace la migración
+        public funtion down(){
+            Schema::dropIfExists('products');   //Elimina la tabla.
+        }
+
+    }
+    ___________________________________________________________________________________
+
+
+
+
+Lanzar y deshacer migraciones.
+
+    Ejecutar las últimas migraciones            $php artisan migrate
+
+    Deshacer la última migración                $php artisan migrate:rollback
+
+    Deshacer todas las migraciones              $php artisan migrate:reset
+
+    Deshacer y volver a lanzar las migraciones  $php artisan migrate:fresh
+
+    Comprobar el estado actual                  $php artisan migrate:status
+
+
+
+Orden de las migraciones
+
+    Es importante no modificar migraciones anteriores para modificar la estructura
+    de un tabla, de lo contrario pude haber errores al hacer un rollback de la bd.
+
+    Si se quiere añadir una clave ajena a otra tabla que se ha creado posteriormente, 
+    se debe crear una nueva migración que modifique la tabla para añadir la clave ajena. 
+
+    ____________________________________________________________________________________
+    public function up(){
+        Schema::table('products', function(Blueprint $table)){
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreing('category_id')->references('id')->on('categories');
+        };
+    }
+    ____________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

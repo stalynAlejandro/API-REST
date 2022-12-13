@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>STALYN ALEJANDRO ALCOCER VALENCIA</title>
+	</head>
+	<body>
+		<div style="margin:auto; margin-top:100px; width:700px; border:8px dotted orange;border-style: outset;  text-align:center; font-family: Arial Black;font-style: normal; color:darkslategray;">
+		<hi>- CONTROL PARKING -</hi>
+		
+		<form action="/controlSD" method="GET" ><BR> 
+			N. Sensor: 
+			<input type="text" id="nombre" name="sensor" value=""> 
+				<input type="submit" value="Volumen" name="volumen">
+ 				<input type="submit" value="Fecha" name="fecha">
+ 				<input type="submit" value="Led" name="led">
+ 			&nbsp&nbsp
+ 			<br>
+ 			 <input type="submit" id="all" value="Info" name="all">
+ 			<br>
+ 			<label id="respuesta" for="respuesta">...</label>
+ 			<br>
+ 			<br>
+ 			<br>
+		</from>
+		
+		<form action="/controlSD" method="SET" ><BR> 
+			N. Sensor: 
+			<input type="text" id="nombre" name="sensor" value=""> 
+			<input type="text" id="nombre" name="set" value="">
+ 				<input type="submit" value="Led">
+ 			&nbsp&nbsp
+ 			<br>
+ 			<br>
+		</from>
+	</body>
+</html>

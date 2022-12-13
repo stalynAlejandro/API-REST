@@ -1,0 +1,100 @@
+Relación 1-1
+    _________________________________________________________________
+
+    class User extends Model {
+        public function phone() {
+        return $this->hasOne('App\Phone');
+        }
+    }
+        class Phone extends Model {
+        public function user() {
+        // Phone tiene la clave ajena 'user_id'
+        return $this->belongsTo('App\User');
+        }
+    }
+    _________________________________________________________________
+
+        $user = new User(['name' => 'username1']);
+        $user->save();
+        $phone = new Phone(['number' => '987654321']);
+        $user->phone()->save($phone);
+
+        // las dos versiones son equivalentes
+        $user = new User(['name' => 'username2']);
+        $user->save();
+        $phone = new Phone(['number' => '123456789']);
+        $phone->user()->associate($user);
+        $phone->save();
+    _________________________________________________________________
+
+Relaciones 1-*
+    _________________________________________________________________
+
+        class Category extends Model {
+            public function products() {
+                return $this->hasMany('App\Product);
+            }
+        }
+        class Product extends Model {
+            public function category() {
+            // Product tiene la clave ajena 'category_id'
+                return $this->belongsTo('App\Category);
+            }
+        }
+    _________________________________________________________________
+
+        $category = new Category(['name' => 'Processors']);
+        $category->save();
+        $category->products()->saveMany([
+            new Product(['name' => 'Intel i5']),
+            new Product(['name' => 'Intel i7'])
+        ]);
+        $product = new Product(['name' => 'Intel i3']);
+        $product->category()->associate($category);
+        $product->save();
+    _________________________________________________________________
+
+Relaciones *-*
+
+    Es necesaria una tabla intermedia en la base de datos con el nombre.
+    <tabla1>_<tabla2>
+    La tabla intermedia debe contener las claves ajenas a las otras dos 
+    tablas. 
+    _________________________________________________________________
+    
+        class User extends Model {
+            public function roles() {
+                return $this->belongsToMany('App\Role');
+            }
+        }
+        class Role extends Model {
+            public function users() {
+                return $this->belongsToMany('App\User');
+            }
+        }
+    _________________________________________________________________
+      
+        $user = new User(['name' => 'root']);
+        $user->save();
+       
+        $role = new Role(['name' => 'administrator']);
+        $role->save();
+        $user->role()->attach($role->id);
+        // O la instrucción equivalente
+        $role->user()->attach($user->id);
+    _________________________________________________________________
+
+        User::find(1)->phone->number
+        Phone::find(1)->user->name
+    
+    _________________________________________________________________
+    
+    Cuando en el otro extremo de la relación hay múltiples objetos.
+
+    $products = Category::find(1)->products;
+        foreach ($products as $product) {
+            echo $product->name;
+    }
+
+    //$Encadenar consultas llamando al método de la realicón con paréntesis
+    $roles = User::find(1)->roles()->orderBy('name')->get();

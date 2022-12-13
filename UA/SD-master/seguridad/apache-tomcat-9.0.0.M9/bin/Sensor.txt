@@ -1,0 +1,4 @@
+Nombre=Sensor localhost:8080
+Volumen=10
+UltimaFecha=11/12/20
+Led=1

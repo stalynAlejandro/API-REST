@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="2.GuiadaRMI/Cвdigo rmi/cliente/|3.MyHTTPServer/Controller/|1.Sockets/src/|controlParking/src/|2.GuiadaRMI/Cвdigo rmi/servidor/|3.MyHTTPServer/Sondas/" kind="src" path=""/>
+	<classpathentry kind="src" path="1.Sockets/src"/>
+	<classpathentry kind="src" path="2.GuiadaRMI/Cвdigo rmi/cliente"/>
+	<classpathentry kind="src" path="2.GuiadaRMI/Cвdigo rmi/servidor"/>
+	<classpathentry kind="src" path="3.MyHTTPServer/Controller"/>
+	<classpathentry kind="src" path="3.MyHTTPServer/Sondas"/>
+	<classpathentry kind="src" path="controlParking/src"/>
+	<classpathentry kind="output" path="1.Sockets/bin"/>
+</classpath>

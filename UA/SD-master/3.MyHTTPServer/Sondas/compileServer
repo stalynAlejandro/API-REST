@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo Compilando el Servidor...
+echo .......................................................
+echo
+echo	1.Configurando variable de entorno PATH.
+export PATH=$PATH:/home/saav1/opt/java/jdk/bin/javac
+echo .......................................................
+echo 
+echo	2.Compilando InterfazSensores.java
+javac InterfazSensores.java
+echo .......................................................
+echo
+echo	3.Configurando variable de entorno CLASSPATH.
+export CLASSPATH=$CLASSPATH:/home/saav1/Escritorio/SD/3.MyHTTPServer/Sondas
+echo .......................................................
+echo
+echo	4.Compilando Sensor.java
+javac Sensor.java
+echo .......................................................
+echo
+echo	5.Generando Stub del Objeto Remoto - Sensor.
+rmic Sensor
+echo .......................................................
+echo
+echo	6.Creando cliente.jar
+jar cvf cliente.jar InterfazSensores.class Sensor_Stub.class 
+echo .......................................................
+echo
+echo	7.Compilar Registro.java
+javac Registro.java
+echo .......................................................
+echo
+	

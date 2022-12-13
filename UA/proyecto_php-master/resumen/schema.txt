@@ -1,0 +1,119 @@
+SCHEMA BUILDER.
+
+Crear tablas.
+
+    Schema se utiliza de forma conjunta con las migraciones.
+    Permite crear las tablas en el método 'up' de la migración, por ejemplo: 
+    ____________________________________________________________________________________
+    public funtion up(){
+        Schema::create('users', function(Blueprint $table)){
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        };
+    }
+    ____________________________________________________________________________________
+
+
+Eliminar tablas.
+
+    Para eliminar la tabla 'users' en el método 'down'
+    ____________________________________________________________________________________
+    //Deshace la migración
+    public funtion down(){
+        Schema::dropIfExists('users');
+    }
+    ____________________________________________________________________________________
+
+
+Modificar tablas.
+
+    Con las migraciones también se puede modificar la estructura de una tabla existente.
+    ____________________________________________________________________________________
+    public funtion up(){
+        Schema::table('users', function(Blueprint $table)){
+            $table->string('address');
+        };
+    }
+
+
+    public funtion down(){
+        Schema::table('users', function(Blueprint $table)){
+            $table->dropColumn('address');
+        };
+    }
+    ____________________________________________________________________________________
+
+
+Equivalencias.
+
+    $table->bigIncrements('id');        Autoincremental unsigned bigint (cp)
+
+    $table->unsignedBigInteger('v');    Unsigned bigint (caj)
+
+    $table->boolean('v');               boolean
+
+    $table->date('v');                  date
+
+    $table->dateTime('v', 0);           Datetime con precisión opcional. Decimales.
+
+    $table->double('v', 8, 2);          Double con precisión
+
+    ...
+
+    ->nullable($v=true);                Permite o no valores NULL. 
+                                        Las columnas que no tengan esta variable son obligatorias por defecto.
+
+    ->default($v);                      Especifica un valor por defecto para la columna.
+
+
+
+Tipos de datos.
+
+    Schema builder se encarga de adaptar los tipos de datos al motor de la bd que se está utilizando.
+
+    https://laravel.com/docs/6.x/migrations#creating-columns
+
+Indices
+
+    $table->primary('id');      Añadir una clave primaria.
+
+    $table->primary(['first', 'last']);  Primaria compuesta.
+
+    $table->unique('email');    Definir como unique.
+
+    $table->index('state')      Añadir un indice a una columna.
+
+
+    Añadirlos a la vez que se crea el campo. 
+
+    $table->string('email')->unique();
+
+
+    Al usar  $table->bigIncrements('id')  ya se crea una CLAVE PRIMARIA del tipo 
+    unsigned big integer auto-incremental.
+
+Para crear una clave ajena
+
+    $table->foreign('user_id')->references('id')->on('users'); //->onDelete('cascade') //->onUpdate('cascade');
+
+Para eliminar una clave ajena en el método 'down'
+
+    $table->dropForeign('post_user_id_foreign');
+
+
+
+
+
+
+
+
+
+
+
+
+

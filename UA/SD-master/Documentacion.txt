@@ -1,0 +1,276 @@
+PRÁTCIA 2. 
+
+Componentes:
+	MyHTTPServer: Acceso al sistema de información utilizando un simple navegador web. Podrá
+	acceder al sistema y ver la información de cualquier sensor. 
+	Implementa una versión reducida del protocolo HTTP estándar.
+
+		-Debe ser capaz de antender peticiones de forma concurrente. El número de conexiones 
+		simultáneas debe ser parametrizable.
+	
+		-Debe poder escuchar en un puerto configurable. Cuando arranquemos el servidor MyHTTPServer
+		uno de los argumentos que recibirá es el puerto escucha. El servidor abrirá un socket en 
+		ese puerto y esperará peticiones HTTP que provendrán de un navegador web. 
+
+		-El servidor aceptará peticiones HTTP y devolverá respuestas HTTP. Se tiene que implementar
+		un subconjunto del protocolo HTTP peticiones/respuesta, que conformarán un protocolo 
+		MiniHTTP. En caso de que reciba una petición con algún comando no soportado, debe devolver
+		una respuesta del tipo 'comando no soportado'.
+
+		Peticiones de entrada HTTP:
+			-Línea incial. 
+			ejemplo: ' GET /prueba.html HTTP/1.1 '
+
+			-Cabecera: Directivas que indican aracterísticas adicionales de la petición.
+
+			-Cuerpo: Información necesaria en algunos casos para realizar la operación definida en la
+			línea inicial.
+
+		Respuesta de salida MiniHTTP:
+			-Línea de estado:  HTTPVersión + Código Estado + Descr.Estado + SaltoLínea
+			ejemplo: ' HTTP1.1 200 OK '
+			Los códigos de estado pueden ser consultados: www.w3.org/rfc2616/rfc2616-sec6.html#sec6
+			Utilizaremos la versión HTTP1.1. Cuando el servidor reciba durante una petición algún 
+			método no soportado deberá devolver un código de estado '405' 'Method Not Allowed'.
+
+			-Cabecera: Directivas que indican características adicionales de la respuesta y que pueden
+			influir en el tratamiento de dicha respuesta por parte del navegador. Cada directiva de 
+			cabecera estará separada por un salto de línea. Se debe incluir una línea en blanco antes
+			del cuerpo del mensaje para separarlo.
+			Sintaxis: 
+				Directiva: valor
+				Directiva: valor
+				...
+				
+			A continuación se describen las cabeceras que se deben incluir en la respuesta HTTP.
+			Connection: Indica el tipo de conexión..
+			Content-Lenght: Longitud del contenido del cuerpo del mensaje. 
+			Content-Type: Indica el tipo de información enviada en el cuerpo del mensaje. 
+			Server: Incluye información sobre el servidor.
+
+			-Cuerpo: Contenido HTML que será mostrado al cliente a través del navegador.
+			Cuerpo del mensaje: Contendrá el código HTML que será mostrado por el navegador mostrando 
+			información de los sensores o la descripción de la operación realizada por el actuador.
+			MyHTTPServer solo devuelve el contenido de los recursos solicitados, es decir que si se 
+			solicita un .txt se devolverá su contenido, si un .html igual y asi para todo. El servidor
+			no formatea, adapta ni transforma ningún contenido, solo sirve los recursos solicitados 
+			o en caso de que no pueda acceder a ellos simplemente devolverá una página de error.
+
+	
+	Controller: Se encarga de comunicarse con todas las componentes Sonda desplegados y acceder
+	a sus métodos bajo demanda del component MyHTTPServer.
+		
+		La aplicación MyHTTPServer mediante el protocolo HTTP estándar únicamente permite el acceso a 
+		recurso estáticos a través de la red. Para acceder a recursos dinámicos, que pueden ser ejecutables,
+		en el lado del servidor es necesaria la introducción de algún elemento que extienda y haga posible
+		la invocación de aplicaciones ejecutables. En nuestro caso lo haremos a través de un elemento controlador
+		denominado controller.
+		
+		La función del controlador es dar acceso a los diferentes módulos funcionales que nos ofrecen los 
+		dispositivos sensores (sensores y acutadores) y que son encapsulados a través de componentes de negocio
+		distribuidos haciendo uso de RMI. 
+
+		El servidor MyHTTPServer detectará el acceso a un recurso dinámico cuando la URL tenga el patrón siguiente
+		' http://IPServer:Port/controladorSD/...  '
+
+		Todas las URLs que contengan este patron deberán invocar a un recurso dinámico del controller. Es decir, URLs
+		invocando recursos estáticos como estas: 
+			http://IPServer:Port/index.html
+			http://IPServer:Port/page1.html
+			http://IPserver:Port/error.html
+		devolverán el recurso estático solicitado (index.html, page1.html, error.html)...
+		Mientrás que cualquier url que contenga tras la IP del servidor y el puerto de escucha la palabra 'controladorSD'
+		deberá invocar a controller.
+		
+		Una vez que el servidor Web detecte este patrón, encapsulará los datos de la petición y se los pasará al controlador
+		haciendo uso de sockets. Un ejemplo de encapsulación de datos podrías consistir en la siguiente tabla, ante una 
+		petición con la siguiente url:
+			http://192.168.1.1:3000/controladorSD/volumen?Sonda=1
+		
+		Objeto Request:
+			
+			ResourcePath >> Ruta al recurso a continuación de controlador SD            >> volumen
+			Parameters[] >> Colección de parámetros incluidos en la petición GET        >> sonda = 1
+			Headers[]    >> Colección de directivas de cabecera que soporta el servidor >> ...
+		
+		Esto quiere decir que el servidor web detecta las variables y la sonda a la que quiere acceder y realiza una petición
+		a controlador. El protocolo de comunicación entre servidor y controlador no tiene porque cumplir con ningún estándar 
+		concreto (no es HTTP), pudiendo determinarlo el estudiante.
+
+		A partir de la petición recibida, el controlador debe ser capaz de invocar al componente distribuido JAVA RMI correcto.
+		Para ello deberá realizar una búsqueda en el registro con la información recibida, obtener el stub correspondiente e
+		invocar al componente.
+
+		Posteriormente, el controlador, debe generar el contenido HTML con la información obtenida, este HTML será enviado al 
+		servidor WEB para que se lo presente, éste a su vez lo envía al navegador web del usuario. A continuación se muestran
+		varios ejemplos con la secuencia de acciones que ocurren ante varias peticiones.
+
+
+		EJEMPLO 1. SOLICITUD DE UN RECURSO ESTÁTICO.
+			- El servidor web MyHTTP server recibe la petición 'get/index.html HTTP1.1'
+			- El servidor detecta que el patrón de recurso dinámico (la subcadena 'controladorSD') no está en petición, por
+			tanto es un recurso estático.
+			- El servidor comprueba si en su sistema está el recurso solicitado (Si posee el archivo 'index.html').
+				- En caso de que si existe, accede a su contenido y lo devuelve en una respuesta HTTP al solicitante.
+				- En caso de no existir devuelve una respueta de error. 
+		
+		EJEMPLO 2. SOLICITUD DE UN RECURSO DINÁMICO QUE SI EXISTE. 
+			- El servidor recibe la petición "GET/controladorSD/fecha?sonda=1 HTTP1.1"
+			- El servidor detecta el patrón de recurso dinámico (la subcadena "controladorSD"), por tanto es un recurso
+			dinámico.
+			- El servidor encapsula en un mensaje una petición  para controller indicando que desea obtener la fecha
+			actual del sensor registrado como 1. Se conecta a controlador y le envía la petición, quedando a la espera
+			de respuesta.
+			- El controlador recibe la petición de servidor, detecta los parámetros de la petición e invoca al componente
+			distribuido adecuado Sonda para obtener respuesta (la fecha actual del sensor 1). El controlador recibe la 
+			respuesta de SONDA (por ejemplo 20/09/2016), con este valor compone una página web HTML válida y lo devuelve en 
+			un mensaje de respuesta al servidor MyHTTPServer.
+			- El servidor recibe la respuesta y la envía a su vez al usuario que originalmente realizó la petición.
+
+		EJEMPLO 3. SOLICITUD DE UN RECURSO DINÁMICO QUE NO EXISTE. 
+			- El servidor recibe la petición "get/controladorSD/distancia?sonda=1 HTTP1.1"
+			- El servidor detecta el patrón de recurso dinámico (la subcadena "controladorSD"), por tanto es un recurso 
+			dinámico. 
+			- El controlador recibe la petición de servidor, detecta los parámetros de la petición, detecta que no es uno de
+			los parámetros correctos y devuelve un error del tipo "variable no valida". Este error es una página web HTML válida.
+			- El servidor recibe la respuesta y la envía a su vez al usuario que originalmente realizó la petición.
+
+		CONSIDERACIONES SOBRE EL CONTROLLER.
+			Como puede verse, el controlador es un intermediario entre el servidor web que atiende las peticiones HTTP y 
+			los componentes distribuidos Sonda. Se encarga de recibir una petición del servidor, comprobar que el recurso
+			y acción solicitados son correctos, invocar el método adecuado para obtener un resultado, crear una página web
+			HTML de respuesta y devolverla al servidor. Siempre responde con una página HTML con el contenido de la 
+			respuesta, ya sea un error o sea el resultado de una acción.
+
+			El servidor web MyHTTPServer por su parte NO crea páginas web HTML, solo accede a recursos estáticos (html,jpg
+			gif, doc, ..) o realiza peticiones al controlador. Eso quiere decir que igual que en un servidor web 
+			convencional las páginas de error son páginas HTML estáticas que ya existen y que son devueltas por defecto
+			cuando se produce un error del tipo 'recurso no encontrado'.
+
+			Por otro lado, Sonda, tras acceder a un objeto y obtener el valor de uno de los sensores, se devuelve dicho 
+			valor (nunca una página web HTML u otro documento), siendo el controlador el que al recibir dicha respuesta, 
+			compone una página HTML de respuesta que envía al servidor (el documento que el servidor devolverá al usuario).
+
+			Se deja a criterio del estudiante proporcionar la utilidad de tener una URL del servidor que permita obtener
+			un listado de todas las sondas junto con el acceso a todas las variables, por ejemplo si el usuario introduce
+			la url: ' http://IP:puerto/controladorSD/index ', que esta url produzca como resultado una página HTML con la 
+			lista de todas las sondas registras y el acceso a cada variable. De esta forma, el uso de la aplicación es 
+			mucho mas intuitivo.
+
+			El objeto controlador no realiza tareas en segundo plano, solo consulta a las sondas cuando recibe una petición,
+			no tiene autonomía y solo trabaja bajo demanda.
+
+			Las variables accesibles y un posible valor de url son:
+
+			volumen   >>   Devuelve un valor entre 0 y 100    		>>   http://IP:puerto/controlaIdorSD/volumen?sonda=1
+			fecha     >>   Devuelve una fecha hroa dd/mm/yyyy hh:mm:ss      >>   http://IP:puerto/controladorSD/fecha?sonda=1
+			...	
+
+		
+	Sonda: Componente que implementa una sonda de parking capaz de deveolver un valor de uno 
+	de los sensores o modificar el valor del actualizador utilizando RMI.
+
+		SENSOR.
+			Cada componente distribuido encapsulara la funcionalidad de los sensores y actuadores. El valor de los acutadores
+			(la luz led) debe poder ser además establecido (si se pone a 0 indica apagado). El funcionamiento del sensor de 
+			plaza de aparcamiento será simulado mediante un archivo. Es decir, cada SENSOR que sea puesto en marcha debe 
+			disponer de un archivo de texto llamdo 'sensorX.txt' (X -> número sensor).
+
+				Volumen=30
+				UltimaFecha=20/09/2016 15:30:26
+				Led=4500
+
+			Los valors de VOLUMEN, ULTIMAFECHA, y LED serán incialmente establecidos y podrán cambiarse manualmente en 
+			cualquier momento. Estos son los valores que deberá devolver Sensor cuando sea invocado uno de sus métodos.
+			El valor de LED además de ser devuelto bajo consulta también debe poder ser cambiado bajo petición. Es decir
+			que existirá además de un método get, un metodo set. El valor fecha no será almacenado, se devolverá la fecha
+			del sistema.
+
+			Si se registran 3 sensores >>> a cada uno se le asignará un número 1, 2, 3 >> sensor1.txt, sensor2.txt...
+			Estos archivos pueden haber sido creados manualmente antes de lanzar el sistema o pueden ser creados por defecto
+			al arrancar la aplicación (se recomienda que el objeto SENSOR, al registrarlo compruebe si existe el archivo
+			y en caso negativo lo cree por defecto con unos nuevos valores estableciendo el nombre del archivo según el 
+			nombre con el que ha sido registrado el sensor).
+
+			Nota: estos archivos solo tienen el objetivo de simular que existe un recurso físico que sería consultado o 
+			actuado desde SENSOR.
+
+Funcionamiento general de MyHTTPServer.
+	Será muy similar a la de un Servidor Web convencional. El servidor recibirá una petición solicitando un 
+	recurso (por ejemplo 'index.html').
+		- O bien un recurso estático, con lo que el servidor comprobará si posee este recurso y lo servirá
+		o en caso de no poseerlo devolverá un mensaje de error del tipo 'recurso no encontrado'.
+
+		- Un recurso dinámico, es decir, acceder a uno de los componentes de la gestión de plazas de 
+		aparcamiento para obtener o establecer un valor, con lo que myHttpserver deberá conectarse con 
+		Controller y hacer la petición adecuada, recibir respuesta y esta respuesta transmitirla al usuario.
+		Para el servidor, el estudiante debe crear un recurso por defeco index.html que en caso de no 
+		especificar ningún recurso (es decir, el usuario introduce 'http://IP:puerto') se utilize como 
+		página por defecto. 
+
+Errores.
+	Los errores que debe detectar y manejar adecuadamente el servidor son los siguientes. Debe devolver un mensaje
+	que indique cada uno de ellos junto con su correspondiente código de error HTTP.
+
+		- Recurso no accesible: Se solicita un recurso estático que no existe, error 404.
+		- No hay conexión con controlador: Si no se ha podido establecer una conexió con el controlador, error 409.
+		- Método no permitido: Si se utiliza otro método que no sea GET, error 405. 
+	Cuando la respuesta sea un contenido correcto, el servidor debe devolver el contenido junto con el código 200 para
+	que cualquier navegador pueda interpretar que el contenido ha si encontrado.
+......................................................................................................................................
+......................................................................................................................................
+	INICIAR EL REGISTRO RMI (CONSULTAR LAS PRÁCTICAS Y EJEMPLOS NO GUIADOS DE RMI)
+	REGISTRAR LAS SONDAS SONDA1 y SONDA2
+	INICIAR EL CONTROLADOR INDICANDO PUERTO DE ESCUCHA Y CONEXIÓN AL REGISTRO RMI
+	INICIAR EL SERVIDOR INICANDO PUERTO DE ESCUCHA DEL SERVIDOR Y PUERTO DE CONEXIÓN AL CONTROLADOR.
+.......................................................................................................................................
+.......................................................................................................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

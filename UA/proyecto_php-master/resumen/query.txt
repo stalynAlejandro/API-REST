@@ -1,0 +1,32 @@
+QUERY BUILDER.
+
+    Laravel incluye una serie de clases que nos facilita la construcción de consultas
+    y otro tipo de operaciones con la bd. 
+
+    Ventajas:
+        - Compatible con todos los tipos de bd soportados por Laravel.
+        - Notación más legible.
+        - Previene de ataques por inyección de código sql.
+
+
+Realizar una consulta a la tabla 'users'
+
+    $users = DB:table('users')->get();        //select * from users.
+
+    foreach( $users as $user ){
+        var_dump($user->name);
+    }
+
+
+    $user = DB::table('users')->where('name', 'John')->first();  //Solo recupera el primero.
+    echo $user->name;
+
+
+    $user = DB::table('users')
+                ->orderBy('name', 'desc')
+                ->groupBy('count')
+                ->having('cont', '>', 100)
+                ->get();
+
+Mas info    https://laravel.com/docs/6.x/queries
+

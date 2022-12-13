@@ -1,0 +1,215 @@
+Sensor localhost:8080 dando servicios 2019-12-13T15:49:46.476
+Sensor Sensor localhost:8080 dando servicio GET FECHA a saav1 el 2019-12-13T15:49:46.491
+Sensor localhost:8080 dando servicios 2019-12-13T15:57:04.148
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:08.413
+Sensor Sensor localhost:8080 dando servicio GET FECHA a saav1 el 2019-12-13T16:03:08.456
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:46.736
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:46.749
+Sensor Sensor localhost:8080 dando servicio GET FECHA a saav1 el 2019-12-13T16:03:46.772
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:48.806
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:48.819
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T16:03:48.827
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:50.464
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:50.477
+Sensor Sensor localhost:8080 dando servicio GET VOLUMEN a saav1 el 2019-12-13T16:03:50.486
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:06.953
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:06.971
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:07.092
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:07.110
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:07.128
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:07.148
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:10.438
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:29.912
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:32.442
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:58.468
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:58.482
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:58.538
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:58.558
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:58.572
+Sensor localhost:8080 dando servicios 2019-12-13T16:27:58.589
+Sensor localhost:8080 dando servicios 2019-12-13T16:28:01.375
+Sensor localhost:8080 dando servicios 2019-12-13T16:28:39.315
+Sensor localhost:8080 dando servicios 2019-12-13T16:28:39.328
+Sensor localhost:8080 dando servicios 2019-12-13T16:28:39.354
+Sensor localhost:8080 dando servicios 2019-12-13T16:28:39.378
+Sensor localhost:8080 dando servicios 2019-12-13T16:28:39.396
+Sensor localhost:8080 dando servicios 2019-12-13T16:28:39.414
+Sensor localhost:8080 dando servicios 2019-12-13T16:28:42.139
+Sensor localhost:8080 dando servicios 2019-12-13T16:35:22.694
+Sensor localhost:8080 dando servicios 2019-12-13T16:35:22.710
+Sensor localhost:8080 dando servicios 2019-12-13T16:35:22.754
+Sensor localhost:8080 dando servicios 2019-12-13T16:35:22.801
+Sensor localhost:8080 dando servicios 2019-12-13T16:35:22.818
+Sensor localhost:8080 dando servicios 2019-12-13T16:35:22.834
+Sensor localhost:8080 dando servicios 2019-12-13T16:35:28.295
+Sensor localhost:8080 dando servicios 2019-12-13T16:37:17.701
+Sensor localhost:8080 dando servicios 2019-12-13T16:37:17.717
+Sensor localhost:8080 dando servicios 2019-12-13T16:37:17.756
+Sensor localhost:8080 dando servicios 2019-12-13T16:37:17.789
+Sensor localhost:8080 dando servicios 2019-12-13T16:37:17.805
+Sensor localhost:8080 dando servicios 2019-12-13T16:37:17.820
+Sensor localhost:8080 dando servicios 2019-12-13T16:37:20.315
+Sensor localhost:8080 dando servicios 2019-12-13T16:38:41.741
+Sensor localhost:8080 dando servicios 2019-12-13T16:38:41.756
+Sensor localhost:8080 dando servicios 2019-12-13T16:38:41.803
+Sensor localhost:8080 dando servicios 2019-12-13T16:38:41.826
+Sensor localhost:8080 dando servicios 2019-12-13T16:38:41.844
+Sensor localhost:8080 dando servicios 2019-12-13T16:38:41.859
+Sensor localhost:8080 dando servicios 2019-12-13T16:38:44.197
+Sensor localhost:8080 dando servicios 2019-12-13T16:39:06.808
+Sensor localhost:8080 dando servicios 2019-12-13T16:49:58.722
+Sensor localhost:8080 dando servicios 2019-12-13T16:49:58.737
+Sensor localhost:8080 dando servicios 2019-12-13T16:49:58.771
+Sensor localhost:8080 dando servicios 2019-12-13T16:49:58.795
+Sensor localhost:8080 dando servicios 2019-12-13T16:49:58.812
+Sensor localhost:8080 dando servicios 2019-12-13T16:49:58.827
+Sensor localhost:8080 dando servicios 2019-12-13T16:50:00.947
+Sensor localhost:8080 dando servicios 2019-12-13T16:50:54.102
+Sensor localhost:8080 dando servicios 2019-12-13T16:50:54.116
+Sensor localhost:8080 dando servicios 2019-12-13T16:50:54.158
+Sensor localhost:8080 dando servicios 2019-12-13T16:50:54.191
+Sensor localhost:8080 dando servicios 2019-12-13T16:50:54.207
+Sensor localhost:8080 dando servicios 2019-12-13T16:50:54.221
+Sensor localhost:8080 dando servicios 2019-12-13T16:50:56.492
+Sensor localhost:8080 dando servicios 2019-12-13T16:54:47.374
+Sensor localhost:8080 dando servicios 2019-12-13T16:54:47.388
+Sensor localhost:8080 dando servicios 2019-12-13T16:54:47.420
+Sensor localhost:8080 dando servicios 2019-12-13T16:54:47.442
+Sensor localhost:8080 dando servicios 2019-12-13T16:54:47.459
+Sensor localhost:8080 dando servicios 2019-12-13T16:54:47.474
+Sensor localhost:8080 dando servicios 2019-12-13T16:54:49.311
+Sensor localhost:8080 dando servicios 2019-12-13T16:54:52.820
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:23.051
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:23.068
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:23.107
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:23.133
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:23.149
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:23.165
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:25.567
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:30.935
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:31.976
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:32.793
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:35.479
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:36.534
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:39.071
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:39.839
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:40.551
+Sensor localhost:8080 dando servicios 2019-12-13T16:55:42.535
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:06.637
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:06.653
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:06.679
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:06.703
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:06.720
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:06.734
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:08.855
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:12.016
+Sensor localhost:8080 dando servicios 2019-12-13T16:56:14.632
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:14.900
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:14.953
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:14.998
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:15.016
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:15.040
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:15.057
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:17.916
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:17.934
+Sensor Sensor localhost:8080 dando servicio GET VOLUMEN a saav1 el 2019-12-13T17:21:17.965
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:24.955
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:24.969
+Sensor Sensor localhost:8080 dando servicio GET FECHA a saav1 el 2019-12-13T17:21:25.027
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:31.651
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:31.665
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:21:31.708
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:43.995
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:44.011
+Sensor Sensor localhost:8080 dando servicio SET LED a saav1 el 2019-12-13T17:21:44.041
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:44.109
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:44.127
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:44.142
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:44.931
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:44.945
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:21:44.954
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:47.954
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:47.968
+Sensor Sensor localhost:8080 dando servicio SET LED a saav1 el 2019-12-13T17:21:48.009
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:48.053
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:48.069
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:48.087
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:48.939
+Sensor localhost:8080 dando servicios 2019-12-13T17:21:48.952
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:21:48.962
+Sensor localhost:8080 dando servicios 2019-12-13T17:22:11.550
+Sensor localhost:8080 dando servicios 2019-12-13T17:22:11.565
+Sensor localhost:8080 dando servicios 2019-12-13T17:22:11.599
+Sensor localhost:8080 dando servicios 2019-12-13T17:22:16.321
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:41.427
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:41.442
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:41.485
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:41.521
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:41.538
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:41.554
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:44.580
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:44.598
+Sensor Sensor localhost:8080 dando servicio GET VOLUMEN a saav1 el 2019-12-13T17:23:44.623
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:52.532
+Sensor localhost:8080 dando servicios 2019-12-13T17:23:52.546
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:23:52.581
+Sensor localhost:8080 dando servicios 2019-12-13T17:27:53.678
+Sensor localhost:8080 dando servicios 2019-12-13T17:27:53.743
+Sensor localhost:8080 dando servicios 2019-12-13T17:27:53.811
+Sensor localhost:8080 dando servicios 2019-12-13T17:27:53.864
+Sensor localhost:8080 dando servicios 2019-12-13T17:27:53.931
+Sensor localhost:8080 dando servicios 2019-12-13T17:27:53.947
+Sensor localhost:8080 dando servicios 2019-12-13T17:27:56.805
+Sensor localhost:8080 dando servicios 2019-12-13T17:27:56.822
+Sensor Sensor localhost:8080 dando servicio GET VOLUMEN a saav1 el 2019-12-13T17:27:56.864
+Sensor localhost:8080 dando servicios 2019-12-13T17:31:06.406
+Sensor localhost:8080 dando servicios 2019-12-13T17:31:06.464
+Sensor localhost:8080 dando servicios 2019-12-13T17:31:06.486
+Sensor localhost:8080 dando servicios 2019-12-13T17:31:06.515
+Sensor localhost:8080 dando servicios 2019-12-13T17:31:06.580
+Sensor localhost:8080 dando servicios 2019-12-13T17:31:06.596
+Sensor localhost:8080 dando servicios 2019-12-13T17:31:13.166
+Sensor localhost:8080 dando servicios 2019-12-13T17:31:13.184
+Sensor Sensor localhost:8080 dando servicio GET VOLUMEN a saav1 el 2019-12-13T17:31:13.227
+Sensor localhost:8080 dando servicios 2019-12-13T17:32:09.533
+Sensor localhost:8080 dando servicios 2019-12-13T17:32:09.549
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:32:09.581
+Sensor localhost:8080 dando servicios 2019-12-13T17:32:41.577
+Sensor localhost:8080 dando servicios 2019-12-13T17:32:41.593
+Sensor Sensor localhost:8080 dando servicio GET FECHA a saav1 el 2019-12-13T17:32:41.621
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:31.586
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:31.603
+Sensor Sensor localhost:8080 dando servicio SET LED a saav1 el 2019-12-13T17:33:31.631
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:31.687
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:31.708
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:31.727
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:32.677
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:32.691
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:33:32.701
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:34.863
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:34.879
+Sensor Sensor localhost:8080 dando servicio SET LED a saav1 el 2019-12-13T17:33:34.897
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:34.931
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:34.948
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:34.962
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:35.734
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:35.748
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:33:35.758
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:37.951
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:37.965
+Sensor Sensor localhost:8080 dando servicio SET LED a saav1 el 2019-12-13T17:33:37.989
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:38.022
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:38.040
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:38.056
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:38.408
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:38.421
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:33:38.432
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:40.511
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:40.525
+Sensor Sensor localhost:8080 dando servicio SET LED a saav1 el 2019-12-13T17:33:40.535
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:40.549
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:40.564
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:40.577
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:41.054
+Sensor localhost:8080 dando servicios 2019-12-13T17:33:41.067
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T17:33:41.077

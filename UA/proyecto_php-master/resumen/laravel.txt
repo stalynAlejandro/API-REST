@@ -1,0 +1,107 @@
+INTRO LARAVEL.
+
+Modelo - Vista - Controlador.
+
+    Modelo: Representación de la información. Gestiona acceso a datos. 
+    Controlador: Recibe peticiones del usuario.
+    Vista: Representa datos de forma visual.
+
+Creación de un proyecto.
+
+    $ composer create-project laravel/laravel=6.8.* miproyecto --prefer-dist
+
+Ejecución de un proyecto.
+
+    $ php artisan serve    //server started at http://127.0.0.1:8000
+
+Estructura del proyecto.
+
+    app/                -> código de la aplicación. Controladores, filtros y modelo de datos.
+        user.php            -> se incluye por defecto.
+    config/             -> configuración de la aplicación
+    database/           -> configuración de la base de datos
+    public/             -> carpeta pública del sitio (+ assets)
+    resources/          -> recursos de la aplicación
+        lang/               -> traducciones 
+        views/              -> vistas
+    routes/             -> rutas de la aplicación
+    storage/            -> caché y archivos temporales
+    tests/              -> pruebas
+    vendor/             -> librerías y dependencias del framework
+    .env                -> CONFIGURACIÓN DEL ENTORNO
+    artisan/            -> CLI de laravel
+    composer.json       -> CONFIGURACIÓN DEL COMPOSER
+
+
+Artisan.
+
+    Es el interfaz de línea de comandos de laravel.
+
+    $php artisan 
+    $php artisan list  //Ver lista de todas las opciones de artisan.
+    $php artisan help <opción>
+
+Tinker.
+
+    Para probar código sin tener que ejecutar el servidor web. Interactua con el 
+    código desde la línea de comandos. Si modificas el código de tus archivos 
+    tendrás que salir Tinker y volver a entrar para que admita las modificaciones.
+
+    $php artisan tinker
+
+
+Pruebas automatizadas.
+
+    Pruebas automatizadas con PHPUnit 
+
+        https://laravel.com/docs/6.x/testing
+
+    Los scripts con las pruebas se organizan en dos carpetas dentro de la carpeta
+
+        test/
+            Unit/           -> pruebas unitarias (métodos)
+            Feature/        -> interacciones entre objetos
+
+    
+    $php artisan make:test UserTest         //Crea un test en la carpeta Feature.
+    $php artisan make:test UserTest --unit  //Crea un test en la carpeta Unit.    
+
+    Las pruebas se basan el uso de aserciones.
+
+        https://phpunit.de/manual/current/en/appendixes.assertions.html
+
+    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        class MathTest extends TestCase{
+            public funtion testExample(){
+                $this->assertEquals(Math:sum(2, 2) 4);
+            }
+        }
+    ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Las pruebas para la clase "MiClase" van el la clase "MiClaseTest".
+    Las clases de pruebas extienden la clase "Test/TestCase"
+
+Ejecución de pruebas.
+
+    $php vendor/bin/phpunit
+
+
+Logging
+
+    Laravel integra la librería Monolg para la gestión de archivos de registro (logs)
+    Usando Monolog puedes imprimir mensajes desde el código que se almacenarán en el 
+    archivo de resgistro
+
+        storage/logs/laravel.log
+
+    Los mensajes tiene niveles: debug, info, notice, warning, erro, critical ...
+    Solo se guardan lo que sean de importancia mayor o igual a la establecida
+
+        config/logging.php
+
+    Para usar Monolog
+
+        use Illuminate\Support\Facades\Log;
+
+        Log::debug("Debug message");
+        Log::warning("This is a warning");

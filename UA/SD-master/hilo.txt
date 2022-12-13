@@ -1,0 +1,222 @@
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.rmi.AccessException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class Hilo extends Thread {
+	private Socket skCliente;
+	String iprmi = "";
+	String puertormi = "";
+
+	public Hilo(Socket skCliente, String iprmi, String puertormi) {
+		//System.out.println("Entra"+iprmi+puertormi);
+		this.skCliente = skCliente;
+		this.iprmi = iprmi;
+		this.puertormi = puertormi;
+	}
+
+	/*
+	 * Lee socket
+	 */
+	public String leeSocket(Socket p_sk, String p_Datos) {
+		try {
+			InputStream aux = p_sk.getInputStream();
+			BufferedReader flujo = new BufferedReader(new InputStreamReader(aux));
+			p_Datos = flujo.readLine();
+		} catch (Exception e) {
+			System.out.println("Error al leer Socket: " + e.toString());
+		}
+		return p_Datos;
+	}
+
+	/*
+	 * Escribe socket
+	 */
+	public void escribeSocket(Socket p_sk, String p_Datos) {
+		try {
+			OutputStream aux = p_sk.getOutputStream();
+			PrintWriter flujo = new PrintWriter(new OutputStreamWriter(aux));
+			flujo.println(p_Datos);
+			flujo.flush();
+		} catch (Exception e) {
+			System.out.println("Error al escribir Socket: " + e.toString());
+		}
+		return;
+	}
+	/**
+	*Muestro una o varias estaciones
+	*
+	*/
+	public String getAllEstaciones(Registry registro, String id, String[] listaEstaciones) {
+		String datos = "";
+		InterfazRemoto estacion = null;
+		for (int j = 0; j < 5; j++) {
+			datos = datos + "<tr>";
+
+			if (j == 0) {
+				datos = datos + "<td></td>";
+			} else if (j == 1) {
+				datos = datos + "<td><b> Temperatura: </b></td>";
+			} else if (j == 2) {
+				datos = datos + "<td><b> Humedad: </b></td>";
+			} else if (j == 3) {
+				datos = datos + "<td><b> Luminosidad: </b></td>";
+			}else if (j == 4) {
+				datos = datos + "<td><b> Pantalla: </b></td>";
+			}
+			for (int i = 1; i < listaEstaciones.length; i++) {
+				try {
+					estacion = (InterfazRemoto) registro.lookup(listaEstaciones[i]);//devuelvo la referencia
+					if (id.equals("")) {//mostrarTodas
+						if (j == 0) {
+							datos = datos + " <td><b>Estacion: " + estacion.getId() + "</b></td>";
+						} else if (j == 1) {
+							datos = datos + "<td>" + estacion.getTemperatura() + "</td>";
+						} else if (j == 2) {
+							datos = datos + "<td>" + estacion.getHumedad() + "</td>";
+						} else if (j == 3) {
+							datos = datos + "<td>" + estacion.getLuminosidad() + "</td>";
+						}else if (j == 4) {
+							datos = datos + "<td>" + estacion.getPantalla() + "</td>";
+						}
+					}else if (estacion.getId() == Integer.parseInt(id)) {//mostrar una
+						if (j == 0) {
+							datos = datos + " <td><b>Estacion: " + estacion.getId() + "</b></td>";
+						} else if (j == 1) {
+							datos = datos + "<td>" + estacion.getTemperatura() + "</td>";
+						} else if (j == 2) {
+							datos = datos + "<td>" + estacion.getHumedad() + "</td>";
+						} else if (j == 3) {
+							datos = datos + "<td>" + estacion.getLuminosidad() + "</td>";
+						}else if (j == 4) {
+							datos = datos + "<td>" + estacion.getPantalla() + "</td>";
+						}
+					}
+					
+				} catch (AccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NotBoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			datos = datos + "</tr>";
+		}
+
+		datos = "<!DOCTYPE html><head></head><body><table>" + datos + "</table></body></html>";
+		return datos;
+	}
+
+	public void run() {
+		String Cadena = "";
+		String datos = "";
+		String contenidoFinal = "";
+		Cadena = this.leeSocket(skCliente, Cadena);
+		try {
+			Registry registro = LocateRegistry.getRegistry(iprmi, Integer.parseInt(puertormi));//devuelvo referencia al objeto remoto registry
+			String[] cad = Cadena.split("/");
+			datos = "HTTP/1.1 200 OK ";
+			String contenido2 = "Content-Type: text/html";
+			if (Cadena.contains("index") || cad.length == 2) {// listar todos los rmi
+				contenidoFinal =getAllEstaciones(registro, "", registro.list());
+				
+			} else {
+				String cadenaFinal = Cadena.substring(15, Cadena.length());
+				String[] parts = cadenaFinal.split("\\?");
+		        String peticion = parts[0];
+		        String esttacion = parts[1];
+
+		        String[] parts2 = esttacion.split("\\=");
+		        String nameEstacion = parts2[0];
+		        String idEstacion = parts2[1]; 
+
+				if (peticion.contains("modificar")) {// ojo con el get y set
+					boolean tipo = false;
+					if (peticion.contains("Temperatura")) {
+						tipo = true;
+					} else if (peticion.contains("Humedad")) {
+						tipo =true;
+					} else if (peticion.contains("Luminosidad")) {
+						tipo = true;
+					}else if (peticion.contains("Pantalla")) {
+						tipo = true;
+					} else {
+						// ERROR
+						contenidoFinal = "<h1>Error, metodo erroneo</h1>";
+					}
+
+					try {
+						InterfazRemoto estacion = (InterfazRemoto) registro.lookup("estacion" + idEstacion);
+						//System.out.println("1->"+peticion.split("=")[1]);
+						if (Integer.parseInt(idEstacion) != estacion.getId()) {
+							contenidoFinal = "<h1>Error, estacion no existe</h1>";
+						} else if (tipo==false) {
+							contenidoFinal = "<h1>Error, sonda no existe</h1>";
+						} else {
+							if (peticion.contains("modificar") && peticion.contains("=")
+									&& peticion.split("=").length > 1) {//si es modificar
+
+								if(peticion.contains("Temperatura")){
+									estacion.setTemperatura(Integer.parseInt(peticion.split("=")[1]));
+								}else if(peticion.contains("Humedad")){
+									estacion.setHumedad(Integer.parseInt(peticion.split("=")[1]));
+								}else if(peticion.contains("Luminosidad")){
+									estacion.setLuminosidad(Integer.parseInt(peticion.split("=")[1]));
+								}else if(peticion.contains("Pantalla")){
+									//System.out.println("Pantalla->"+peticion.split("=")[1]);
+									estacion.setPantalla(peticion.split("=")[1].replace("_"," "));
+								}
+								
+							}
+							contenidoFinal = getAllEstaciones(registro, Integer.toString(estacion.getId()), registro.list());
+						}
+					} catch (NotBoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				}else if(peticion.contains("leer")){//mostrar una
+					try {
+						InterfazRemoto estacion = (InterfazRemoto) registro.lookup("estacion" + idEstacion);
+						if (Integer.parseInt(idEstacion) != estacion.getId()) {
+							contenidoFinal = "<h1>Error, estacion no existe</h1>";
+						}
+							contenidoFinal = getAllEstaciones(registro, Integer.toString(estacion.getId()), registro.list());
+						
+					} catch (NotBoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			//System.out.println(contenidoFinal);
+			this.escribeSocket(skCliente, contenidoFinal);
+			skCliente.close();
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo Compilando el Cliente...
+echo .......................................................
+echo 	1.Configurando variable de entorno CLASSPATH.
+export CLASSPATH=$CLASSPATH:/home/saav1/Escritorio/SD/3.MyHTTPServer/Sondas/cliente.jar
+echo .......................................................
+echo
+echo	2.Compilando cliente.
+javac ClienteRMI.java
+echo .......................................................
+echo
+echo	3.Ejecutando cliente con localhost y puerto 1099
+java -Djava.security.policy=registrar.policy ClienteRMI localhost 1099 
+echo .......................................................
+echo

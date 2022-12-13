@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns="http://main" xmlns:ns1="http://org.apache.axis2/xsd" targetNamespace="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://main">
+      <xs:element name="getFecha">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFechaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="setLed">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="led" type="xs:int" />
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="setNombre">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="readSonda">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getNombre">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getNombreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getLed">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getLedResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="consultar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="str" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="consultarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVolumen">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVolumenResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="saveSensor">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Desencriptar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="str" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DesencriptarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="saveLog">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="metodo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getVolumenRequest">
+    <wsdl:part name="parameters" element="ns:getVolumen" />
+  </wsdl:message>
+  <wsdl:message name="getVolumenResponse">
+    <wsdl:part name="parameters" element="ns:getVolumenResponse" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarRequest">
+    <wsdl:part name="parameters" element="ns:Desencriptar" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarResponse">
+    <wsdl:part name="parameters" element="ns:DesencriptarResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNombreRequest">
+    <wsdl:part name="parameters" element="ns:getNombre" />
+  </wsdl:message>
+  <wsdl:message name="getNombreResponse">
+    <wsdl:part name="parameters" element="ns:getNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveSensorRequest">
+    <wsdl:part name="parameters" element="ns:saveSensor" />
+  </wsdl:message>
+  <wsdl:message name="saveLogRequest">
+    <wsdl:part name="parameters" element="ns:saveLog" />
+  </wsdl:message>
+  <wsdl:message name="consultarRequest">
+    <wsdl:part name="parameters" element="ns:consultar" />
+  </wsdl:message>
+  <wsdl:message name="consultarResponse">
+    <wsdl:part name="parameters" element="ns:consultarResponse" />
+  </wsdl:message>
+  <wsdl:message name="setLedRequest">
+    <wsdl:part name="parameters" element="ns:setLed" />
+  </wsdl:message>
+  <wsdl:message name="setNombreRequest">
+    <wsdl:part name="parameters" element="ns:setNombre" />
+  </wsdl:message>
+  <wsdl:message name="getFechaRequest">
+    <wsdl:part name="parameters" element="ns:getFecha" />
+  </wsdl:message>
+  <wsdl:message name="getFechaResponse">
+    <wsdl:part name="parameters" element="ns:getFechaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLedRequest">
+    <wsdl:part name="parameters" element="ns:getLed" />
+  </wsdl:message>
+  <wsdl:message name="getLedResponse">
+    <wsdl:part name="parameters" element="ns:getLedResponse" />
+  </wsdl:message>
+  <wsdl:message name="readSondaRequest">
+    <wsdl:part name="parameters" element="ns:readSonda" />
+  </wsdl:message>
+  <wsdl:portType name="SensorPortType">
+    <wsdl:operation name="getVolumen">
+      <wsdl:input wsaw:Action="urn:getVolumen" message="ns:getVolumenRequest" />
+      <wsdl:output wsaw:Action="urn:getVolumenResponse" message="ns:getVolumenResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <wsdl:input wsaw:Action="urn:Desencriptar" message="ns:DesencriptarRequest" />
+      <wsdl:output wsaw:Action="urn:DesencriptarResponse" message="ns:DesencriptarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNombre">
+      <wsdl:input wsaw:Action="urn:getNombre" message="ns:getNombreRequest" />
+      <wsdl:output wsaw:Action="urn:getNombreResponse" message="ns:getNombreResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="saveSensor">
+      <wsdl:input wsaw:Action="urn:saveSensor" message="ns:saveSensorRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="saveLog">
+      <wsdl:input wsaw:Action="urn:saveLog" message="ns:saveLogRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar">
+      <wsdl:input wsaw:Action="urn:consultar" message="ns:consultarRequest" />
+      <wsdl:output wsaw:Action="urn:consultarResponse" message="ns:consultarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setLed">
+      <wsdl:input wsaw:Action="urn:setLed" message="ns:setLedRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="setNombre">
+      <wsdl:input wsaw:Action="urn:setNombre" message="ns:setNombreRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <wsdl:input wsaw:Action="urn:getFecha" message="ns:getFechaRequest" />
+      <wsdl:output wsaw:Action="urn:getFechaResponse" message="ns:getFechaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getLed">
+      <wsdl:input wsaw:Action="urn:getLed" message="ns:getLedRequest" />
+      <wsdl:output wsaw:Action="urn:getLedResponse" message="ns:getLedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="readSonda">
+      <wsdl:input wsaw:Action="urn:readSonda" message="ns:readSondaRequest" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SensorSoap11Binding" type="ns:SensorPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getVolumen">
+      <soap:operation soapAction="urn:getVolumen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <soap:operation soapAction="urn:Desencriptar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNombre">
+      <soap:operation soapAction="urn:getNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveSensor">
+      <soap:operation soapAction="urn:saveSensor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="saveLog">
+      <soap:operation soapAction="urn:saveLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultar">
+      <soap:operation soapAction="urn:consultar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setLed">
+      <soap:operation soapAction="urn:setLed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="setNombre">
+      <soap:operation soapAction="urn:setNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <soap:operation soapAction="urn:getFecha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLed">
+      <soap:operation soapAction="urn:getLed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readSonda">
+      <soap:operation soapAction="urn:readSonda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SensorSoap12Binding" type="ns:SensorPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getVolumen">
+      <soap12:operation soapAction="urn:getVolumen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <soap12:operation soapAction="urn:Desencriptar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNombre">
+      <soap12:operation soapAction="urn:getNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveSensor">
+      <soap12:operation soapAction="urn:saveSensor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="saveLog">
+      <soap12:operation soapAction="urn:saveLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultar">
+      <soap12:operation soapAction="urn:consultar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setLed">
+      <soap12:operation soapAction="urn:setLed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="setNombre">
+      <soap12:operation soapAction="urn:setNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <soap12:operation soapAction="urn:getFecha" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLed">
+      <soap12:operation soapAction="urn:getLed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readSonda">
+      <soap12:operation soapAction="urn:readSonda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SensorHttpBinding" type="ns:SensorPortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getVolumen">
+      <http:operation location="getVolumen" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <http:operation location="Desencriptar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNombre">
+      <http:operation location="getNombre" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveSensor">
+      <http:operation location="saveSensor" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="saveLog">
+      <http:operation location="saveLog" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultar">
+      <http:operation location="consultar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setLed">
+      <http:operation location="setLed" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="setNombre">
+      <http:operation location="setNombre" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <http:operation location="getFecha" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLed">
+      <http:operation location="getLed" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readSonda">
+      <http:operation location="readSonda" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Sensor">
+    <wsdl:port name="SensorHttpSoap11Endpoint" binding="ns:SensorSoap11Binding">
+      <soap:address location="http://localhost:8080/Sensor/services/Sensor.SensorHttpSoap11Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="SensorHttpSoap12Endpoint" binding="ns:SensorSoap12Binding">
+      <soap12:address location="http://localhost:8080/Sensor/services/Sensor.SensorHttpSoap12Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="SensorHttpEndpoint" binding="ns:SensorHttpBinding">
+      <http:address location="http://localhost:8080/Sensor/services/Sensor.SensorHttpEndpoint/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
